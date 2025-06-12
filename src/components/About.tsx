@@ -12,16 +12,20 @@ export const About = () => {
   ];
 
   return (
-    <section className="py-20 bg-muted/5">
-      <div className="container mx-auto px-4">
+    <section className="py-20 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 fluid-gradient opacity-50"></div>
+      <div className="absolute top-20 right-20 w-64 h-64 liquid-blob liquid-morph" style={{ animationDelay: '1s' }}></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div>
-              <Badge variant="outline" className="mb-4">About Me</Badge>
+              <Badge variant="outline" className="glass-card mb-4 px-4 py-2">About Me</Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Transforming Business Operations Through Smart Automation
               </h2>
-              <div className="space-y-4 text-muted-foreground">
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
                   With over 5 years of experience in automation and workflow optimization, 
                   I specialize in n8n platform development, helping businesses eliminate 
@@ -37,10 +41,12 @@ export const About = () => {
 
             <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, index) => (
-                <Card key={index} className="border-border/50 bg-card/50 backdrop-blur-sm">
+                <Card key={index} className="glass-card hover:glass-button transition-all duration-500 group">
                   <CardContent className="p-6 text-center">
-                    <stat.icon className="h-8 w-8 mx-auto mb-3 text-primary" />
-                    <div className="text-2xl font-bold mb-1">{stat.value}</div>
+                    <stat.icon className="h-8 w-8 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform" />
+                    <div className="text-2xl font-bold mb-1 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                      {stat.value}
+                    </div>
                     <div className="text-sm text-muted-foreground">{stat.label}</div>
                   </CardContent>
                 </Card>
@@ -49,12 +55,19 @@ export const About = () => {
           </div>
 
           <div className="relative">
-            <img
-              src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&h=600"
-              alt="Developer at work"
-              className="w-full h-96 object-cover rounded-2xl shadow-2xl"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent rounded-2xl"></div>
+            {/* Floating elements */}
+            <div className="absolute -top-8 -left-8 w-20 h-20 glass-card rounded-2xl animate-float"></div>
+            <div className="absolute -bottom-8 left-1/3 w-16 h-16 glass-card rounded-xl animate-float" style={{ animationDelay: '1.5s' }}></div>
+            
+            {/* Main image */}
+            <div className="relative glass-card rounded-3xl p-3 animate-pulse-glow">
+              <img
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&h=600"
+                alt="Developer at work"
+                className="w-full h-96 object-cover rounded-2xl"
+              />
+              <div className="absolute inset-3 bg-gradient-to-t from-background/60 via-transparent to-transparent rounded-2xl"></div>
+            </div>
           </div>
         </div>
       </div>

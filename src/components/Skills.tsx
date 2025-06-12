@@ -49,14 +49,18 @@ export const Skills = () => {
   ];
 
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-4">
+    <section className="py-20 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 fluid-gradient opacity-30"></div>
+      <div className="absolute bottom-20 left-20 w-72 h-72 liquid-blob liquid-morph" style={{ animationDelay: '3s' }}></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4">My Expertise</Badge>
+          <Badge variant="outline" className="glass-card mb-4 px-4 py-2">My Expertise</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Technical Skills & Specializations
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             A comprehensive skill set focused on delivering robust automation solutions 
             that scale with your business needs.
           </p>
@@ -64,10 +68,10 @@ export const Skills = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((category, index) => (
-            <Card key={index} className="border-border/50 bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all duration-300">
+            <Card key={index} className="glass-card hover:glass-button transition-all duration-500 group animate-float" style={{ animationDelay: `${index * 0.5}s` }}>
               <CardHeader className="pb-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg">
+                  <div className="p-3 glass-card rounded-2xl group-hover:scale-110 transition-transform">
                     <category.icon className="h-6 w-6 text-primary" />
                   </div>
                   <CardTitle className="text-lg">{category.title}</CardTitle>
@@ -78,9 +82,15 @@ export const Skills = () => {
                   <div key={skillIndex} className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="font-medium">{skill.name}</span>
-                      <span className="text-muted-foreground">{skill.level}%</span>
+                      <span className="text-primary font-semibold">{skill.level}%</span>
                     </div>
-                    <Progress value={skill.level} className="h-2" />
+                    <div className="relative">
+                      <Progress value={skill.level} className="h-2 glass-card" />
+                      <div 
+                        className="absolute top-0 left-0 h-2 bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out"
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
                   </div>
                 ))}
               </CardContent>
