@@ -60,21 +60,27 @@ export const Hero = () => {
             </div>
           </div>
 
-          {/* Hero Image with liquid glass effect */}
+          {/* Hero Video with liquid glass effect */}
           <div className="flex-1 relative">
             <div className="relative w-full max-w-lg mx-auto">
               {/* Floating glass panels */}
               <div className="absolute -top-4 -left-4 w-32 h-32 glass-card rounded-3xl animate-float"></div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 glass-card rounded-2xl animate-float" style={{ animationDelay: '1s' }}></div>
               
-              {/* Main image container */}
+              {/* Main video container */}
               <div className="relative z-10 glass-card rounded-3xl p-2 animate-pulse-glow">
-                <img
-                  src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&h=600"
-                  alt="Family enjoying quality time together while automation handles the work"
+                <video
+                  src="/hero-video.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-96 object-cover rounded-2xl"
-                />
-                <div className="absolute inset-2 bg-gradient-to-t from-background/80 via-transparent to-transparent rounded-2xl"></div>
+                  style={{ aspectRatio: '16/9' }}
+                >
+                  Your browser does not support the video tag.
+                </video>
+                <div className="absolute inset-2 bg-gradient-to-t from-background/60 via-transparent to-transparent rounded-2xl"></div>
               </div>
               
               {/* Status indicator */}
