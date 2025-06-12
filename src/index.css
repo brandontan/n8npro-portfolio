@@ -53,11 +53,31 @@
     @apply border-border;
   }
 
+  html {
+    /* Prevent overscroll bounce on mobile */
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    /* Ensure full height */
+    height: 100%;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(217 32% 8%) 50%, hsl(var(--background)) 100%);
     background-attachment: fixed;
+    /* Prevent overscroll bounce and ensure full height */
+    overscroll-behavior: none;
+    height: 100%;
+    min-height: 100vh;
+    /* Prevent pull-to-refresh on mobile */
+    touch-action: pan-x pan-y;
+  }
+
+  #root {
+    /* Ensure root container takes full height */
+    min-height: 100vh;
+    overscroll-behavior: none;
   }
 }
 
@@ -140,9 +160,27 @@
   background: hsl(var(--primary) / 0.6);
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling and mobile overscroll prevention */
 html {
   scroll-behavior: smooth;
+  /* Additional mobile overscroll prevention */
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+
+/* Prevent pull-to-refresh and overscroll on all elements */
+* {
+  overscroll-behavior: none;
+}
+
+/* Specific mobile webkit fixes */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* iOS Safari specific fixes */
+    -webkit-overflow-scrolling: touch;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* Apple-inspired animations */

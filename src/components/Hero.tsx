@@ -36,7 +36,7 @@ export const Hero = () => {
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
-                Senior n8n Developer & Automation Specialist. I help businesses save 40+ hours per week through intelligent workflow automation.
+                n8n Automation Specialist | Turning Business Chaos Into Streamlined Workflows
               </p>
             </div>
 

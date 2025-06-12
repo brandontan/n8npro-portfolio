@@ -1,12 +1,36 @@
 
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Mail, Phone, MapPin, Calendar, Clock, DollarSign } from "lucide-react";
+import { Mail, Phone, MapPin, Calendar, Clock, DollarSign, CheckCircle, AlertCircle } from "lucide-react";
+import { useContactForm } from "@/hooks/useContactForm";
 
 export const Contact = () => {
+  const { submitForm, isSubmitting, submitStatus, resetStatus } = useContactForm();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    project_type: '',
+    project_details: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const success = await submitForm(formData);
+    if (success) {
+      setFormData({ name: '', email: '', project_type: '', project_details: '' });
+    }
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (submitStatus !== 'idle') {
+      resetStatus();
+    }
+  };
   const contactInfo = [
     {
       icon: Mail,
@@ -77,34 +101,84 @@ export const Contact = () => {
                 <CardTitle>Send Me a Message</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Name</label>
-                    <Input placeholder="Your full name" />
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Name</label>
+                      <Input 
+                        placeholder="Your full name" 
+                        value={formData.name}
+                        onChange={(e) => handleInputChange('name', e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Email</label>
+                      <Input 
+                        type="email" 
+                        placeholder="your.email@company.com" 
+                        value={formData.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        required
+                      />
+                    </div>
                   </div>
+                  
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Email</label>
-                    <Input type="email" placeholder="your.email@company.com" />
+                    <label className="text-sm font-medium">Project Type</label>
+                    <Input 
+                      placeholder="e.g., CRM automation, inventory management" 
+                      value={formData.project_type}
+                      onChange={(e) => handleInputChange('project_type', e.target.value)}
+                      required
+                    />
                   </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Project Type</label>
-                  <Input placeholder="e.g., CRM automation, inventory management" />
-                </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Project Details</label>
-                  <Textarea 
-                    placeholder="Tell me about your automation needs, current pain points, and expected outcomes..."
-                    className="min-h-32"
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Project Details</label>
+                    <Textarea 
+                      placeholder="Tell me about your automation needs, current pain points, and expected outcomes..."
+                      className="min-h-32"
+                      value={formData.project_details}
+                      onChange={(e) => handleInputChange('project_details', e.target.value)}
+                      required
+                    />
+                  </div>
 
-                <Button className="w-full" size="lg">
-                  <Mail className="mr-2 h-5 w-5" />
-                  Send Message
-                </Button>
+                  {/* Status Messages */}
+                  {submitStatus === 'success' && (
+                    <div className="flex items-center gap-2 text-green-600 bg-green-50 p-3 rounded-lg">
+                      <CheckCircle className="h-5 w-5" />
+                      <span>Message sent successfully! I'll get back to you within 24 hours.</span>
+                    </div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <div className="flex items-center gap-2 text-red-600 bg-red-50 p-3 rounded-lg">
+                      <AlertCircle className="h-5 w-5" />
+                      <span>Failed to send message. Please try again or email me directly.</span>
+                    </div>
+                  )}
+
+                  <Button 
+                    type="submit" 
+                    className="w-full" 
+                    size="lg" 
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Mail className="mr-2 h-5 w-5" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </form>
               </CardContent>
             </Card>
           </div>

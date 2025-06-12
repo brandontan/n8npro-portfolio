@@ -27,19 +27,22 @@ export const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  With over 5 years of experience in automation and workflow optimization, 
-                  I specialize in n8n platform development, helping businesses eliminate 
-                  repetitive tasks and streamline their operations.
+                  With extensive experience in sales automation and workflow optimization, I've evolved into specializing in n8n platform development, helping businesses eliminate repetitive tasks and streamline their operations.
                 </p>
                 <p>
-                  My expertise spans across sales automation, data processing, API integrations, 
-                  and custom workflow development. I've helped companies reduce manual work by 
-                  80% and increase productivity dramatically.
+                  My background includes hands-on experience with Clay, Claude API, Apollo, Instantly, Woodpecker, and Apify for lead management and email automation. Now I focus that automation expertise through n8n's powerful platform to create custom workflows that connect your entire business ecosystem.
+                </p>
+                <p>
+                  <strong>What I bring:</strong> Deep understanding of sales processes, API integrations, and the real-world challenges of scaling automation. I build workflows that actually work in production environments.
+                </p>
+                <p>
+                  From lead qualification to CRM integrations to complex multi-step automations, I create solutions that let you focus on growing your business instead of managing manual processes. Time saved is more time you can spend with loved ones ❤️
                 </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            {/* Temporarily hidden - Statistics cards */}
+            {/* <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, index) => (
                 <Card key={index} className="glass-card hover:glass-button transition-all duration-500 group">
                   <CardContent className="p-6 text-center">
@@ -51,7 +54,7 @@ export const About = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div>
+            </div> */}
           </div>
 
           <div className="relative">

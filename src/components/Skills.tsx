@@ -2,20 +2,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Zap, Database, Globe, Cpu } from "lucide-react";
+import { Database, Globe, Cpu } from "lucide-react";
 
 export const Skills = () => {
   const skillCategories = [
-    {
-      icon: Zap,
-      title: "Automation Platforms",
-      skills: [
-        { name: "n8n", level: 95 },
-        { name: "Zapier", level: 85 },
-        { name: "Make.com", level: 80 },
-        { name: "Power Automate", level: 75 },
-      ],
-    },
     {
       icon: Database,
       title: "Databases & APIs",
@@ -66,7 +56,7 @@ export const Skills = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {skillCategories.map((category, index) => (
             <Card key={index} className="glass-card hover:glass-button transition-all duration-500 group animate-float" style={{ animationDelay: `${index * 0.5}s` }}>
               <CardHeader className="pb-4">
