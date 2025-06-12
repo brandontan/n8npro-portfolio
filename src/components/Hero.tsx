@@ -70,8 +70,8 @@ export const Hero = () => {
               {/* Main image container */}
               <div className="relative z-10 glass-card rounded-3xl p-2 animate-pulse-glow">
                 <img
-                  src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&h=600"
-                  alt="Developer workspace"
+                  src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&h=600"
+                  alt="Family enjoying quality time together while automation handles the work"
                   className="w-full h-96 object-cover rounded-2xl"
                 />
                 <div className="absolute inset-2 bg-gradient-to-t from-background/80 via-transparent to-transparent rounded-2xl"></div>
