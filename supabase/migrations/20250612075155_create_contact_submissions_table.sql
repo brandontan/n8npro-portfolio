@@ -24,3 +24,4 @@ USING (true);
 -- Add helpful comment
 COMMENT ON TABLE contact_submissions IS 'Stores contact form submissions from the portfolio website';
 
+

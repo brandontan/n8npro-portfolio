@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowDown, Mail, Github, Linkedin, Sparkles } from "lucide-react";
@@ -64,8 +63,8 @@ export const Hero = () => {
           <div className="flex-1 relative">
             <div className="relative w-full max-w-lg mx-auto">
               {/* Floating glass panels */}
-              <div className="absolute -top-4 -left-4 w-32 h-32 glass-card rounded-3xl animate-float"></div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 glass-card rounded-2xl animate-float" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute -top-4 -left-4 w-32 h-32 glass-card rounded-3xl animate-float z-0"></div>
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 glass-card rounded-2xl animate-float z-0" style={{ animationDelay: '1s' }}></div>
               
               {/* Main video container */}
               <div className="relative z-10 glass-card rounded-3xl p-2 animate-pulse-glow">
@@ -84,7 +83,7 @@ export const Hero = () => {
               </div>
               
               {/* Status indicator */}
-              <div className="absolute -bottom-6 -right-6 glass-card rounded-2xl p-4 shadow-2xl animate-float" style={{ animationDelay: '0.5s' }}>
+              <div className="absolute -bottom-6 -right-6 glass-card rounded-2xl p-4 shadow-2xl animate-float z-20" style={{ animationDelay: '0.5s' }}>
                 <div className="flex items-center gap-3">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                   <span className="text-sm font-medium">Available for hire</span>
