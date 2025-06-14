@@ -1,54 +1,64 @@
-
-import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Mail, Phone, MapPin, Calendar, Clock, DollarSign, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, Calendar, Clock, DollarSign, CheckCircle, AlertCircle, X } from "lucide-react";
+import { useState } from "react";
 import { useContactForm } from "@/hooks/useContactForm";
 
 export const Contact = () => {
-  const { submitForm, isSubmitting, submitStatus, resetStatus } = useContactForm();
+  const { submitForm, isSubmitting, error, success, dismissSuccess, dismissError } = useContactForm();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     project_type: '',
-    project_details: ''
+    project_details: '',
+    message: ''
   });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const success = await submitForm(formData);
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.project_details) {
+      return;
+    }
+
+    // Set message to project_details if not provided
+    const submissionData = {
+      ...formData,
+      message: formData.message || formData.project_details
+    };
+
+    const success = await submitForm(submissionData);
+    
     if (success) {
-      setFormData({ name: '', email: '', project_type: '', project_details: '' });
+      // Reset form on success
+      setFormData({
+        name: '',
+        email: '',
+        project_type: '',
+        project_details: '',
+        message: ''
+      });
     }
   };
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (submitStatus !== 'idle') {
-      resetStatus();
-    }
-  };
   const contactInfo = [
     {
       icon: Mail,
       label: "Email",
-      value: "hello@n8nautomation.dev",
-      action: "mailto:hello@n8nautomation.dev"
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+1 (555) 123-4567",
-      action: "tel:+15551234567"
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "San Francisco, CA",
-      action: null
+      value: "brandon@n8npro.com",
+      action: "mailto:brandon@n8npro.com"
     },
     {
       icon: Clock,
@@ -68,13 +78,13 @@ export const Contact = () => {
     {
       icon: DollarSign,
       title: "Hourly Rate",
-      price: "$125/hr",
+      price: "$25/hr",
       description: "For ongoing development and maintenance"
     },
     {
       icon: DollarSign,
       title: "Project Rate",
-      price: "$2,500+",
+      price: "Custom",
       description: "Fixed-price for complete automation solutions"
     }
   ];
@@ -101,24 +111,63 @@ export const Contact = () => {
                 <CardTitle>Send Me a Message</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
+                {success && (
+                  <div className="flex items-center justify-between gap-2 p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-600">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="h-5 w-5" />
+                      <span>Message sent successfully! Brandon will get in touch with you ASAP.</span>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={dismissSuccess}
+                      className="h-6 w-6 p-0 text-green-600 hover:text-green-700 hover:bg-green-500/20"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                )}
+                
+                {error && (
+                  <div className="flex items-start justify-between gap-2 p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-600">
+                    <div className="flex items-start gap-2">
+                      <AlertCircle className="h-5 w-5 mt-0.5" />
+                      <div className="space-y-1">
+                        <p>Failed to send message. Please try again or email directly.</p>
+                        <p className="text-sm opacity-75">{error}</p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={dismissError}
+                      className="h-6 w-6 p-0 text-red-600 hover:text-red-700 hover:bg-red-500/20"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium">Name</label>
+                      <label className="text-sm font-medium">Name *</label>
                       <Input 
-                        placeholder="Your full name" 
+                        name="name"
                         value={formData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
+                        onChange={handleInputChange}
+                        placeholder="Your full name" 
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium">Email</label>
+                      <label className="text-sm font-medium">Email *</label>
                       <Input 
                         type="email" 
-                        placeholder="your.email@company.com" 
+                        name="email"
                         value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        onChange={handleInputChange}
+                        placeholder="your.email@company.com" 
                         required
                       />
                     </div>
@@ -127,56 +176,33 @@ export const Contact = () => {
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Project Type</label>
                     <Input 
-                      placeholder="e.g., CRM automation, inventory management" 
+                      name="project_type"
                       value={formData.project_type}
-                      onChange={(e) => handleInputChange('project_type', e.target.value)}
-                      required
+                      onChange={handleInputChange}
+                      placeholder="e.g., CRM automation, inventory management" 
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Project Details</label>
+                    <label className="text-sm font-medium">Project Details *</label>
                     <Textarea 
+                      name="project_details"
+                      value={formData.project_details}
+                      onChange={handleInputChange}
                       placeholder="Tell me about your automation needs, current pain points, and expected outcomes..."
                       className="min-h-32"
-                      value={formData.project_details}
-                      onChange={(e) => handleInputChange('project_details', e.target.value)}
                       required
                     />
                   </div>
 
-                  {/* Status Messages */}
-                  {submitStatus === 'success' && (
-                    <div className="flex items-center gap-2 text-green-600 bg-green-50 p-3 rounded-lg">
-                      <CheckCircle className="h-5 w-5" />
-                      <span>Message sent successfully! I'll get back to you within 24 hours.</span>
-                    </div>
-                  )}
-
-                  {submitStatus === 'error' && (
-                    <div className="flex items-center gap-2 text-red-600 bg-red-50 p-3 rounded-lg">
-                      <AlertCircle className="h-5 w-5" />
-                      <span>Failed to send message. Please try again or email me directly.</span>
-                    </div>
-                  )}
-
                   <Button 
                     type="submit" 
                     className="w-full" 
-                    size="lg" 
+                    size="lg"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? (
-                      <>
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Mail className="mr-2 h-5 w-5" />
-                        Send Message
-                      </>
-                    )}
+                    <Mail className="mr-2 h-5 w-5" />
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </CardContent>

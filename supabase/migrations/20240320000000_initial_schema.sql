@@ -3,6 +3,8 @@ CREATE TABLE IF NOT EXISTS public.contact_submissions (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     name TEXT NOT NULL,
     email TEXT NOT NULL,
+    project_type TEXT NOT NULL,
+    project_details TEXT NOT NULL,
     message TEXT NOT NULL,
     created_at TIMESTAMPTZ DEFAULT now() NOT NULL,
     status TEXT DEFAULT 'pending' NOT NULL

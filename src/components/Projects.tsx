@@ -1,15 +1,15 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { getStorageUrl } from "@/lib/utils";
 
 export const Projects = () => {
   const projects = [
     {
       title: "E-commerce Order Automation",
       description: "Complete order processing workflow that automatically handles orders, inventory updates, and customer notifications. Reduced processing time by 90%.",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&h=400",
+      image: getStorageUrl("ecommerce-automation.jpg"),
       tags: ["n8n", "Shopify API", "Email", "Slack"],
       metrics: "Saved 35 hours/week",
       category: "E-commerce"
@@ -17,7 +17,7 @@ export const Projects = () => {
     {
       title: "CRM Lead Qualification System",
       description: "Intelligent lead scoring and routing system that automatically qualifies prospects and assigns them to the right sales team members.",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=600&h=400",
+      image: getStorageUrl("crm-lead.jpg"),
       tags: ["n8n", "HubSpot", "AI", "Webhooks"],
       metrics: "80% faster lead response",
       category: "Sales"
@@ -25,7 +25,7 @@ export const Projects = () => {
     {
       title: "Social Media Content Pipeline",
       description: "Automated content creation and distribution system that generates, schedules, and publishes content across multiple platforms.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&h=400",
+      image: getStorageUrl("social-media.jpg"),
       tags: ["n8n", "OpenAI", "Twitter API", "Buffer"],
       metrics: "5x content output increase",
       category: "Marketing"
@@ -33,7 +33,7 @@ export const Projects = () => {
     {
       title: "Financial Reporting Dashboard",
       description: "Real-time financial data aggregation from multiple sources with automated report generation and stakeholder notifications.",
-      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=600&h=400",
+      image: getStorageUrl("financial-dashboard.jpg"),
       tags: ["n8n", "QuickBooks", "Google Sheets", "PDF"],
       metrics: "Zero manual reporting",
       category: "Finance"
@@ -41,7 +41,7 @@ export const Projects = () => {
     {
       title: "Customer Support Ticket Router",
       description: "Smart ticket classification and routing system that automatically categorizes support requests and assigns them to specialized agents.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=600&h=400",
+      image: getStorageUrl("support-tickets.jpg"),
       tags: ["n8n", "Zendesk", "NLP", "Teams"],
       metrics: "60% faster resolution",
       category: "Support"
@@ -49,7 +49,7 @@ export const Projects = () => {
     {
       title: "Inventory Management System",
       description: "Automated inventory tracking and reordering system with predictive analytics for optimal stock levels.",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&h=400",
+      image: getStorageUrl("inventory.jpg"),
       tags: ["n8n", "PostgreSQL", "Alerts", "Analytics"],
       metrics: "40% cost reduction",
       category: "Operations"
