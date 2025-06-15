@@ -6,6 +6,13 @@ import './index.css'
 const setFavicon = () => {
   console.log('🔧 Setting favicon...');
   
+  // Debug: Show current favicon links
+  const currentLinks = document.querySelectorAll('link[rel*="icon"]');
+  console.log('🔍 Current favicon links before removal:');
+  currentLinks.forEach((link, index) => {
+    console.log(`  ${index + 1}. rel="${link.getAttribute('rel')}" href="${link.getAttribute('href')}" type="${link.getAttribute('type')}"`);
+  });
+  
   // Remove existing favicon links
   const existingLinks = document.querySelectorAll('link[rel*="icon"]');
   console.log('🗑️ Removing existing favicon links:', existingLinks.length);
@@ -32,6 +39,15 @@ const setFavicon = () => {
   document.head.appendChild(appleTouchIcon);
   console.log('✅ Added Apple touch icon');
   
+  // Debug: Show final favicon links
+  setTimeout(() => {
+    const finalLinks = document.querySelectorAll('link[rel*="icon"]');
+    console.log('🔍 Final favicon links after addition:');
+    finalLinks.forEach((link, index) => {
+      console.log(`  ${index + 1}. rel="${link.getAttribute('rel')}" href="${link.getAttribute('href')}" type="${link.getAttribute('type')}"`);
+    });
+  }, 100);
+  
   // Force browser to refresh favicon
   setTimeout(() => {
     const link = document.querySelector('link[rel*="icon"]') as HTMLLinkElement;
@@ -47,6 +63,19 @@ const setFavicon = () => {
 };
 
 // Set favicon when the app loads
+console.log('🚀 App starting, setting favicon immediately...');
 setFavicon();
+
+// Also set favicon after DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('📄 DOM loaded, setting favicon again...');
+  setFavicon();
+});
+
+// And set it after the React app renders
+setTimeout(() => {
+  console.log('⏰ Timeout reached, setting favicon one more time...');
+  setFavicon();
+}, 2000);
 
 createRoot(document.getElementById("root")!).render(<App />);
