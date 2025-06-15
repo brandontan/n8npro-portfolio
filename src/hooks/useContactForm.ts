@@ -7,12 +7,12 @@ export const useContactForm = () => {
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
 
-  // Auto-dismiss success message after 5 seconds
+  // Auto-dismiss success message after 3 seconds
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
         setSuccess(false)
-      }, 5000)
+      }, 3000)
       
       return () => clearTimeout(timer)
     }
