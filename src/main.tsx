@@ -8,11 +8,14 @@ const setFavicon = () => {
   const existingLinks = document.querySelectorAll('link[rel*="icon"]');
   existingLinks.forEach(link => link.remove());
 
-  // Add new SVG favicon link
+  // Add timestamp for aggressive cache busting
+  const timestamp = Date.now();
+
+  // Add new SVG favicon link with timestamp
   const faviconSvg = document.createElement('link');
   faviconSvg.rel = 'icon';
   faviconSvg.type = 'image/svg+xml';
-  faviconSvg.href = '/brain-favicon.svg?v=2';
+  faviconSvg.href = `/favicon.svg?t=${timestamp}`;
   document.head.appendChild(faviconSvg);
 };
 
