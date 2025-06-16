@@ -1,7 +1,8 @@
 name: "Sync with Upstream n8n-docs"
 
-# Scheduled sync with upstream repository
-# Runs daily and provides summary of changes
+# Automated daily sync with upstream repository
+# Also supports manual triggers for emergency syncs
+# Runs daily at 2 AM UTC and preserves local workflows
 
 on:
   schedule:

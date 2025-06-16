@@ -50,6 +50,26 @@ npm run dev
 - Click on "New codespace" to launch a new Codespace environment.
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
+## Fork Synchronization
+
+This repository is a fork of [n8n-docs](https://github.com/n8n-io/n8n-docs) and **automatically syncs daily at 2 AM UTC** to stay up-to-date with the upstream repository.
+
+### Automated Sync Process
+
+- **Daily Schedule**: The fork automatically syncs with upstream changes every day
+- **Workflow Preservation**: Local workflows and configurations are preserved during sync
+- **Manual Trigger**: If needed, the sync can be triggered manually via GitHub Actions
+
+### Emergency Manual Sync
+
+For urgent updates that can't wait for the daily sync:
+
+1. Go to the [Actions tab](../../actions)
+2. Select "Sync with Upstream n8n-docs" workflow
+3. Click "Run workflow" and optionally enable "Force sync even if no changes"
+
+Contributors can rely on the automated sync to keep the fork current without manual intervention.
+
 ## What technologies are used for this project?
 
 This project is built with:
