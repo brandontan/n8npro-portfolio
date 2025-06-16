@@ -12,7 +12,7 @@ const setFavicon = () => {
   const faviconSvg = document.createElement('link');
   faviconSvg.rel = 'icon';
   faviconSvg.type = 'image/svg+xml';
-  faviconSvg.href = '/brain-favicon.svg?v=1';
+  faviconSvg.href = '/brain-favicon.svg?v=2';
   document.head.appendChild(faviconSvg);
 };
 
