@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -10,30 +9,30 @@ export const Skills = () => {
       icon: Database,
       title: "Databases & APIs",
       skills: [
-        { name: "REST APIs", level: 90 },
-        { name: "GraphQL", level: 80 },
-        { name: "PostgreSQL", level: 85 },
-        { name: "MongoDB", level: 75 },
+        { name: "REST APIs", level: 45 },
+        { name: "GraphQL", level: 45 },
+        { name: "PostgreSQL", level: 45 },
+        { name: "MongoDB", level: 45 },
       ],
     },
     {
       icon: Globe,
       title: "Web Technologies",
       skills: [
-        { name: "JavaScript", level: 90 },
-        { name: "Python", level: 85 },
-        { name: "Node.js", level: 80 },
-        { name: "React", level: 75 },
+        { name: "JavaScript", level: 45 },
+        { name: "Python", level: 45 },
+        { name: "Node.js", level: 45 },
+        { name: "React", level: 45 },
       ],
     },
     {
       icon: Cpu,
       title: "Business Tools",
       skills: [
-        { name: "CRM Integration", level: 95 },
-        { name: "Email Marketing", level: 90 },
-        { name: "Data Analysis", level: 85 },
-        { name: "Process Optimization", level: 90 },
+        { name: "CRM Integration", level: 45 },
+        { name: "Email Marketing", level: 45 },
+        { name: "Data Analysis", level: 45 },
+        { name: "Process Optimization", level: 45 },
       ],
     },
   ];
