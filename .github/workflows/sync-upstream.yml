@@ -1,0 +1,108 @@
+name: "Sync with Upstream n8n-docs"
+
+# Scheduled sync with upstream repository
+# Runs daily and provides summary of changes
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      force_sync:
+        description: 'Force sync even if no changes'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  sync-upstream:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      
+      - name: Sync with Upstream
+        id: sync
+        run: |
+          echo "🔄 Starting upstream sync process..."
+          
+          # Configure git
+          git config user.name "Brandon Tan"
+          git config user.email "brandontan@gmail.com"
+          
+          # Add upstream remote if it doesn't exist
+          git remote add upstream https://github.com/n8n-io/n8n-docs.git 2>/dev/null || true
+          
+          # Fetch latest changes
+          echo "📥 Fetching upstream changes..."
+          git fetch upstream
+          git checkout main
+          
+          # Count commits before sync
+          commits_before=$(git rev-list --count HEAD)
+          
+          # Reset to upstream/main but preserve our workflow files
+          echo "🔄 Syncing with upstream/main..."
+          git checkout upstream/main -- .
+          git checkout HEAD -- .github/workflows/
+          
+          # Check if there are any changes to commit
+          git add -A
+          if ! git diff --cached --quiet || [ "${{ github.event.inputs.force_sync }}" == "true" ]; then
+            if git diff --cached --quiet && [ "${{ github.event.inputs.force_sync }}" != "true" ]; then
+              echo "📊 No changes detected - repository is up to date"
+              echo "commits_pulled=0" >> $GITHUB_OUTPUT
+              echo "sync_status=up-to-date" >> $GITHUB_OUTPUT
+            else
+              echo "✅ Changes detected, committing sync..."
+              
+              # Get the latest upstream commit for reference
+              upstream_commit=$(git rev-parse upstream/main)
+              upstream_short=$(echo $upstream_commit | cut -c1-7)
+              
+              git commit -m "Sync with upstream n8n-docs: $upstream_short
+              
+              - Updated content from upstream/main
+              - Preserved local workflow configurations
+              - Sync performed on $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+              
+              # Count commits after sync
+              commits_after=$(git rev-list --count HEAD)
+              commits_pulled=$((commits_after - commits_before))
+              
+              echo "📤 Pushing changes to origin..."
+              git push origin main
+              
+              echo "commits_pulled=$commits_pulled" >> $GITHUB_OUTPUT
+              echo "sync_status=updated" >> $GITHUB_OUTPUT
+              echo "✅ Sync completed successfully - $commits_pulled new commits"
+            fi
+          else
+            echo "📊 No changes to sync - repository is up to date"
+            echo "commits_pulled=0" >> $GITHUB_OUTPUT
+            echo "sync_status=up-to-date" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Generate Summary
+        if: always()
+        run: |
+          echo "## 📊 Upstream Sync Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Sync Status:** ${{ steps.sync.outputs.sync_status }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commits Pulled:** ${{ steps.sync.outputs.commits_pulled }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Sync Time:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "- **Repository:** n8n-io/n8n-docs → brandontan/n8npro-portfolio" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.sync.outputs.sync_status }}" == "updated" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### ✅ Changes Applied" >> $GITHUB_STEP_SUMMARY
+            echo "The repository has been successfully updated with ${{ steps.sync.outputs.commits_pulled }} new commits from upstream." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### 📋 No Changes" >> $GITHUB_STEP_SUMMARY
+            echo "Repository is already up to date with upstream." >> $GITHUB_STEP_SUMMARY
+          fi
+
