@@ -50,12 +50,16 @@ export const Hero = () => {
             </div>
 
             <div className="flex gap-6 justify-center lg:justify-start">
-              <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
-                <Github className="h-6 w-6" />
-              </Button>
-              <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
-                <Linkedin className="h-6 w-6" />
-              </Button>
+              <a href="https://github.com/brandontan" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
+                  <Github className="h-6 w-6" />
+                </Button>
+              </a>
+              <a href="https://www.linkedin.com/in/brandontan/" target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
+                  <Linkedin className="h-6 w-6" />
+                </Button>
+              </a>
             </div>
           </div>
 
