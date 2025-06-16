@@ -1,21 +1,44 @@
-// Favicon fix script
-console.log('🔧 Favicon fix script loaded');
+// Cyborg Head Favicon - Maximum Size & Prominence
+console.log('🔧 Cyborg Head Favicon loaded');
 
 function setFavicon() {
-  console.log('🚀 Setting AI favicon...');
+  console.log('🚀 Setting maximum size cyborg head favicon...');
   
-  // Remove existing favicon links
-  const existingLinks = document.querySelectorAll('link[rel*="icon"]');
+  // Remove ALL existing favicon links aggressively
+  const existingLinks = document.querySelectorAll('link[rel*="icon"], link[rel*="shortcut"]');
   console.log('🗑️ Removing existing favicon links:', existingLinks.length);
   existingLinks.forEach(link => link.remove());
   
-  // Add new AI favicon
+  // Add cache-busting parameter with random number for aggressive refresh
+  const timestamp = new Date().getTime();
+  const random = Math.floor(Math.random() * 10000);
+  
+  // Force reload by adding multiple cache-busting parameters
+  const cacheBuster = `?v=${timestamp}&r=${random}&force=true`;
+  
+  // Add new cyborg favicon with aggressive cache busting
   const faviconSvg = document.createElement('link');
   faviconSvg.rel = 'icon';
   faviconSvg.type = 'image/svg+xml';
-  faviconSvg.href = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNjQiIHdpZHRoPSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48dGl0bGU+NjQgYWk8L3RpdGxlPjxnIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZmlsbD0iIzIxMjEyMSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9Im5jLWljb24td3JhcHBlciI+PGxpbmUgeDE9IjIyIiB5MT0iOSIgeDI9IjIyIiB5Mj0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiIGRhdGEtY29sb3I9ImNvbG9yLTIiPjwvbGluZT48bGluZSB4MT0iNDIiIHkxPSI5IiB4Mj0iNDIiIHkyPSIzIiBmaWxsPSJub25lIiBzdHJva2U9IiMyMTIxMjEiIHN0cm9rZS13aWR0aD0iNCIgZGF0YS1jb2xvcj0iY29sb3ItMiI+PC9saW5lPjxsaW5lIHgxPSIzMiIgeTE9IjkiIHgyPSIzMiIgeTI9IjMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIxMjEyMSIgc3Ryb2tlLXdpZHRoPSI0IiBkYXRhLWNvbG9yPSJjb2xvci0yIj48L2xpbmU+PGxpbmUgeDE9IjkiIHkxPSI0MiIgeDI9IjMiIHkyPSI0MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiIGRhdGEtY29sb3I9ImNvbG9yLTIiPjwvbGluZT48bGluZSB4MT0iOSIgeTE9IjIyIiB4Mj0iMyIgeTI9IjIyIiBmaWxsPSJub25lIiBzdHJva2U9IiMyMTIxMjEiIHN0cm9rZS13aWR0aD0iNCIgZGF0YS1jb2xvcj0iY29sb3ItMiI+PC9saW5lPjxsaW5lIHgxPSI5IiB5MT0iMzIiIHgyPSIzIiB5Mj0iMzIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIxMjEyMSIgc3Ryb2tlLXdpZHRoPSI0IiBkYXRhLWNvbG9yPSJjb2xvci0yIj48L2xpbmU+PGxpbmUgeDE9IjYxIiB5MT0iNDIiIHgyPSI1NSIgeTI9IjQyIiBmaWxsPSJub25lIiBzdHJva2U9IiMyMTIxMjEiIHN0cm9rZS13aWR0aD0iNCIgZGF0YS1jb2xvcj0iY29sb3ItMiI+PC9saW5lPjxsaW5lIHgxPSI2MSIgeTE9IjIyIiB4Mj0iNTUiIHkyPSIyMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiIGRhdGEtY29sb3I9ImNvbG9yLTIiPjwvbGluZT48bGluZSB4MT0iNjEiIHkxPSIzMiIgeDI9IjU1IiB5Mj0iMzIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIxMjEyMSIgc3Ryb2tlLXdpZHRoPSI0IiBkYXRhLWNvbG9yPSJjb2xvci0yIj48L2xpbmU+PGxpbmUgeDE9IjIyIiB5MT0iNjEiIHgyPSIyMiIgeTI9IjU1IiBmaWxsPSJub25lIiBzdHJva2U9IiMyMTIxMjEiIHN0cm9rZS13aWR0aD0iNCIgZGF0YS1jb2xvcj0iY29sb3ItMiI+PC9saW5lPjxsaW5lIHgxPSI0MiIgeTE9IjYxIiB4Mj0iNDIiIHkyPSI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiIGRhdGEtY29sb3I9ImNvbG9yLTIiPjwvbGluZT48bGluZSB4MT0iMzIiIHkxPSI2MSIgeDI9IjMyIiB5Mj0iNTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIxMjEyMSIgc3Ryb2tlLXdpZHRoPSI0IiBkYXRhLWNvbG9yPSJjb2xvci0yIj48L2xpbmU+PHJlY3QgeD0iOSIgeT0iOSIgd2lkdGg9IjQ2IiBoZWlnaHQ9IjQ2IiByeD0iNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiPjwvcmVjdD48cmVjdCB4PSIxNiIgeT0iMTYiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiPjwvcmVjdD48cGF0aCBkPSJNMzMuMDIzLDQwbC0xLjcxMS00Ljc1OGgtNi41NUwyMy4wODYsNDBIMjAuMTMzbDYuNDEtMTcuMkgyOS41OUwzNiw0MFptLTIuNDQ5LTcuMTcyLTEuNjA1LTQuNjY0cS0uMTc1LS40NjgtLjQ4Ny0xLjQ3NnQtLjQyNy0xLjQ3N2EyNi4yODQsMjYuMjg0LDAsMCwxLS45MjYsMy4xNTJsLTEuNTQ3LDQuNDY1WiIgZmlsbD0iIzIxMjEyMSIgZGF0YS1jb2xvcj0iY29sb3ItMiIgZGF0YS1zdHJva2U9Im5vbmUiIHN0cm9rZT0ibm9uZSI+PC9wYXRoPjxwYXRoIGQ9Ik0zOS4yLDQwVjIyLjg2N0g0MlY0MFoiIGZpbGw9IiMyMTIxMjEiIGRhdGEtY29sb3I9ImNvbG9yLTIiIGRhdGEtc3Ryb2tlPSJub25lIiBzdHJva2U9Im5vbmUiPjwvcGF0aD48L2c+PC9zdmc+';
+  faviconSvg.href = `/cyborg-favicon.svg${cacheBuster}`;
   document.head.appendChild(faviconSvg);
-  console.log('✅ AI favicon set successfully!');
+  
+  // Also add ICO fallback with aggressive cache busting
+  const faviconIco = document.createElement('link');
+  faviconIco.rel = 'icon';
+  faviconIco.type = 'image/x-icon';
+  faviconIco.href = `/favicon.ico${cacheBuster}`;
+  faviconIco.sizes = 'any';
+  document.head.appendChild(faviconIco);
+  
+  // Force a page title change to trigger favicon refresh
+  const originalTitle = document.title;
+  document.title = 'Refreshing...';
+  setTimeout(() => {
+    document.title = originalTitle;
+  }, 100);
+  
+  console.log('✅ Maximum size cyborg head favicon set successfully with aggressive cache refresh!');
 }
 
 // Set favicon immediately
@@ -28,5 +51,9 @@ if (document.readyState === 'loading') {
   setFavicon();
 }
 
-// Set again after a delay to override any other favicon changes
-setTimeout(setFavicon, 2000); 
+// Set again after delays to override any other favicon changes
+setTimeout(setFavicon, 1000);
+setTimeout(setFavicon, 3000);
+
+// Force refresh on page focus (when user returns to tab)
+window.addEventListener('focus', setFavicon); 

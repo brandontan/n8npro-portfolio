@@ -4,78 +4,19 @@ import './index.css'
 
 // Set favicon programmatically
 const setFavicon = () => {
-  console.log('🔧 Setting favicon...');
-  
-  // Debug: Show current favicon links
-  const currentLinks = document.querySelectorAll('link[rel*="icon"]');
-  console.log('🔍 Current favicon links before removal:');
-  currentLinks.forEach((link, index) => {
-    console.log(`  ${index + 1}. rel="${link.getAttribute('rel')}" href="${link.getAttribute('href')}" type="${link.getAttribute('type')}"`);
-  });
-  
   // Remove existing favicon links
   const existingLinks = document.querySelectorAll('link[rel*="icon"]');
-  console.log('🗑️ Removing existing favicon links:', existingLinks.length);
   existingLinks.forEach(link => link.remove());
-  
-  // Add new favicon links
-  const faviconIco = document.createElement('link');
-  faviconIco.rel = 'icon';
-  faviconIco.type = 'image/x-icon';
-  faviconIco.href = '/favicon.ico';
-  document.head.appendChild(faviconIco);
-  console.log('✅ Added ICO favicon');
-  
+
+  // Add new SVG favicon link
   const faviconSvg = document.createElement('link');
   faviconSvg.rel = 'icon';
   faviconSvg.type = 'image/svg+xml';
-  faviconSvg.href = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNjQiIHdpZHRoPSI2NCIgdmlld0JveD0iMCAwIDY0IDY0Ij48dGl0bGU+NjQgYWk8L3RpdGxlPjxnIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZmlsbD0iIzIxMjEyMSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9Im5jLWljb24td3JhcHBlciI+PGxpbmUgeDE9IjIyIiB5MT0iOSIgeDI9IjIyIiB5Mj0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiIGRhdGEtY29sb3I9ImNvbG9yLTIiPjwvbGluZT48bGluZSB4MT0iNDIiIHkxPSI5IiB4Mj0iNDIiIHkyPSIzIiBmaWxsPSJub25lIiBzdHJva2U9IiMyMTIxMjEiIHN0cm9rZS13aWR0aD0iNCIgZGF0YS1jb2xvcj0iY29sb3ItMiI+PC9saW5lPjxsaW5lIHgxPSIzMiIgeTE9IjkiIHgyPSIzMiIgeTI9IjMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIxMjEyMSIgc3Ryb2tlLXdpZHRoPSI0IiBkYXRhLWNvbG9yPSJjb2xvci0yIj48L2xpbmU+PGxpbmUgeDE9IjkiIHkxPSI0MiIgeDI9IjMiIHkyPSI0MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiIGRhdGEtY29sb3I9ImNvbG9yLTIiPjwvbGluZT48bGluZSB4MT0iOSIgeTE9IjIyIiB4Mj0iMyIgeTI9IjIyIiBmaWxsPSJub25lIiBzdHJva2U9IiMyMTIxMjEiIHN0cm9rZS13aWR0aD0iNCIgZGF0YS1jb2xvcj0iY29sb3ItMiI+PC9saW5lPjxsaW5lIHgxPSI5IiB5MT0iMzIiIHgyPSIzIiB5Mj0iMzIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIxMjEyMSIgc3Ryb2tlLXdpZHRoPSI0IiBkYXRhLWNvbG9yPSJjb2xvci0yIj48L2xpbmU+PGxpbmUgeDE9IjYxIiB5MT0iNDIiIHgyPSI1NSIgeTI9IjQyIiBmaWxsPSJub25lIiBzdHJva2U9IiMyMTIxMjEiIHN0cm9rZS13aWR0aD0iNCIgZGF0YS1jb2xvcj0iY29sb3ItMiI+PC9saW5lPjxsaW5lIHgxPSI2MSIgeTE9IjIyIiB4Mj0iNTUiIHkyPSIyMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiIGRhdGEtY29sb3I9ImNvbG9yLTIiPjwvbGluZT48bGluZSB4MT0iNjEiIHkxPSIzMiIgeDI9IjU1IiB5Mj0iMzIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIxMjEyMSIgc3Ryb2tlLXdpZHRoPSI0IiBkYXRhLWNvbG9yPSJjb2xvci0yIj48L2xpbmU+PGxpbmUgeDE9IjIyIiB5MT0iNjEiIHgyPSIyMiIgeTI9IjU1IiBmaWxsPSJub25lIiBzdHJva2U9IiMyMTIxMjEiIHN0cm9rZS13aWR0aD0iNCIgZGF0YS1jb2xvcj0iY29sb3ItMiI+PC9saW5lPjxsaW5lIHgxPSI0MiIgeTE9IjYxIiB4Mj0iNDIiIHkyPSI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiIGRhdGEtY29sb3I9ImNvbG9yLTIiPjwvbGluZT48bGluZSB4MT0iMzIiIHkxPSI2MSIgeDI9IjMyIiB5Mj0iNTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIxMjEyMSIgc3Ryb2tlLXdpZHRoPSI0IiBkYXRhLWNvbG9yPSJjb2xvci0yIj48L2xpbmU+PHJlY3QgeD0iOSIgeT0iOSIgd2lkdGg9IjQ2IiBoZWlnaHQ9IjQ2IiByeD0iNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiPjwvcmVjdD48cmVjdCB4PSIxNiIgeT0iMTYiIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjEyMTIxIiBzdHJva2Utd2lkdGg9IjQiPjwvcmVjdD48cGF0aCBkPSJNMzMuMDIzLDQwbC0xLjcxMS00Ljc1OGgtNi41NUwyMy4wODYsNDBIMjAuMTMzbDYuNDEtMTcuMkgyOS41OUwzNiw0MFptLTIuNDQ5LTcuMTcyLTEuNjA1LTQuNjY0cS0uMTc1LS40NjgtLjQ4Ny0xLjQ3NnQtLjQyNy0xLjQ3N2EyNi4yODQsMjYuMjg0LDAsMCwxLS45MjYsMy4xNTJsLTEuNTQ3LDQuNDY1WiIgZmlsbD0iIzIxMjEyMSIgZGF0YS1jb2xvcj0iY29sb3ItMiIgZGF0YS1zdHJva2U9Im5vbmUiIHN0cm9rZT0ibm9uZSI+PC9wYXRoPjxwYXRoIGQ9Ik0zOS4yLDQwVjIyLjg2N0g0MlY0MFoiIGZpbGw9IiMyMTIxMjEiIGRhdGEtY29sb3I9ImNvbG9yLTIiIGRhdGEtc3Ryb2tlPSJub25lIiBzdHJva2U9Im5vbmUiPjwvcGF0aD48L2c+PC9zdmc+';
+  faviconSvg.href = '/brain-favicon.svg?v=1';
   document.head.appendChild(faviconSvg);
-  console.log('✅ Added SVG favicon with data URL');
-  
-  const appleTouchIcon = document.createElement('link');
-  appleTouchIcon.rel = 'apple-touch-icon';
-  appleTouchIcon.href = '/apple-touch-icon.png';
-  document.head.appendChild(appleTouchIcon);
-  console.log('✅ Added Apple touch icon');
-  
-  // Debug: Show final favicon links
-  setTimeout(() => {
-    const finalLinks = document.querySelectorAll('link[rel*="icon"]');
-    console.log('🔍 Final favicon links after addition:');
-    finalLinks.forEach((link, index) => {
-      console.log(`  ${index + 1}. rel="${link.getAttribute('rel')}" href="${link.getAttribute('href')}" type="${link.getAttribute('type')}"`);
-    });
-  }, 100);
-  
-  // Force browser to refresh favicon
-  setTimeout(() => {
-    const link = document.querySelector('link[rel*="icon"]') as HTMLLinkElement;
-    if (link) {
-      const href = link.href;
-      link.href = '';
-      setTimeout(() => {
-        link.href = href;
-        console.log('🔄 Forced favicon refresh');
-      }, 100);
-    }
-  }, 1000);
 };
 
 // Set favicon when the app loads
-console.log('🚀 App starting, setting favicon immediately...');
 setFavicon();
-
-// Also set favicon after DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('📄 DOM loaded, setting favicon again...');
-  setFavicon();
-});
-
-// And set it after the React app renders
-setTimeout(() => {
-  console.log('⏰ Timeout reached, setting favicon one more time...');
-  setFavicon();
-}, 2000);
 
 createRoot(document.getElementById("root")!).render(<App />);

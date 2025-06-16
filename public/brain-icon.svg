@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- High contrast brain with bright orange background -->
+  <rect width="32" height="32" fill="#FF4500" rx="6"/>
+  
+  <!-- Simple brain shape in white -->
+  <path d="M8 12c0-2 2-4 4-4s4 2 4 4c2-2 4 0 4 2v8c0 2-2 4-4 4H12c-2 0-4-2-4-4V12z" fill="white"/>
+  
+  <!-- Brain fold lines -->
+  <path d="M10 14h4M10 16h4M10 18h4" stroke="#FF4500" stroke-width="1"/>
+  
+  <!-- Connection dots -->
+  <circle cx="24" cy="12" r="2" fill="white"/>
+  <circle cx="24" cy="20" r="2" fill="white"/>
+  
+  <!-- Connection lines -->
+  <line x1="20" y1="14" x2="22" y2="12" stroke="white" stroke-width="2"/>
+  <line x1="20" y1="18" x2="22" y2="20" stroke="white" stroke-width="2"/>
+</svg> 
