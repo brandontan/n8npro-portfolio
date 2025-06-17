@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import type { ContactFormData } from '../lib/supabase'
+import emailjs from '@emailjs/browser'
 
 export const useContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -28,6 +29,33 @@ export const useContactForm = () => {
       return () => clearTimeout(timer)
     }
   }, [error])
+
+  // Function to send email notification using EmailJS
+  const sendEmailNotification = async (formData: ContactFormData) => {
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        project_type: formData.project_type,
+        project_details: formData.project_details
+      };
+      console.log('Attempting to send email via EmailJS:', { serviceId, templateId, publicKey, templateParams });
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+      console.log('EmailJS send response:', response);
+      return true;
+    } catch (err) {
+      console.error('Failed to send email notification:', err);
+      return false;
+    }
+  };
 
   const submitForm = async (formData: ContactFormData) => {
     setIsSubmitting(true)
@@ -81,6 +109,10 @@ export const useContactForm = () => {
       }
 
       console.log('Form submitted successfully:', data)
+      
+      // Send email notification after successful database submission
+      await sendEmailNotification(formData)
+      
       setSuccess(true)
       return true
     } catch (err) {

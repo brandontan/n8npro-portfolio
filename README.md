@@ -91,3 +91,24 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Email Notifications Setup
+
+The contact form sends email notifications to brandon@n8npro.com upon submission. To enable this feature:
+
+1. Create an account on [EmailJS](https://www.emailjs.com/)
+2. Create a new email service and connect your email provider
+3. Create an email template with the following variables:
+   - `to_email`: Recipient email address
+   - `from_name`: Name of the person submitting the form
+   - `from_email`: Email of the person submitting the form
+   - `project_type`: Type of project requested
+   - `project_details`: Detailed description of the project
+   - `message`: Additional message or fallback to project details
+
+4. Add the following environment variables to your `.env` file:
+   ```
+   VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+   ```
