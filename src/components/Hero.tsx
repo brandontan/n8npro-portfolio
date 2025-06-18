@@ -10,6 +10,13 @@ export const Hero = () => {
     }
   };
 
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Dynamic background with liquid blobs */}
@@ -51,7 +58,7 @@ export const Hero = () => {
                 <Mail className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                 Let's Talk
               </Button>
-              <Button variant="outline" size="lg" className="glass-card text-lg px-8 py-6 hover:glass-button">
+              <Button variant="outline" size="lg" className="glass-card text-lg px-8 py-6 hover:glass-button" onClick={scrollToProjects}>
                 View Projects
               </Button>
             </div>
