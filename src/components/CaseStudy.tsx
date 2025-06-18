@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Clock, TrendingUp, Users, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const CaseStudy = () => {
   const scrollToContact = () => {
@@ -10,33 +10,6 @@ export const CaseStudy = () => {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  const beforeAfterStats = [
-    {
-      icon: Clock,
-      before: "60+ hours/week",
-      after: "100% automated",
-      label: "Manual Work"
-    },
-    {
-      icon: TrendingUp,
-      before: "Bottleneck",
-      after: "Growth driver",
-      label: "Lead Generation"
-    },
-    {
-      icon: Users,
-      before: "12-hour days",
-      after: "Normal hours",
-      label: "Work Schedule"
-    },
-    {
-      icon: Zap,
-      before: "Multiple tools",
-      after: "One workflow",
-      label: "Process"
-    }
-  ];
 
   return (
     <section className="py-20 bg-muted/5 relative overflow-hidden">
@@ -102,25 +75,7 @@ export const CaseStudy = () => {
             </CardContent>
           </Card>
 
-          {/* Before vs After */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {beforeAfterStats.map((stat, index) => (
-              <Card key={index} className="border-border/50 bg-card/50 backdrop-blur-sm text-center">
-                <CardContent className="p-6 space-y-4">
-                  <div className="p-3 bg-primary/10 rounded-full w-fit mx-auto">
-                    <stat.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="space-y-2">
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
-                    <div className="space-y-1">
-                      <div className="text-sm text-red-600 line-through">{stat.before}</div>
-                      <div className="text-sm font-semibold text-green-600">{stat.after}</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+
 
           {/* The Results */}
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm border-green-200">
