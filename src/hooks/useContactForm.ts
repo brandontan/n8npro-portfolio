@@ -30,25 +30,30 @@ export const useContactForm = () => {
     }
   }, [error])
 
-  // Function to send email notification using EmailJS
+  // Function to send email notification via EmailJS to brandon@n8npro.com
   const sendEmailNotification = async (formData: ContactFormData) => {
     try {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         project_type: formData.project_type,
-        project_details: formData.project_details
+        project_details: formData.project_details,
+        to_email: 'brandon8n8npro@gmail.com'  // Direct to Gmail, bypassing Cloudflare routing confusion
       };
-      console.log('Attempting to send email via EmailJS:', { serviceId, templateId, publicKey, templateParams });
+      
+      console.log('Sending email via EmailJS to brandon@n8npro.com:', templateParams);
+      
       const response = await emailjs.send(
         serviceId,
         templateId,
         templateParams,
         publicKey
       );
+      
       console.log('EmailJS send response:', response);
       return true;
     } catch (err) {
@@ -63,9 +68,6 @@ export const useContactForm = () => {
     setSuccess(false)
 
     try {
-      // Log environment variables for debugging
-      console.log('Supabase URL:', import.meta.env.VITE_SUPABASE_URL)
-      console.log('Supabase Anon Key exists:', !!import.meta.env.VITE_SUPABASE_ANON_KEY)
       console.log('Submitting form data:', formData)
 
       // Test Supabase connection
@@ -81,7 +83,7 @@ export const useContactForm = () => {
 
       console.log('Supabase connection test successful')
 
-      // Insert the form data
+      // Insert the form data into Supabase
       const { data, error: insertError } = await supabase
         .from('contact_submissions')
         .insert([
@@ -108,10 +110,15 @@ export const useContactForm = () => {
         }
       }
 
-      console.log('Form submitted successfully:', data)
+      console.log('Form submitted successfully to database:', data)
       
-      // Send email notification after successful database submission
-      await sendEmailNotification(formData)
+      // Send email notification via EmailJS (Cloudflare → Gmail → fetchmail → Poste.io)
+      const emailSent = await sendEmailNotification(formData)
+      
+      if (!emailSent) {
+        console.warn('Form was saved but email notification failed')
+        // Still show success since the form was submitted to database
+      }
       
       setSuccess(true)
       return true
