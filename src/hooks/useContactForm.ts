@@ -40,7 +40,7 @@ export const useContactForm = () => {
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
-        title: formData.project_type,  // EmailJS template expects 'title'
+        project_type: formData.project_type,  // Matches {{project_type}} in template
         project_details: formData.project_details,
         to_email: 'brandon8n8npro@gmail.com'  // Direct to Gmail, bypassing Cloudflare routing confusion
       };
