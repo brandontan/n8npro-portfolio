@@ -16,15 +16,7 @@ export const CaseStudy = () => {
       <div className="absolute top-20 left-20 w-48 h-48 liquid-blob liquid-morph opacity-10"></div>
       
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4">Real Results</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            My First n8n Success Story
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            The workflow that transformed my client's lead management from manual chaos to automated growth engine.
-          </p>
-        </div>
+
 
         <div className="max-w-4xl mx-auto space-y-12">
           {/* The Challenge */}
