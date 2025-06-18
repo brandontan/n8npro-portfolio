@@ -3,6 +3,13 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowDown, Mail, Github, Linkedin, Sparkles } from "lucide-react";
 
 export const Hero = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Dynamic background with liquid blobs */}
@@ -40,7 +47,7 @@ export const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="glass-button text-lg px-8 py-6 group text-white">
+              <Button size="lg" className="glass-button text-lg px-8 py-6 group text-white" onClick={scrollToContact}>
                 <Mail className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
                 Let's Talk
               </Button>
