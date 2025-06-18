@@ -78,7 +78,7 @@ export const Contact = () => {
     {
       icon: DollarSign,
       title: "Hourly Rate",
-      price: "$25/hr",
+      price: "$30/hr",
       description: "For ongoing development and maintenance"
     },
     {
