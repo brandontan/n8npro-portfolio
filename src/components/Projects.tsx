@@ -62,8 +62,8 @@ export const Projects = () => {
             n8n Automation Solutions I Can Build
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Potential automation projects that can transform your business operations 
-            and deliver measurable results. Let's discuss which solution fits your needs.
+            These are the types of workflows I love building. Each one tackles those repetitive tasks 
+            that eat up your time so you can focus on growing your business.
           </p>
         </div>
 
