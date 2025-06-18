@@ -84,8 +84,22 @@ export const Hero = () => {
               <div className="absolute -top-4 -left-4 w-32 h-32 glass-card rounded-3xl animate-float z-0"></div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 glass-card rounded-2xl animate-float z-0" style={{ animationDelay: '1s' }}></div>
               
+              {/* Cursive Tagline Overlay */}
+              <div className="absolute -top-8 left-0 right-0 z-20 text-center">
+                <div className="inline-block bg-primary/90 backdrop-blur-sm px-8 py-4 rounded-2xl shadow-lg">
+                  <p className="text-white text-2xl md:text-3xl font-script leading-relaxed">
+                    Kick back, relax
+                  </p>
+                </div>
+                <div className="inline-block bg-primary/90 backdrop-blur-sm px-8 py-4 rounded-2xl shadow-lg mt-2">
+                  <p className="text-white text-2xl md:text-3xl font-script leading-relaxed">
+                    and leave the automations to us
+                  </p>
+                </div>
+              </div>
+              
               {/* Main video container */}
-              <div className="relative z-10 glass-card rounded-3xl p-2 animate-pulse-glow">
+              <div className="relative z-10 glass-card rounded-3xl p-2 animate-pulse-glow mt-24">
                 <video
                   src="/hero-video.mp4"
                   autoPlay
