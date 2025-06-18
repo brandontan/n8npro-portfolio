@@ -5,10 +5,10 @@ import { Award, Users, Clock, TrendingUp } from "lucide-react";
 
 export const About = () => {
   const stats = [
-    { icon: Award, value: "50+", label: "Projects Completed" },
-    { icon: Users, value: "30+", label: "Happy Clients" },
-    { icon: Clock, value: "2000+", label: "Hours Saved" },
-    { icon: TrendingUp, value: "95%", label: "Success Rate" },
+    { icon: Clock, value: "60+", label: "Hours Saved Weekly" },
+    { icon: TrendingUp, value: "100%", label: "Automation Success" },
+    { icon: Award, value: "n8n", label: "Platform Specialist" },
+    { icon: Users, value: "Real", label: "World Experience" },
   ];
 
   return (
@@ -21,28 +21,36 @@ export const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div>
-              <Badge variant="outline" className="glass-card mb-4 px-4 py-2">About Me</Badge>
+              <Badge variant="outline" className="glass-card mb-4 px-4 py-2">My Story</Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Transforming Business Operations Through Smart Automation
+                From Manual Grind to Automation Specialist
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  With extensive experience in sales automation and workflow optimization, I've evolved into specializing in n8n platform development, helping businesses eliminate repetitive tasks and streamline their operations.
+                  <strong>I didn't plan to become an n8n specialist.</strong> I was hired to handle lead management for a client—manually researching prospects, copying data between Clay and Apollo, crafting personalized emails, then moving everything through multiple platforms.
                 </p>
                 <p>
-                  My background includes hands-on experience with Clay, Claude API, Apollo, Instantly, Woodpecker, and Apify for lead management and email automation. Now I focus that automation expertise through n8n's powerful platform to create custom workflows that connect your entire business ecosystem.
+                  After two weeks of 12-hour days doing the same repetitive tasks, I had enough. I discovered n8n and decided to automate everything instead of continuing the manual grind.
+                </p>
+                <p className="text-primary font-medium">
+                  <strong>The result?</strong> What used to take 60+ hours per week now runs automatically. The client's lead generation went from a bottleneck to their biggest growth driver.
                 </p>
                 <p>
-                  <strong>What I bring:</strong> Deep understanding of sales processes, API integrations, and the real-world challenges of scaling automation. I build workflows that actually work in production environments.
+                  I realized I'd accidentally found my specialty: <strong>building workflows that eliminate the tedious work that's killing your productivity.</strong>
                 </p>
                 <p>
-                  From lead qualification to CRM integrations to complex multi-step automations, I create solutions that let you focus on growing your business instead of managing manual processes. Time saved is more time you can spend with loved ones ❤️
+                  <strong>My advantage:</strong> I've been in your shoes. I know what it's like to be buried in manual processes, so I build automation that actually solves real problems—not just impressive demos.
+                </p>
+                <p>
+                  I focus on lead qualification systems, CRM integrations, and multi-step automations that let you focus on growing your business instead of managing endless spreadsheets and copy-paste tasks.
+                </p>
+                <p className="text-primary font-medium">
+                  Because time saved is more time you can spend with the people who matter most. ❤️
                 </p>
               </div>
             </div>
 
-            {/* Temporarily hidden - Statistics cards */}
-            {/* <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, index) => (
                 <Card key={index} className="glass-card hover:glass-button transition-all duration-500 group">
                   <CardContent className="p-6 text-center">
@@ -54,7 +62,7 @@ export const About = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div> */}
+            </div>
           </div>
 
           <div className="relative">
