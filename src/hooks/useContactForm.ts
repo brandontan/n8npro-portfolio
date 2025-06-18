@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import type { ContactFormData } from '../lib/supabase'
-import emailjs from '@emailjs/browser'
 
 export const useContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -30,31 +29,31 @@ export const useContactForm = () => {
     }
   }, [error])
 
-  // Function to send email notification via EmailJS to brandon@n8npro.com
+  // Function to send email notification directly to Gmail
   const sendEmailNotification = async (formData: ContactFormData) => {
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      console.log('Sending email directly to Gmail:', formData);
       
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        project_type: formData.project_type,  // Matches {{project_type}} in template
-        project_details: formData.project_details,
-        to_email: 'brandon8n8npro@gmail.com'  // Direct to Gmail, bypassing Cloudflare routing confusion
-      };
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          project_type: formData.project_type,
+          project_details: formData.project_details
+        })
+      });
       
-      console.log('Sending email via EmailJS to brandon8n8npro@gmail.com:', templateParams);
+      const result = await response.json();
       
-      const response = await emailjs.send(
-        serviceId,
-        templateId,
-        templateParams,
-        publicKey
-      );
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send email');
+      }
       
-      console.log('EmailJS send response:', response);
+      console.log('Email sent successfully:', result);
       return true;
     } catch (err) {
       console.error('Failed to send email notification:', err);

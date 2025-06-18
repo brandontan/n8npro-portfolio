@@ -94,21 +94,45 @@ Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-trick
 
 ## Email Notifications Setup
 
-The contact form sends email notifications to brandon@n8npro.com upon submission. To enable this feature:
+The contact form sends email notifications to `brandon@n8npro.com` via EmailJS. Your email infrastructure handles the routing:
+
+**Email Flow:** Contact Form → EmailJS → brandon@n8npro.com → Cloudflare Email Routing → Gmail → fetchmail → Poste.io
+
+### EmailJS Configuration
 
 1. Create an account on [EmailJS](https://www.emailjs.com/)
-2. Create a new email service and connect your email provider
+2. Create a new email service and connect your email provider (Gmail recommended)
 3. Create an email template with the following variables:
-   - `to_email`: Recipient email address
+   - `to_email`: Recipient email address (will be set to brandon@n8npro.com)
    - `from_name`: Name of the person submitting the form
    - `from_email`: Email of the person submitting the form
    - `project_type`: Type of project requested
    - `project_details`: Detailed description of the project
-   - `message`: Additional message or fallback to project details
 
 4. Add the following environment variables to your `.env` file:
    ```
+   # Supabase Configuration
+   VITE_SUPABASE_URL=your_supabase_project_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+   # EmailJS Configuration
    VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
    VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
    VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
    ```
+
+5. For Vercel deployment, add these environment variables:
+   ```bash
+   vercel env add VITE_EMAILJS_SERVICE_ID production
+   vercel env add VITE_EMAILJS_TEMPLATE_ID production
+   vercel env add VITE_EMAILJS_PUBLIC_KEY production
+   ```
+
+### Backend Email Infrastructure
+
+Your backend handles email routing automatically:
+- **Cloudflare Email Routing**: Routes `*@n8npro.com` to Gmail
+- **fetchmail**: Pulls emails from Gmail every 5 minutes
+- **Poste.io**: Receives emails in your QNAP inbox
+
+No additional SMTP configuration needed!
