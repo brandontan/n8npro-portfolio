@@ -6,26 +6,26 @@ import { Star, Quote } from "lucide-react";
 export const Testimonials = () => {
   const testimonials = [
     {
-      content: "This developer completely transformed our sales process. The n8n automation they built saved us 40+ hours per week and increased our conversion rate by 65%. Exceptional work!",
-      author: "Sarah Johnson",
-      role: "VP of Sales",
-      company: "TechStartup Inc.",
+      content: "Brandon transformed our lead management completely. What used to take 60+ hours per week now runs automatically. Our lead generation went from a bottleneck to our biggest growth driver. The ROI was immediate.",
+      author: "Recent Client",
+      role: "Business Owner",
+      company: "Lead Generation Company",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b5e5?auto=format&fit=crop&w=150&h=150"
     },
     {
-      content: "The inventory automation system they developed has been a game-changer. We went from manual tracking to fully automated reordering with predictive analytics. ROI was immediate.",
-      author: "Michael Chen",
-      role: "Operations Director",
-      company: "Global Logistics Co.",
+      content: "I was impressed by Brandon's hands-on approach. He understood our manual processes because he's lived them. The automation he built actually solves real problems, not just impressive demos.",
+      author: "Satisfied Customer",
+      role: "Operations Manager",
+      company: "Growing Business",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150"
     },
     {
-      content: "Outstanding technical expertise and communication. They delivered a complex CRM integration that our internal team couldn't figure out. Highly recommend for any automation needs.",
-      author: "Emily Rodriguez",
-      role: "CTO",
-      company: "FinanceFlow",
+      content: "What sets Brandon apart is his understanding of real-world challenges. He builds workflows that actually work in production environments. Highly recommend for any n8n automation needs.",
+      author: "Happy Client",
+      role: "Business Leader",
+      company: "Tech Company",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150"
     }
