@@ -86,12 +86,12 @@ export const Hero = () => {
               
               {/* Cursive Tagline Overlay */}
               <div className="absolute -top-8 left-0 right-0 z-20 text-center">
-                <div className="inline-block bg-primary/90 backdrop-blur-sm px-8 py-4 rounded-2xl shadow-lg">
+                <div className="inline-block bg-gradient-to-r from-purple-600/80 to-indigo-600/80 backdrop-blur-md px-8 py-4 rounded-2xl shadow-xl border border-white/20">
                   <p className="text-white text-2xl md:text-3xl font-script leading-relaxed">
                     Kick back, relax
                   </p>
                 </div>
-                <div className="inline-block bg-primary/90 backdrop-blur-sm px-8 py-4 rounded-2xl shadow-lg mt-2">
+                <div className="inline-block bg-gradient-to-r from-purple-600/80 to-indigo-600/80 backdrop-blur-md px-8 py-4 rounded-2xl shadow-xl border border-white/20 mt-2">
                   <p className="text-white text-2xl md:text-3xl font-script leading-relaxed">
                     and leave the automations to us
                   </p>
