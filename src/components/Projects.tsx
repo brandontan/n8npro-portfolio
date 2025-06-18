@@ -1,7 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 
 export const Projects = () => {
   const projects = [
@@ -56,7 +54,7 @@ export const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-muted/5">
+    <section id="projects" className="pt-20 pb-8 bg-muted/5">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">Services</Badge>
@@ -108,13 +106,6 @@ export const Projects = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Button size="lg" variant="outline">
-            Discuss Your Project
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
         </div>
       </div>
     </section>
