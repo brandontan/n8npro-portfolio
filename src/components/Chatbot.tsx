@@ -234,7 +234,7 @@ export const Chatbot = () => {
 
             {/* Quick Replies */}
             {messages.length === 1 && (
-              <div className="px-4 pb-8">
+              <div className="px-4 pb-16">
                 <div className="flex flex-wrap gap-2">
                   {quickReplies.slice(0, 3).map((reply, index) => (
                     <Badge
