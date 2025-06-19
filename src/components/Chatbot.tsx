@@ -211,6 +211,22 @@ export const Chatbot = () => {
                   </div>
                 ))}
 
+                {/* Quick Replies - Show after initial bot message */}
+                {messages.length === 1 && (
+                  <div className="flex flex-wrap gap-2 mt-6 mb-8">
+                    {quickReplies.slice(0, 3).map((reply, index) => (
+                      <Badge
+                        key={index}
+                        variant="outline"
+                        className="cursor-pointer hover:bg-primary/10 hover:border-primary/50 text-xs py-1"
+                        onClick={() => handleQuickReply(reply)}
+                      >
+                        {reply}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
+
                 {isTyping && (
                   <div className="flex gap-3 justify-start">
                     <div className="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-accent p-0.5 flex-shrink-0">
@@ -231,24 +247,6 @@ export const Chatbot = () => {
                 <div ref={messagesEndRef} />
               </div>
             </CardContent>
-
-            {/* Quick Replies */}
-            {messages.length === 1 && (
-              <div className="px-4 pb-16">
-                <div className="flex flex-wrap gap-2">
-                  {quickReplies.slice(0, 3).map((reply, index) => (
-                    <Badge
-                      key={index}
-                      variant="outline"
-                      className="cursor-pointer hover:bg-primary/10 hover:border-primary/50 text-xs py-1"
-                      onClick={() => handleQuickReply(reply)}
-                    >
-                      {reply}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* Input */}
             <div className="p-4 border-t border-border/50">
