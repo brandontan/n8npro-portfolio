@@ -69,14 +69,14 @@ export const Skills = () => {
               <CardContent className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between items-center text-sm relative z-10">
                       <span className="font-medium">{skill.name}</span>
-                      <span className="text-primary font-semibold">{skill.level}%</span>
+                      <span className="text-primary font-semibold bg-background/80 px-2 py-1 rounded-md">{skill.level}%</span>
                     </div>
                     <div className="relative">
-                      <Progress value={skill.level} className="h-2 glass-card" />
+                      <Progress value={skill.level} className="h-3 glass-card" />
                       <div 
-                        className="absolute top-0 left-0 h-2 bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out"
+                        className="absolute top-0 left-0 h-3 bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000 ease-out"
                         style={{ width: `${skill.level}%` }}
                       ></div>
                     </div>
