@@ -64,7 +64,7 @@ export const Chatbot = () => {
     }
     
     if (message.includes('portfolio') || message.includes('example') || message.includes('work')) {
-      return "I've helped clients achieve amazing results:\n\n• 90% reduction in order processing time\n• 80% faster lead response rates\n• 5x increase in content output\n• Zero manual reporting processes\n\nYou can see detailed case studies in my portfolio section above. Which type of automation interests you most?";
+      return "I would love to learn more about your current workflow. Please send me a message via contact form. Thanks!";
     }
     
     if (message.includes('consultation') || message.includes('schedule') || message.includes('meeting')) {
