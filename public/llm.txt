@@ -1,0 +1,127 @@
+# n8nPro - Brandon Tan's Automation Portfolio
+
+## About the Business
+
+**Business Name:** n8nPro
+**Owner:** Brandon Tan
+**Specialization:** n8n Automation Specialist
+**Tagline:** "I Build Intelligent Automation" - Turning Business Chaos Into Streamlined Workflows
+
+## Professional Background
+
+Brandon Tan is an n8n automation specialist who discovered his expertise through real-world experience. He was originally hired to handle manual lead management tasks - researching prospects, copying data between platforms, crafting personalized emails, and managing multiple systems. After two weeks of 12-hour days doing repetitive tasks, he discovered n8n and automated everything instead of continuing the manual grind.
+
+**Key Achievement:** What used to take 60+ hours per week now runs automatically. The client's lead generation went from a bottleneck to their biggest growth driver.
+
+**Philosophy:** "I've been in your shoes. I know what it's like to be buried in manual processes, so I build automation that actually solves real problems—not just impressive demos."
+
+## Services Offered
+
+### Core Specializations:
+- Lead qualification systems
+- CRM integrations  
+- Multi-step automations
+- Business process optimization
+- Workflow automation that eliminates tedious manual work
+
+### Specific Automation Solutions:
+
+1. **E-commerce Order Automation**
+   - Complete order processing workflows
+   - Automatic inventory updates
+   - Customer notifications
+   - Potential: 90% reduction in processing time
+   - Technologies: n8n, Shopify API, Email, Slack
+
+2. **CRM Lead Qualification System**
+   - Intelligent lead scoring and routing
+   - Automatic prospect qualification
+   - Smart sales team assignment
+   - Result: 80% faster responses
+   - Technologies: n8n, HubSpot, AI, Webhooks
+
+3. **Social Media Content Pipeline**
+   - Automated content creation and distribution
+   - Multi-platform publishing
+   - Content scheduling
+   - Result: 5x content output
+   - Technologies: n8n, OpenAI, Twitter API, Buffer
+
+4. **Financial Reporting Dashboard**
+   - Real-time financial data aggregation
+   - Automated report generation
+   - Stakeholder notifications
+   - Result: Eliminate manual reports
+   - Technologies: n8n, QuickBooks, Google Sheets, PDF
+
+5. **Customer Support Ticket Router**
+   - Smart ticket classification and routing
+   - Automatic categorization of support requests
+   - Specialized agent assignment
+   - Result: 60% faster resolution
+   - Technologies: n8n, Zendesk, NLP, Teams
+
+6. **Inventory Management System**
+   - Automated inventory tracking and reordering
+   - Predictive analytics for optimal stock levels
+   - Result: 40% cost reduction
+   - Technologies: n8n, PostgreSQL, Alerts, Analytics
+
+## Technical Skills
+
+### Databases & APIs (47% REST APIs, 41% GraphQL, 36% PostgreSQL, 33% MongoDB)
+### Web Technologies (46% JavaScript, 44% Python, 39% Node.js, 35% React)
+### Business Tools (47% CRM Integration, 43% Email Marketing, 38% Data Analysis, 34% Process Optimization)
+
+## Business Metrics
+
+- **Time Savings:** 60+ hours saved weekly for clients
+- **Automation Success Rate:** 100%
+- **Platform Expertise:** n8n specialist
+- **Experience:** Real-world implementation experience
+
+## Pricing Structure
+
+- **Consultation:** Free 30-minute discovery call
+- **Hourly Rate:** $30/hr for ongoing development and maintenance
+- **Project Rate:** Custom fixed-price for complete automation solutions
+
+## Contact Information
+
+**Email:** brandon@n8npro.com
+**Response Time:** Within 24 hours
+**GitHub:** https://github.com/brandontan
+**LinkedIn:** https://www.linkedin.com/in/brandontan/
+
+## Target Audience
+
+Business owners and professionals who are:
+- Buried in manual processes and repetitive tasks
+- Looking to eliminate tedious work that's killing productivity
+- Wanting to focus on growing their business instead of managing spreadsheets
+- Seeking automation that solves real problems, not just impressive demos
+
+## Value Proposition
+
+"Kick back, relax, and leave the automations to us"
+
+Brandon's advantage is that he's been in his clients' shoes - he knows what it's like to be buried in manual processes. He builds automation that actually solves real problems, not just impressive demos. His focus is on lead qualification systems, CRM integrations, and multi-step automations that let clients focus on growing their business instead of managing endless spreadsheets and copy-paste tasks.
+
+## Website Features
+
+- Modern, responsive design with liquid glass effects
+- Interactive hero section with animated elements
+- Detailed project portfolio with case studies
+- Contact form with EmailJS integration
+- Professional testimonials and social proof
+- Clear service offerings and pricing structure
+
+## Technology Stack
+
+- Frontend: React, TypeScript, Vite, Tailwind CSS, shadcn/ui
+- Backend: Supabase for database and authentication
+- Email: EmailJS for contact form processing
+- Deployment: Vercel-ready configuration
+- Video: Custom hero video showcasing automation workflows
+
+This website serves as a professional portfolio and lead generation tool for Brandon's n8n automation consulting services, targeting businesses looking to eliminate manual processes and implement intelligent automation solutions. 
