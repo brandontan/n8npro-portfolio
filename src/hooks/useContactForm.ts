@@ -29,12 +29,14 @@ export const useContactForm = () => {
     }
   }, [error])
 
-  // Function to send email notification directly to Gmail
+  // Function to send email notification via Formspree
   const sendEmailNotification = async (formData: ContactFormData) => {
     try {
-      console.log('Sending email directly to Gmail:', formData);
+      console.log('Sending email via Formspree:', formData);
       
-      const response = await fetch('/api/send-email', {
+      const formspreeUrl = import.meta.env.VITE_FORMSPREE_URL || 'https://formspree.io/f/myzjdlog'
+      
+      const response = await fetch(formspreeUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,20 +45,20 @@ export const useContactForm = () => {
           name: formData.name,
           email: formData.email,
           project_type: formData.project_type,
-          project_details: formData.project_details
+          project_details: formData.project_details,
+          message: formData.message || formData.project_details,
+          _subject: `New Lead: ${formData.name} | n8npro.com`
         })
       });
       
-      const result = await response.json();
-      
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send email');
+        throw new Error('Failed to send email notification');
       }
       
-      console.log('Email sent successfully:', result);
+      console.log('Email sent successfully via Formspree');
       return true;
     } catch (err) {
-      console.error('Failed to send email notification:', err);
+      console.error('Failed to send email notification via Formspree:', err);
       return false;
     }
   };
@@ -111,7 +113,7 @@ export const useContactForm = () => {
 
       console.log('Form submitted successfully to database:', data)
       
-      // Send email notification via EmailJS (Cloudflare → Gmail → fetchmail → Poste.io)
+      // Send email notification via Formspree
       const emailSent = await sendEmailNotification(formData)
       
       if (!emailSent) {
