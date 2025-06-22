@@ -1,3 +1,8 @@
+User-agent: *
+Allow: /
+
+---
+
 # n8nPro - Brandon Tan's Automation Portfolio
 
 ## About the Business
