@@ -21,14 +21,13 @@ const sendContactFormEmail = async (formData) => {
     const mailOptions = {
       from: 'brandon@n8npro.com',
       to: 'brandon@n8npro.com',
-      subject: `New Contact Form Submission: ${formData.name}`,
+      subject: `Sales Lead from n8npro.com`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${formData.name}</p>
         <p><strong>Email:</strong> ${formData.email}</p>
         <p><strong>Project Type:</strong> ${formData.project_type}</p>
         <p><strong>Project Details:</strong> ${formData.project_details}</p>
-        <p><strong>Message:</strong> ${formData.message}</p>
         <hr>
         <p><em>Sent from n8npro.com contact form</em></p>
       `
@@ -71,8 +70,7 @@ export default async function handler(req, res) {
       name: name.trim(),
       email: email.trim(),
       project_type: project_type || 'Not specified',
-      project_details: project_details.trim(),
-      message: message || 'No additional message'
+      project_details: project_details.trim()
     };
 
     // Send email
