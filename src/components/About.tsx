@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Award, Users, Clock, TrendingUp } from "lucide-react";
@@ -23,11 +22,11 @@ export const About = () => {
             <div>
               <Badge variant="outline" className="glass-card mb-4 px-4 py-2">My Story</Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                From Manual Grind to Automation Specialist
+                AI Automation Engineer
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  <strong>I didn't plan to become an n8n specialist.</strong> I was hired to handle lead management for a client—manually researching prospects, copying data between Clay and Apollo, crafting personalized emails, then moving everything through multiple platforms.
+                  My journey into AI automation wasn't planned. I was hired to handle lead management for a client—manually researching prospects, copying data between Clay and Apollo, crafting personalized emails, then moving everything through multiple platforms.
                 </p>
                 <p>
                   After two weeks of 12-hour days doing the same repetitive tasks, I had enough. I discovered n8n and decided to automate everything instead of continuing the manual grind.
