@@ -14,6 +14,45 @@ const createTransporter = () => {
   });
 };
 
+// Verify reCAPTCHA token
+const verifyRecaptcha = async (token) => {
+  if (!token) {
+    console.log('No reCAPTCHA token provided - skipping verification');
+    return true; // Allow submission without token for graceful degradation
+  }
+
+  if (!process.env.RECAPTCHA_SECRET_KEY) {
+    console.log('No reCAPTCHA secret key configured - skipping verification');
+    return true; // Allow submission if not configured
+  }
+
+  try {
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        secret: process.env.RECAPTCHA_SECRET_KEY,
+        response: token,
+      }),
+    });
+
+    const result = await response.json();
+    
+    if (result.success && result.score >= 0.5) {
+      console.log('reCAPTCHA verification successful, score:', result.score);
+      return true;
+    } else {
+      console.log('reCAPTCHA verification failed:', result);
+      return false;
+    }
+  } catch (error) {
+    console.error('reCAPTCHA verification error:', error);
+    return false;
+  }
+};
+
 const sendContactFormEmail = async (formData) => {
   try {
     const transporter = createTransporter();
@@ -48,7 +87,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, project_type, project_details, message } = req.body;
+    const { name, email, project_type, project_details, message, recaptchaToken } = req.body;
 
     // Validate required fields
     if (!name || !email || !project_details) {
@@ -62,6 +101,14 @@ export default async function handler(req, res) {
     if (!emailRegex.test(email)) {
       return res.status(400).json({
         error: 'Invalid email format'
+      });
+    }
+
+    // Verify reCAPTCHA if token provided
+    const recaptchaValid = await verifyRecaptcha(recaptchaToken);
+    if (!recaptchaValid) {
+      return res.status(400).json({
+        error: 'Bot protection verification failed. Please try again.'
       });
     }
 
