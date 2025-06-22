@@ -49,7 +49,7 @@ export const Hero = () => {
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
-                n8n Automation Specialist | Turning Business Chaos Into Streamlined Workflows
+                AI Automation Engineer | Turning Business Chaos Into Streamlined Workflows
               </p>
             </div>
 
