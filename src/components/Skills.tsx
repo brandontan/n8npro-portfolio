@@ -1,38 +1,28 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Database, Globe, Cpu } from "lucide-react";
+import { Brain, Zap } from "lucide-react";
 
 export const Skills = () => {
   const skillCategories = [
     {
-      icon: Database,
-      title: "Databases & APIs",
+      icon: Brain,
+      title: "AI & Machine Learning",
       skills: [
-        { name: "REST APIs", level: 47 },
-        { name: "GraphQL", level: 41 },
-        { name: "PostgreSQL", level: 36 },
-        { name: "MongoDB", level: 33 },
+        { name: "AI-powered Decision Engines", level: 85 },
+        { name: "Dynamic Content Generation", level: 78 },
+        { name: "Intelligent Routing & Scoring", level: 82 },
+        { name: "NLU/NLP Processing", level: 75 },
       ],
     },
     {
-      icon: Globe,
-      title: "Web Technologies",
+      icon: Zap,
+      title: "Automation & Integration",
       skills: [
-        { name: "JavaScript", level: 46 },
-        { name: "Python", level: 44 },
-        { name: "Node.js", level: 39 },
-        { name: "React", level: 35 },
-      ],
-    },
-    {
-      icon: Cpu,
-      title: "Business Tools",
-      skills: [
-        { name: "CRM Integration", level: 47 },
-        { name: "Email Marketing", level: 43 },
-        { name: "Data Analysis", level: 38 },
-        { name: "Process Optimization", level: 34 },
+        { name: "Workflow Orchestration", level: 90 },
+        { name: "API Integration & Webhooks", level: 88 },
+        { name: "Data Pipeline Automation", level: 85 },
+        { name: "Real-time Event Processing", level: 80 },
       ],
     },
   ];
@@ -47,11 +37,11 @@ export const Skills = () => {
         <div className="text-center mb-16">
           <Badge variant="outline" className="glass-card mb-4 px-4 py-2">My Expertise</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Technical Skills & Specializations
+            AI Automation Engineering Skills
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            A comprehensive skill set focused on delivering robust automation solutions 
-            that scale with your business needs.
+            Specialized skills in building intelligent automation systems that combine AI decision-making 
+            with robust workflow orchestration to eliminate manual processes and drive business growth.
           </p>
         </div>
 
