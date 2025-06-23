@@ -2,11 +2,9 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
-
-
-// import { Testimonials } from "@/components/Testimonials";
 import { Contact } from "@/components/Contact";
 import { Chatbot } from "@/components/Chatbot";
+import { ReCaptchaProvider } from "@/components/ReCaptchaProvider";
 
 const Index = () => {
   return (
@@ -15,7 +13,9 @@ const Index = () => {
       <About />
       <Skills />
       <Projects />
-      <Contact />
+      <ReCaptchaProvider>
+        <Contact />
+      </ReCaptchaProvider>
       <Chatbot />
     </div>
   );
