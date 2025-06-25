@@ -34,55 +34,32 @@ export const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Content */}
           <div className="flex-1 text-center lg:text-left space-y-8">
-            <div className="space-y-6">
-              <Badge variant="secondary" className="glass-card text-sm px-4 py-2 animate-pulse-glow">
-                <Sparkles className="w-4 h-4 mr-2" />
+            <div className="flex flex-col items-center gap-2 w-full justify-center">
+              <img
+                src="/icon.svg"
+                alt="n8nPro Talent Marketplace Logo"
+                className="mx-auto mb-2 w-24 h-24 drop-shadow-lg glass-card rounded-full bg-white/10 p-2"
+                style={{ backdropFilter: 'blur(8px)' }}
+              />
+              <Badge variant="secondary" className="glass-card text-lg px-6 py-3 animate-pulse-glow">
+                <Sparkles className="w-5 h-5 mr-2" />
                 Available for Freelance
               </Badge>
-              
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="text-foreground block mb-2">I Build</span>
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse block mb-2">
-                  Intelligent
-                </span>
-                <span className="text-foreground block">Automation</span>
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
-                AI Automation Engineer | Turning Business Chaos Into Streamlined Workflows
-              </p>
             </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="glass-button text-lg px-8 py-6 group text-white" onClick={scrollToContact}>
-                <Mail className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
-                Let's Talk
-              </Button>
-              <Button variant="outline" size="lg" className="glass-card text-lg px-8 py-6 hover:glass-button" onClick={scrollToProjects}>
-                View Projects
-              </Button>
-            </div>
-
-            <div className="flex gap-6 justify-center lg:justify-start">
-              <a href="https://github.com/brandontan" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
-                  <Github className="h-6 w-6" />
-                </Button>
-              </a>
-              <a href="https://www.linkedin.com/in/brandontan/" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
-                  <Linkedin className="h-6 w-6" />
-                </Button>
-              </a>
-              <a href="https://zcal.co/brandon-n8npro/30min" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
-                  <Calendar className="h-6 w-6" />
-                </Button>
-              </a>
-            </div>
+            
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              <span className="text-foreground block mb-2">I Build</span>
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse block mb-2">
+                Intelligent
+              </span>
+              <span className="text-foreground block">Automation</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
+              AI Automation Engineer | Turning Business Chaos Into Streamlined Workflows
+            </p>
           </div>
 
-          {/* Hero Video with liquid glass effect */}
           <div className="flex-1 relative">
             <div className="relative w-full max-w-lg mx-auto">
               {/* Floating glass panels */}
@@ -128,6 +105,34 @@ export const Hero = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <Button size="lg" className="glass-button text-lg px-8 py-6 group text-white" onClick={scrollToContact}>
+            <Mail className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+            Let's Talk
+          </Button>
+          <Button variant="outline" size="lg" className="glass-card text-lg px-8 py-6 hover:glass-button" onClick={scrollToProjects}>
+            View Projects
+          </Button>
+        </div>
+
+        <div className="flex gap-6 justify-center lg:justify-start">
+          <a href="https://github.com/brandontan" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
+              <Github className="h-6 w-6" />
+            </Button>
+          </a>
+          <a href="https://www.linkedin.com/in/brandontan/" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
+              <Linkedin className="h-6 w-6" />
+            </Button>
+          </a>
+          <a href="https://zcal.co/brandon-n8npro/30min" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
+              <Calendar className="h-6 w-6" />
+            </Button>
+          </a>
         </div>
 
         {/* Scroll Indicator */}
