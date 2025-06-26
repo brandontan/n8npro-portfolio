@@ -35,7 +35,7 @@ export const Hero = () => {
           {/* Content */}
           <div className="flex-1 text-center lg:text-left space-y-12">
             <div className="flex flex-col items-center lg:items-start gap-6 w-full -mt-16">
-              <div className="flex flex-col items-center lg:items-start gap-2">
+              <div className="flex flex-col items-center gap-2">
                 <img
                   src="/icon.svg"
                   alt="n8nPro Talent Marketplace Logo"
