@@ -33,16 +33,16 @@ export const Hero = () => {
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Content */}
-          <div className="flex-1 text-center lg:text-left space-y-16">
-            <div className="flex flex-col items-center lg:items-start gap-8 w-full -mt-16">
-              <div className="flex flex-col items-center lg:items-start gap-4">
+          <div className="flex-1 text-center lg:text-left space-y-12">
+            <div className="flex flex-col items-center lg:items-start gap-6 w-full -mt-16">
+              <div className="flex flex-col items-center lg:items-start gap-2">
                 <img
                   src="/icon.svg"
                   alt="n8nPro Talent Marketplace Logo"
                   className="w-20 h-20 drop-shadow-lg glass-card rounded-full bg-white/10 p-2"
                   style={{ backdropFilter: 'blur(8px)' }}
                 />
-                <Badge variant="secondary" className="glass-card text-base px-4 py-2 animate-pulse-glow">
+                <Badge variant="secondary" className="glass-card text-base px-4 py-2 animate-pulse-glow mt-4">
                   <Sparkles className="w-4 h-4 mr-2" />
                   Available for Freelance
                 </Badge>
