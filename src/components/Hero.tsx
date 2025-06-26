@@ -34,7 +34,7 @@ export const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Content */}
           <div className="flex-1 text-center lg:text-left space-y-16">
-            <div className="flex flex-col items-center lg:items-start gap-8 w-full">
+            <div className="flex flex-col items-center lg:items-start gap-8 w-full -mt-16">
               <div className="flex flex-col items-center lg:items-start gap-4">
                 <img
                   src="/icon.svg"
