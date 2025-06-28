@@ -30,6 +30,19 @@ export const Hero = () => {
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
       
+      {/* Rubber Stamp Effect */}
+      <div className="absolute top-24 right-4 md:top-32 md:right-8 lg:right-16 xl:right-24 z-30 animate-bounce" style={{ animationDelay: '3s', animationDuration: '2s' }}>
+        <div className="relative">
+          <div className="rubber-stamp" onClick={scrollToContact}>
+            <div className="stamp-text">
+              FREE
+              <br />
+              MVP!
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Content */}
