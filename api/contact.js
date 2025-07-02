@@ -1,9 +1,63 @@
 import { createTransport } from 'nodemailer';
 
+// Simple in-memory rate limiting
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour
+const MAX_REQUESTS_PER_WINDOW = 3;
+
+// HTML escape function to prevent XSS
+const escapeHtml = (str) => {
+  const htmlEscapes = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+    '/': '&#x2F;'
+  };
+  return String(str).replace(/[&<>"'\/]/g, s => htmlEscapes[s]);
+};
+
+// Rate limiting function
+const checkRateLimit = (identifier) => {
+  const now = Date.now();
+  const userRateData = rateLimitMap.get(identifier);
+  
+  if (!userRateData) {
+    rateLimitMap.set(identifier, { count: 1, windowStart: now });
+    return true;
+  }
+  
+  // Check if we're still in the same window
+  if (now - userRateData.windowStart > RATE_LIMIT_WINDOW) {
+    // Reset the window
+    rateLimitMap.set(identifier, { count: 1, windowStart: now });
+    return true;
+  }
+  
+  // Check if we've exceeded the limit
+  if (userRateData.count >= MAX_REQUESTS_PER_WINDOW) {
+    return false;
+  }
+  
+  // Increment the count
+  userRateData.count += 1;
+  return true;
+};
+
+// Clean up old entries periodically to prevent memory leaks
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, value] of rateLimitMap.entries()) {
+    if (now - value.windowStart > RATE_LIMIT_WINDOW) {
+      rateLimitMap.delete(key);
+    }
+  }
+}, RATE_LIMIT_WINDOW);
+
 // Create transporter for Gmail SMTP
 const createTransporter = () => {
-  console.log('GMAIL_APP_PASSWORD exists:', !!process.env.GMAIL_APP_PASSWORD);
-  console.log('GMAIL_APP_PASSWORD length:', process.env.GMAIL_APP_PASSWORD?.length);
+  // Removed console.log statements for production security
   
   return createTransport({
     service: 'gmail',
@@ -17,12 +71,12 @@ const createTransporter = () => {
 // Verify reCAPTCHA token
 const verifyRecaptcha = async (token) => {
   if (!token) {
-    console.log('No reCAPTCHA token provided - skipping verification');
+    // No reCAPTCHA token provided - skipping verification
     return true; // Allow submission without token for graceful degradation
   }
 
   if (!process.env.RECAPTCHA_SECRET_KEY) {
-    console.log('No reCAPTCHA secret key configured - skipping verification');
+    // No reCAPTCHA secret key configured - skipping verification
     return true; // Allow submission if not configured
   }
 
@@ -41,14 +95,14 @@ const verifyRecaptcha = async (token) => {
     const result = await response.json();
     
     if (result.success && result.score >= 0.5) {
-      console.log('reCAPTCHA verification successful, score:', result.score);
+      // reCAPTCHA verification successful
       return true;
     } else {
-      console.log('reCAPTCHA verification failed:', result);
+      // reCAPTCHA verification failed
       return false;
     }
   } catch (error) {
-    console.error('reCAPTCHA verification error:', error);
+    // reCAPTCHA verification error - returning false
     return false;
   }
 };
@@ -63,10 +117,10 @@ const sendContactFormEmail = async (formData) => {
       subject: `Sales Lead from n8npro.com`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${formData.name}</p>
-        <p><strong>Email:</strong> ${formData.email}</p>
-        <p><strong>Project Type:</strong> ${formData.project_type}</p>
-        <p><strong>Project Details:</strong> ${formData.project_details}</p>
+        <p><strong>Name:</strong> ${escapeHtml(formData.name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(formData.email)}</p>
+        <p><strong>Project Type:</strong> ${escapeHtml(formData.project_type)}</p>
+        <p><strong>Project Details:</strong> ${escapeHtml(formData.project_details)}</p>
         <hr>
         <p><em>Sent from n8npro.com contact form</em></p>
       `
@@ -75,7 +129,7 @@ const sendContactFormEmail = async (formData) => {
     const result = await transporter.sendMail(mailOptions);
     return { success: true, messageId: result.messageId };
   } catch (error) {
-    console.error('Email sending failed:', error);
+    // Email sending failed
     throw new Error('Failed to send email');
   }
 };
@@ -88,6 +142,16 @@ export default async function handler(req, res) {
 
   try {
     const { name, email, project_type, project_details, message, recaptchaToken } = req.body;
+
+    // Get client IP for rate limiting
+    const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress || 'unknown';
+    
+    // Check rate limit
+    if (!checkRateLimit(clientIp)) {
+      return res.status(429).json({
+        error: 'Too many requests. Please try again later.'
+      });
+    }
 
     // Validate required fields
     if (!name || !email || !project_details) {
@@ -131,7 +195,7 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Contact form error:', error);
+    // Contact form error
     return res.status(500).json({
       error: 'Internal server error',
       message: error.message
