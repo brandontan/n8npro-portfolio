@@ -11,15 +11,17 @@ export default function BouncingStamp() {
 
   return (
     <div
-      className="fixed top-24 right-4 z-50 cursor-pointer select-none"
+      className="absolute z-30 cursor-pointer select-none"
       style={{
-        transform: 'rotate(-12deg)'
+        top: '20%',
+        right: '15%',
+        transform: 'rotate(-15deg)'
       }}
       onClick={scrollToContact}
     >
       <div className="relative">
         {/* Rubber stamp design matching original styling */}
-        <div className="rubber-stamp">
+        <div className="rubber-stamp-enhanced">
           <div className="stamp-text">
             FREE
             <br />
