@@ -65,8 +65,9 @@ CREATE POLICY "Allow anonymous project estimate with validation"
         name IS NOT NULL AND
         email IS NOT NULL AND
         project_type IS NOT NULL AND
-        budget IS NOT NULL AND
+        complexity IS NOT NULL AND
         timeline IS NOT NULL AND
+        budget_range IS NOT NULL AND
         LENGTH(name) <= 100 AND
         LENGTH(email) <= 100
     );
