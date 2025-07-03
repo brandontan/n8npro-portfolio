@@ -13,8 +13,8 @@ export default function BouncingStamp() {
     <div
       className="absolute z-30 cursor-pointer select-none"
       style={{
-        top: '20%',
-        right: '15%',
+        top: '10%',
+        right: '5%',
         transform: 'rotate(-15deg)'
       }}
       onClick={scrollToContact}
