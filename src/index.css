@@ -340,22 +340,21 @@ html {
   border: 4px solid #dc2626;
   border-radius: 50%;
   position: relative;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 
-    0 0 0 3px #b91c1c,
-    0 0 0 6px #dc2626,
-    0 0 0 9px #b91c1c,
-    inset 0 0 20px rgba(220, 38, 38, 0.1),
-    0 8px 16px rgba(0, 0, 0, 0.4),
-    0 0 60px rgba(220, 38, 38, 0.3);
+  background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
+  filter: contrast(1.2) brightness(0.9);
+  box-shadow: 
+    0 0 0 2px #b91c1c,
+    inset 0 0 20px rgba(220, 38, 38, 0.2);
   background-image: 
-    radial-gradient(circle at 25% 25%, transparent 3px, rgba(220, 38, 38, 0.1) 3px, rgba(220, 38, 38, 0.1) 4px, transparent 4px),
-    radial-gradient(circle at 75% 75%, transparent 2px, rgba(220, 38, 38, 0.1) 2px, rgba(220, 38, 38, 0.1) 3px, transparent 3px),
-    radial-gradient(circle at 50% 90%, transparent 2px, rgba(220, 38, 38, 0.1) 2px, rgba(220, 38, 38, 0.1) 3px, transparent 3px);
-  background-size: 30px 30px, 20px 20px, 35px 35px;
-  background-position: 0 0, 15px 15px, 10px 25px;
+    radial-gradient(circle at 25% 25%, rgba(220, 38, 38, 0.3) 1px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(220, 38, 38, 0.2) 1px, transparent 2px),
+    radial-gradient(circle at 25% 75%, rgba(220, 38, 38, 0.3) 1px, transparent 2px),
+    radial-gradient(circle at 75% 25%, rgba(220, 38, 38, 0.2) 1px, transparent 2px),
+    radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.1) 1px, transparent 3px);
+  background-size: 15px 15px, 20px 20px, 18px 18px, 16px 16px, 25px 25px;
+  background-position: 0 0, 10px 10px, 5px 15px, 15px 5px, 12px 12px;
 }
 
 .rubber-stamp-enhanced:hover {
@@ -372,13 +371,13 @@ html {
 .rubber-stamp-enhanced::before {
   content: '';
   position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
   border: 3px dashed #dc2626;
   border-radius: 50%;
-  opacity: 0.7;
+  opacity: 0.4;
   animation: rotate-dashed 10s linear infinite;
 }
 
@@ -387,12 +386,12 @@ html {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 85%;
-  height: 85%;
+  width: 75%;
+  height: 75%;
   border: 2px solid #dc2626;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 @keyframes rotate-dashed {
@@ -411,17 +410,18 @@ html {
   transform: translate(-50%, -50%);
   color: #dc2626;
   font-weight: 900;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Arial Black', Arial, sans-serif;
   text-align: center;
   line-height: 1.1;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-shadow: 
-    2px 2px 0 rgba(220, 38, 38, 0.2),
-    -2px -2px 0 rgba(220, 38, 38, 0.2),
-    0 0 10px rgba(220, 38, 38, 0.3);
+    1px 1px 0 rgba(220, 38, 38, 0.5),
+    -1px -1px 0 rgba(220, 38, 38, 0.5),
+    0 0 8px rgba(220, 38, 38, 0.3);
   user-select: none;
-  animation: stamp-pulse 2s ease-in-out infinite;
+  z-index: 10;
+  filter: contrast(1.3) brightness(0.95);
 }
 
 @keyframes stamp-pulse {
@@ -430,5 +430,107 @@ html {
   }
   50% {
     transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+/* Hovering Rubber Stamp above Kick Back - Realistic Design */
+.hover-rubber-stamp {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  /* Realistic rubber stamp with ink bleed effects */
+  background: 
+    radial-gradient(circle at 30% 30%, #dc2626 0%, #dc2626 35%, transparent 40%),
+    radial-gradient(circle at 70% 40%, #b91c1c 0%, #b91c1c 30%, transparent 35%),
+    radial-gradient(circle at 40% 70%, #dc2626 0%, #dc2626 25%, transparent 30%),
+    radial-gradient(circle at 60% 80%, #b91c1c 0%, #b91c1c 28%, transparent 33%),
+    radial-gradient(circle at 50% 50%, #dc2626 0%, #dc2626 45%, transparent 50%);
+  background-size: 40px 40px, 35px 35px, 30px 30px, 32px 32px, 90px 90px;
+  background-position: 15px 20px, 50px 30px, 10px 60px, 55px 65px, center;
+  border-radius: 50%;
+  border: 4px solid #dc2626;
+  filter: 
+    drop-shadow(3px 6px 12px rgba(220, 38, 38, 0.5))
+    drop-shadow(0 0 20px rgba(220, 38, 38, 0.3));
+}
+
+.hover-rubber-stamp::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  background: 
+    conic-gradient(from 0deg, 
+      #dc2626 0deg 10deg, transparent 10deg 20deg,
+      #b91c1c 20deg 35deg, transparent 35deg 45deg,
+      #dc2626 45deg 60deg, transparent 60deg 75deg,
+      #b91c1c 75deg 85deg, transparent 85deg 100deg,
+      #dc2626 100deg 115deg, transparent 115deg 130deg,
+      #b91c1c 130deg 145deg, transparent 145deg 160deg,
+      #dc2626 160deg 175deg, transparent 175deg 190deg,
+      #b91c1c 190deg 205deg, transparent 205deg 220deg,
+      #dc2626 220deg 235deg, transparent 235deg 250deg,
+      #b91c1c 250deg 265deg, transparent 265deg 280deg,
+      #dc2626 280deg 295deg, transparent 295deg 310deg,
+      #b91c1c 310deg 325deg, transparent 325deg 340deg,
+      #dc2626 340deg 360deg);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.hover-rubber-stamp::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border-radius: 50%;
+  border: 2px dashed #dc2626;
+  opacity: 0.4;
+  animation: rotate-dashed 15s linear infinite reverse;
+}
+
+.hover-rubber-stamp:hover {
+  transform: rotate(-8deg) scale(1.15);
+  filter: 
+    drop-shadow(3px 6px 12px rgba(220, 38, 38, 0.6))
+    drop-shadow(0 0 25px rgba(220, 38, 38, 0.4));
+}
+
+.stamp-text-hover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #dc2626;
+  font-weight: 900;
+  font-size: 16px;
+  font-family: 'Arial Black', Arial, sans-serif;
+  text-align: center;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-shadow: 
+    2px 2px 0 rgba(185, 28, 28, 0.7),
+    -2px -2px 0 rgba(185, 28, 28, 0.7),
+    0 0 10px rgba(220, 38, 38, 0.6);
+  user-select: none;
+  z-index: 10;
+}
+
+@keyframes stamp-hover-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 1;
   }
 }
