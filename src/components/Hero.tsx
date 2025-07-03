@@ -31,8 +31,6 @@ export const Hero = () => {
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-grid-pattern opacity-20"></div>
       
-      {/* Bouncing Stamp with Physics */}
-      <BouncingStamp />
       
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -121,6 +119,17 @@ export const Hero = () => {
                   <p className="text-white text-2xl md:text-3xl font-script leading-relaxed">
                     and leave the automations to us
                   </p>
+                </div>
+                
+                {/* FREE MVP Stamp above Kick Back */}
+                <div className="absolute -top-32 left-1/3 transform -translate-x-1/2 z-40 animate-float cursor-pointer select-none" style={{ transform: 'rotate(-15deg)' }} onClick={() => { const contactSection = document.getElementById('contact'); if (contactSection) { contactSection.scrollIntoView({ behavior: 'smooth' }); } }}>
+                  <div className="rubber-stamp-enhanced">
+                    <div className="stamp-text">
+                      FREE
+                      <br />
+                      MVP!
+                    </div>
+                  </div>
                 </div>
               </div>
               
