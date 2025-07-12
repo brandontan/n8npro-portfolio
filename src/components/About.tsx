@@ -6,7 +6,7 @@ export const About = () => {
   const stats = [
     { icon: Clock, value: "60+", label: "Hours Saved Weekly" },
     { icon: TrendingUp, value: "100%", label: "Automation Success" },
-    { icon: Award, value: "n8n", label: "Platform Specialist" },
+    { icon: Award, value: "AI", label: "Automation Specialist" },
     { icon: Users, value: "Real", label: "World Experience" },
   ];
 

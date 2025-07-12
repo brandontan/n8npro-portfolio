@@ -27,7 +27,7 @@ export const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: "Hi! I'm your n8n automation assistant. I can help you understand my services, discuss your automation needs, or answer questions about workflow optimization. How can I help you today?",
+      content: "Hi! I'm your AI automation assistant. I can help you understand my services, discuss your automation needs, or answer questions about workflow optimization. How can I help you today?",
       sender: 'bot',
       timestamp: new Date()
     }
@@ -56,7 +56,7 @@ export const Chatbot = () => {
     const message = userMessage.toLowerCase();
     
     if (message.includes('service') || message.includes('what do you')) {
-      return "I specialize in n8n workflow automation, helping businesses streamline their processes. My services include:\n\n• Custom workflow development\n• API integrations\n• Process optimization\n• Training & consultation\n• Ongoing maintenance\n\nWould you like to know more about any specific service?";
+      return "I specialize in AI workflow automation, helping businesses streamline their processes. My services include:\n\n• Custom workflow development\n• API integrations\n• Process optimization\n• Training & consultation\n• Ongoing maintenance\n\nWould you like to know more about any specific service?";
     }
     
     if (message.includes('price') || message.includes('cost') || message.includes('charge')) {
@@ -75,7 +75,7 @@ export const Chatbot = () => {
       return "I can definitely help optimize your workflows! Common automation opportunities include:\n\n• Data synchronization between apps\n• Automated notifications & alerts\n• Report generation\n• Lead qualification\n• Customer onboarding\n\nWhat specific process are you looking to automate?";
     }
     
-    return "That's a great question! I'd love to discuss this in more detail. Feel free to use the contact form above or email me directly at brandon@n8npro.com for a personalized response. Is there anything else about n8n automation I can help clarify?";
+    return "That's a great question! I'd love to discuss this in more detail. Feel free to use the contact form above or email me directly at brandon@n8npro.com for a personalized response. Is there anything else about AI automation I can help clarify?";
   };
 
   const handleSendMessage = async () => {
@@ -146,7 +146,7 @@ export const Chatbot = () => {
               <div className="absolute -bottom-1 -right-1 h-4 w-4 bg-green-500 rounded-full border-2 border-background"></div>
             </div>
             <div>
-              <h3 className="font-semibold text-sm">n8n Assistant</h3>
+              <h3 className="font-semibold text-sm">AI Assistant</h3>
               <p className="text-xs text-white">Always here to help</p>
             </div>
           </div>
@@ -255,7 +255,7 @@ export const Chatbot = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                  placeholder="Ask me about n8n automation..."
+                  placeholder="Ask me about AI automation..."
                   className="flex-1 glass-card border-border/50 focus:border-primary/50"
                 />
                 <Button

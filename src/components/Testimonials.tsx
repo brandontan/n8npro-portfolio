@@ -22,7 +22,7 @@ export const Testimonials = () => {
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150"
     },
     {
-      content: "What sets Brandon apart is his understanding of real-world challenges. He builds workflows that actually work in production environments. Highly recommend for any n8n automation needs.",
+      content: "What sets Brandon apart is his understanding of real-world challenges. He builds workflows that actually work in production environments. Highly recommend for any AI automation needs.",
       author: "Happy Client",
       role: "Business Leader",
       company: "Tech Company",

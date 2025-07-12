@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowDown, Mail, Github, Linkedin, Sparkles, Calendar, Settings, Eye } from "lucide-react";
+import { ArrowDown, Mail, Github, Linkedin, Sparkles, Calendar } from "lucide-react";
 import BouncingStamp from "./BouncingStamp";
 
 export const Hero = () => {
@@ -19,7 +19,7 @@ export const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Dynamic background with liquid blobs */}
       <div className="absolute inset-0 fluid-gradient"></div>
       
@@ -69,7 +69,7 @@ export const Hero = () => {
                 Let's Talk
               </Button>
               <Button variant="outline" size="lg" className="glass-card text-lg px-8 py-6 hover:glass-button" onClick={scrollToProjects}>
-                View Projects
+                View Automations
               </Button>
             </div>
 
@@ -82,16 +82,6 @@ export const Hero = () => {
               <a href="https://www.linkedin.com/in/brandontan/" target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
                   <Linkedin className="h-6 w-6" />
-                </Button>
-              </a>
-              <a href="/gallery" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
-                  <Eye className="h-6 w-6" />
-                </Button>
-              </a>
-              <a href="/admin" target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="h-12 w-12 glass-card hover:glass-button">
-                  <Settings className="h-6 w-6" />
                 </Button>
               </a>
               <a href="https://zcal.co/brandon-n8npro/30min" target="_blank" rel="noopener noreferrer">

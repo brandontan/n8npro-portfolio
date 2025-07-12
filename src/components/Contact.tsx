@@ -98,7 +98,7 @@ export const Contact = () => {
             Ready to Automate Your Business?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss how n8n automation can transform your workflows and 
+            Let's discuss how AI automation can transform your workflows and 
             save you hours of manual work every week.
           </p>
         </div>
