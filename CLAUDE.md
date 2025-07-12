@@ -14,6 +14,25 @@ We are building a custom live chatbot with both text and voice capabilities to r
 - Integrate with n8n workflows for live automation demos
 - Showcase AI implementation expertise
 
+## TODO Tomorrow (Jan 13, 2025):
+
+### 1. **Update Twitter/X Preview**
+- Check if new OG image is showing by pasting `https://n8npro.com` in Twitter composer
+- If still showing old Lovable preview, try `https://n8npro.com?v=1` to force refresh
+- Create new tweet with your link once preview is correct
+- Pin new tweet and unpin old one
+
+### 2. **Domain Migration to aiflows.pro**
+- See DOMAIN_MIGRATION_TASKS.md for complete checklist
+- Update all n8npro.com references to aiflows.pro
+- Configure Vercel with new domain
+- Set up 301 redirects from old domain
+
+### 3. **Create Professional Assets**
+- Upload professional headshot as avatar.jpg
+- Consider custom OG image design beyond current text version
+- Update social media profiles with new domain
+
 ## Core Commands
 
 ### Development
