@@ -5,10 +5,10 @@ export const Projects = () => {
   const projects = [
     {
       title: "E-commerce Order Automation",
-      description: "Complete order processing workflow that can automatically handle orders, inventory updates, and customer notifications. Potential to reduce processing time by 90%.",
+      description: "Complete order processing workflow that can automatically handle orders, inventory updates, and customer notifications. Significantly reduce processing time.",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&crop=center",
       tags: ["n8n", "Shopify API", "Email", "Slack"],
-      metrics: "Save 35+ hours/week",
+      metrics: "Save hours weekly",
       category: "E-commerce"
     },
     {
@@ -16,7 +16,7 @@ export const Projects = () => {
       description: "Intelligent lead scoring and routing system that can automatically qualify prospects and assign them to the right sales team members.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center",
       tags: ["n8n", "HubSpot", "AI", "Webhooks"],
-      metrics: "80% faster responses",
+      metrics: "Faster responses",
       category: "Sales"
     },
     {
@@ -24,7 +24,7 @@ export const Projects = () => {
       description: "Automated content creation and distribution system that can generate, schedule, and publish content across multiple platforms.",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop&crop=center",
       tags: ["n8n", "OpenAI", "Twitter API", "Buffer"],
-      metrics: "5x content output",
+      metrics: "Increase content output",
       category: "Marketing"
     },
     {
@@ -40,7 +40,7 @@ export const Projects = () => {
       description: "Smart ticket classification and routing system that can automatically categorize support requests and assign them to specialized agents.",
       image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop&crop=center",
       tags: ["n8n", "Zendesk", "NLP", "Teams"],
-      metrics: "60% faster resolution",
+      metrics: "Faster resolution",
       category: "Support"
     },
     {
@@ -48,7 +48,7 @@ export const Projects = () => {
       description: "Automated inventory tracking and reordering system with predictive analytics for optimal stock levels.",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=300&fit=crop&crop=center",
       tags: ["n8n", "PostgreSQL", "Alerts", "Analytics"],
-      metrics: "40% cost reduction",
+      metrics: "Reduce costs",
       category: "Operations"
     },
   ];

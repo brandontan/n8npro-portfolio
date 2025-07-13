@@ -57,8 +57,8 @@ export const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "brandon@n8npro.com",
-      action: "mailto:brandon@n8npro.com"
+      value: "brandon@aiflows.help",
+      action: "mailto:brandon@aiflows.help"
     },
     {
       icon: Clock,

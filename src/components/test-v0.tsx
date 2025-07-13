@@ -2,7 +2,7 @@ import { generateReactComponent } from '@/lib/v0-api';
 import { useEffect, useState } from 'react';
 
 export async function testV0() {
-  const prompt = `Create a professional navigation bar component for n8npro.com with these specific requirements:
+  const prompt = `Create a professional navigation bar component for aiflows.help with these specific requirements:
 
 Design System:
 - Use the existing macOS liquid glass design with glass-card and glass-button classes
@@ -12,7 +12,7 @@ Design System:
 - Fixed/sticky positioning at top
 
 Structure:
-- Logo/Brand on left (n8npro)
+- Logo/Brand on left (aiflows)
 - Center navigation with dropdowns:
   - Professional Services (dropdown: Legal Automation, Accounting Automation, Case Studies)
   - Workflow Solutions (dropdown: Client Intake, Document Generation, Billing & Time Tracking)

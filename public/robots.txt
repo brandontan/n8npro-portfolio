@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 # Add to robots.txt
-Sitemap: https://n8npro.com/sitemap.xml
+Sitemap: https://aiflows.help/sitemap.xml

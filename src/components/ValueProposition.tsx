@@ -7,15 +7,15 @@ export const ValueProposition = () => {
   const painPoints = [
     {
       icon: Clock,
-      problem: "Spending 40+ hours/week on manual tasks",
-      solution: "Automate 90% of repetitive work",
+      problem: "Spending too many hours on manual tasks",
+      solution: "Automate repetitive work",
       impact: "Get your weekends back"
     },
     {
       icon: DollarSign,
       problem: "Missing leads due to slow follow-up",
       solution: "Instant automated lead qualification",
-      impact: "Increase conversion by 80%"
+      impact: "Improve conversion rates"
     },
     {
       icon: Zap,

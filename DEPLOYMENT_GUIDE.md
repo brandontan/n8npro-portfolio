@@ -2,7 +2,7 @@
 
 ## 🚀 What We Built
 
-- **Serverless Email Function**: `/api/contact.js` - handles form submissions and sends emails to brandon@n8npro.com
+- **Serverless Email Function**: `/api/contact.js` - handles form submissions and sends emails to brandon@aiflows.help
 - **Frontend Integration**: Updated form hook to use `/api/contact` endpoint
 - **Security**: Gmail app password stored as environment variable
 
@@ -39,7 +39,7 @@ The serverless function needs:
 1. User submits form on your website
 2. Form data sent to `/api/contact` (Vercel serverless function)
 3. Function validates data and sends email via Gmail SMTP
-4. Email delivered to brandon@n8npro.com
+4. Email delivered to brandon@aiflows.help
 5. Success/error response sent back to frontend
 
 ## 💰 Cost

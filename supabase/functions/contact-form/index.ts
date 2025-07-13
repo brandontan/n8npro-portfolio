@@ -42,8 +42,8 @@ const checkRateLimit = (identifier: string): boolean => {
 
 // Configure CORS to only allow requests from your domain
 const allowedOrigins = [
-  'https://n8npro.com',
-  'https://www.n8npro.com',
+  'https://aiflows.help',
+  'https://www.aiflows.help',
   // Add localhost for development if needed
   ...(Deno.env.get('ENVIRONMENT') === 'development' ? ['http://localhost:3000'] : [])
 ];

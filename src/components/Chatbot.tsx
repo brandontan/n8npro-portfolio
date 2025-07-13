@@ -68,14 +68,14 @@ export const Chatbot = () => {
     }
     
     if (message.includes('consultation') || message.includes('schedule') || message.includes('meeting')) {
-      return "I'd love to discuss your automation needs! You can:\n\n• Fill out the contact form above\n• Email me at brandon@n8npro.com\n• Schedule directly through my calendar\n\nI typically respond within 24 hours. What's the best way to reach you?";
+      return "I'd love to discuss your automation needs! You can:\n\n• Fill out the contact form above\n• Email me at brandon@aiflows.help\n• Schedule directly through my calendar\n\nI typically respond within 24 hours. What's the best way to reach you?";
     }
     
     if (message.includes('workflow') || message.includes('automation') || message.includes('help')) {
       return "I can definitely help optimize your workflows! Common automation opportunities include:\n\n• Data synchronization between apps\n• Automated notifications & alerts\n• Report generation\n• Lead qualification\n• Customer onboarding\n\nWhat specific process are you looking to automate?";
     }
     
-    return "That's a great question! I'd love to discuss this in more detail. Feel free to use the contact form above or email me directly at brandon@n8npro.com for a personalized response. Is there anything else about AI automation I can help clarify?";
+    return "That's a great question! I'd love to discuss this in more detail. Feel free to use the contact form above or email me directly at brandon@aiflows.help for a personalized response. Is there anything else about AI automation I can help clarify?";
   };
 
   const handleSendMessage = async () => {

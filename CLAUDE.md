@@ -17,14 +17,14 @@ We are building a custom live chatbot with both text and voice capabilities to r
 ## TODO Tomorrow (Jan 13, 2025):
 
 ### 1. **Update Twitter/X Preview**
-- Check if new OG image is showing by pasting `https://n8npro.com` in Twitter composer
-- If still showing old Lovable preview, try `https://n8npro.com?v=1` to force refresh
+- Check if new OG image is showing by pasting `https://aiflows.help` in Twitter composer
+- If still showing old Lovable preview, try `https://aiflows.help?v=1` to force refresh
 - Create new tweet with your link once preview is correct
 - Pin new tweet and unpin old one
 
-### 2. **Domain Migration to aiflows.pro**
+### 2. **Domain Migration to aiflows.help**
 - See DOMAIN_MIGRATION_TASKS.md for complete checklist
-- Update all n8npro.com references to aiflows.pro
+- Update all n8npro.com references to aiflows.help
 - Configure Vercel with new domain
 - Set up 301 redirects from old domain
 
@@ -129,7 +129,7 @@ VITE_V0_API_KEY
 
 ### Form Handling
 - Contact form uses React Hook Form + Zod validation
-- Email notifications via EmailJS to brandon@n8npro.com
+- Email notifications via EmailJS to brandon@aiflows.help
 - ReCAPTCHA v3 protection required
 
 ### Testing
@@ -144,6 +144,6 @@ VITE_V0_API_KEY
 3. **Industry Focus**: Professional Services and E-commerce automation
 4. **Fork Sync**: This repo syncs daily with upstream n8n-docs at 2 AM UTC
 5. **Lovable Integration**: Connected to Lovable project for visual editing
-6. **Email Flow**: Contact Form → EmailJS → brandon@n8npro.com → Cloudflare Email Routing
+6. **Email Flow**: Contact Form → EmailJS → brandon@aiflows.help → Cloudflare Email Routing
 7. **Security Headers**: Configured in `vercel.json` for XSS/CSRF protection
 8. **n8n Node Naming**: Always use camelCase for n8n nodes

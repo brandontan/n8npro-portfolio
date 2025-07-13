@@ -4,7 +4,7 @@ import { Award, Users, Clock, TrendingUp } from "lucide-react";
 
 export const About = () => {
   const stats = [
-    { icon: Clock, value: "60+", label: "Hours Saved Weekly" },
+    { icon: Clock, value: "30+", label: "Hours Saved Weekly" },
     { icon: TrendingUp, value: "100%", label: "Automation Success" },
     { icon: Award, value: "AI", label: "Automation Specialist" },
     { icon: Users, value: "Real", label: "World Experience" },
@@ -32,7 +32,7 @@ export const About = () => {
                   After two weeks of 12-hour days doing the same repetitive tasks, I had enough. I discovered n8n and decided to automate everything instead of continuing the manual grind.
                 </p>
                 <p className="text-primary font-medium">
-                  <strong>The result?</strong> What used to take 60+ hours per week now runs automatically. The client's lead generation went from a bottleneck to their biggest growth driver.
+                  <strong>The result?</strong> What used to take 30+ hours per week now runs automatically. The client's lead generation went from a bottleneck to their biggest growth driver.
                 </p>
                 <p>
                   I realized I'd accidentally found my specialty: <strong>building workflows that eliminate the tedious work that's killing your productivity.</strong>

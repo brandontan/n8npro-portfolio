@@ -1,8 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
-import { Projects } from "@/components/Projects";
-import Industry from "@/components/Industry";
+import IndustryAutomationHub from "@/components/IndustryAutomationHub";
 import { Contact } from "@/components/Contact";
 import { Chatbot } from "@/components/Chatbot";
 import { ReCaptchaProvider } from "@/components/ReCaptchaProvider";
@@ -21,11 +20,8 @@ const Index = () => {
       <section id="skills">
         <Skills />
       </section>
-      <section id="projects">
-        <Projects />
-      </section>
       <section id="industry">
-        <Industry />
+        <IndustryAutomationHub />
       </section>
       <section id="contact">
         <ReCaptchaProvider>

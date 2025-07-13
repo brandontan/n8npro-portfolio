@@ -13,7 +13,7 @@ export function GenerateWithV0() {
   const generateNavigation = async () => {
     setIsGenerating(true);
     try {
-      const prompt = `Create an ULTRA-MINIMALIST navigation for n8npro.com that's almost invisible but highly functional.
+      const prompt = `Create an ULTRA-MINIMALIST navigation for aiflows.help that's almost invisible but highly functional.
 
 DESIGN PHILOSOPHY:
 - The site has a sophisticated macOS liquid glass aesthetic

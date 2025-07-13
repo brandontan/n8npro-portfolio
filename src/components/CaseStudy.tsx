@@ -31,7 +31,7 @@ export const CaseStudy = () => {
               </p>
               <p className="text-muted-foreground">
                 <strong>Reality check:</strong> Two weeks of 12-hour days doing the same repetitive tasks. 
-                60+ hours per week of pure manual grind that could be done by a computer.
+                Countless hours per week of pure manual grind that could be done by a computer.
               </p>
             </CardContent>
           </Card>
@@ -76,7 +76,7 @@ export const CaseStudy = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground">
-                <strong>What used to take 60+ hours per week now runs completely automatically.</strong> 
+                <strong>What used to take countless hours per week now runs completely automatically.</strong> 
                 The client's lead generation went from being a bottleneck to their biggest growth driver.
               </p>
               <p className="text-muted-foreground">

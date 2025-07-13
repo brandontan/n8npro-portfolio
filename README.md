@@ -94,16 +94,16 @@ Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-trick
 
 ## Email Notifications Setup
 
-The contact form sends email notifications to `brandon@n8npro.com` via EmailJS. Your email infrastructure handles the routing:
+The contact form sends email notifications to `brandon@aiflows.help` via EmailJS. Your email infrastructure handles the routing:
 
-**Email Flow:** Contact Form → EmailJS → brandon@n8npro.com → Cloudflare Email Routing → Gmail → fetchmail → Poste.io
+**Email Flow:** Contact Form → EmailJS → brandon@aiflows.help → Cloudflare Email Routing → Gmail → fetchmail → Poste.io
 
 ### EmailJS Configuration
 
 1. Create an account on [EmailJS](https://www.emailjs.com/)
 2. Create a new email service and connect your email provider (Gmail recommended)
 3. Create an email template with the following variables:
-   - `to_email`: Recipient email address (will be set to brandon@n8npro.com)
+   - `to_email`: Recipient email address (will be set to brandon@aiflows.help)
    - `from_name`: Name of the person submitting the form
    - `from_email`: Email of the person submitting the form
    - `project_type`: Type of project requested
@@ -131,7 +131,7 @@ The contact form sends email notifications to `brandon@n8npro.com` via EmailJS. 
 ### Backend Email Infrastructure
 
 Your backend handles email routing automatically:
-- **Cloudflare Email Routing**: Routes `*@n8npro.com` to Gmail
+- **Cloudflare Email Routing**: Routes `*@aiflows.help` to Gmail
 - **fetchmail**: Pulls emails from Gmail every 5 minutes
 - **Poste.io**: Receives emails in your QNAP inbox
 

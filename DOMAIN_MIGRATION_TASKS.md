@@ -1,22 +1,22 @@
-# Domain Migration Tasks: n8npro.com → aiflows.pro
+# Domain Migration Tasks: n8npro.com → aiflows.help
 
 ## Pre-Migration Tasks
 
-### 1. **Fix Current Domain Issues (n8npro.com)**
+### 1. **Fix Current Domain Issues (aiflows.help)**
 - [ ] Create actual OG image (1200x630px) at `/public/og-image.png`
   - Include: Your name, "AI Automation Expert", website URL
   - Professional design with automation/workflow visuals
 - [ ] Deploy current changes to production
 - [ ] Clear Twitter's cache:
   - Go to https://cards-dev.twitter.com/validator
-  - Enter URL: https://n8npro.com
+  - Enter URL: https://aiflows.help
   - Click "Preview card" to force re-fetch
 - [ ] Verify Twitter shows correct preview
 
 ## Domain Migration Tasks
 
 ### 2. **Update Domain References**
-All files that need updating from n8npro.com → aiflows.pro:
+All files that need updating from n8npro.com → aiflows.help:
 
 #### **Frontend Files**
 - [ ] `/index.html`
@@ -46,7 +46,7 @@ All files that need updating from n8npro.com → aiflows.pro:
 - [ ] Any other components with hardcoded email
 
 ### 3. **Email Domain Considerations**
-- [ ] Decide: Keep brandon@n8npro.com or switch to brandon@aiflows.pro?
+- [ ] Decide: Keep brandon@n8npro.com or switch to brandon@aiflows.help?
 - [ ] If switching email:
   - Update EmailJS template
   - Update Cloudflare email routing
@@ -55,11 +55,11 @@ All files that need updating from n8npro.com → aiflows.pro:
 
 ### 4. **Deployment Configuration**
 - [ ] Update Vercel domain settings:
-  - Add aiflows.pro as custom domain
+  - Add aiflows.help as custom domain
   - Set up SSL certificate
   - Configure DNS records
 - [ ] Update environment variables if needed
-- [ ] Set up redirects from n8npro.com → aiflows.pro (301 permanent)
+- [ ] Set up redirects from n8npro.com → aiflows.help (301 permanent)
 
 ### 5. **Post-Migration Tasks**
 - [ ] Test all forms and functionality on new domain
