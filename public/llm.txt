@@ -3,22 +3,20 @@ Allow: /
 
 ---
 
-# n8nPro - Brandon Tan's Automation Portfolio
+# AIFlows - AI Automation Solutions
 
 ## About the Business
 
-**Business Name:** n8nPro
-**Owner:** Brandon Tan
-**Specialization:** n8n Automation Specialist
-**Tagline:** "I Build Intelligent Automation" - Turning Business Chaos Into Streamlined Workflows
+**Business Name:** AIFlows (formerly n8npro)
+**Team:** AI Automation Engineers
+**Specialization:** n8n Automation Specialists
+**Tagline:** "We Build AI-Powered Automations" - Stop Doing Repetitive Work. Start Growing Your Business!
 
 ## Professional Background
 
-Brandon Tan is an n8n automation specialist who discovered his expertise through real-world experience. He was originally hired to handle manual lead management tasks - researching prospects, copying data between platforms, crafting personalized emails, and managing multiple systems. After two weeks of 12-hour days doing repetitive tasks, he discovered n8n and automated everything instead of continuing the manual grind.
+We are AI automation engineers specializing in n8n workflow implementation. We work with various industries including law firms, accounting, e-commerce, healthcare, and many more to transform their operations through intelligent automation. With 50+ workflows deployed, we deliver MVPs typically within one week.
 
-**Key Achievement:** What used to take 60+ hours per week now runs automatically. The client's lead generation went from a bottleneck to their biggest growth driver.
-
-**Philosophy:** "I've been in your shoes. I know what it's like to be buried in manual processes, so I build automation that actually solves real problems—not just impressive demos."
+**Philosophy:** "We've been in your shoes. We know what it's like to be buried in manual processes, so we build automation that actually solves real problems—not just impressive demos."
 
 ## Services Offered
 
@@ -87,9 +85,9 @@ Brandon Tan is an n8n automation specialist who discovered his expertise through
 
 ## Pricing Structure
 
-- **Consultation:** Free 30-minute discovery call
-- **Hourly Rate:** $30/hr for ongoing development and maintenance
-- **Project Rate:** Custom fixed-price for complete automation solutions
+- **De-risking:** Free MVP typically completed within one week to justify actual build
+- **Approach:** We build a working prototype first
+- **Project Rate:** Custom pricing based on complexity and value delivered
 
 ## Contact Information
 
@@ -108,9 +106,9 @@ Business owners and professionals who are:
 
 ## Value Proposition
 
-"Kick back, relax, and leave the automations to us"
+"Stop Doing Repetitive Work. Start Growing Your Business!"
 
-Brandon's advantage is that he's been in his clients' shoes - he knows what it's like to be buried in manual processes. He builds automation that actually solves real problems, not just impressive demos. His focus is on lead qualification systems, CRM integrations, and multi-step automations that let clients focus on growing their business instead of managing endless spreadsheets and copy-paste tasks.
+Our advantage is that we've been in our clients' shoes - we know what it's like to be buried in manual processes. We build automation that actually solves real problems, not just impressive demos. Our focus is on lead qualification systems, CRM integrations, and multi-step automations that let clients focus on growing their business instead of managing endless spreadsheets and copy-paste tasks.
 
 ## Website Features
 
@@ -129,4 +127,4 @@ Brandon's advantage is that he's been in his clients' shoes - he knows what it's
 - Deployment: Vercel-ready configuration
 - Video: Custom hero video showcasing automation workflows
 
-This website serves as a professional portfolio and lead generation tool for Brandon's n8n automation consulting services, targeting businesses looking to eliminate manual processes and implement intelligent automation solutions. 
+This website serves as a professional portfolio and lead generation tool for AIFlows' n8n automation consulting services, targeting businesses looking to eliminate manual processes and implement intelligent automation solutions. 

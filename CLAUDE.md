@@ -1,5 +1,79 @@
 # CLAUDE.md
 
+
+# Enhanced Working Style Preferences - Structured for Model Adherence
+
+## **MANDATORY EXECUTION PROTOCOL**
+
+### **PHASE 1: RESEARCH (REQUIRED)**
+
+```
+BEFORE ANY RESPONSE:
+1. Use n8n-mcp tools to verify node configurations
+2. Search web for latest documentation/updates
+3. Validate field names, properties, and values
+4. Confirm optimal solution path
+```
+
+### **PHASE 2: RESPONSE FORMAT (STRICT)**
+
+```
+TECHNICAL CONFIGS: JSON only
+├── Exact field names from MCP validation
+├── Complete node configurations
+├── Precise parameter values
+└── camelCase naming enforced
+
+GUI INSTRUCTIONS: Step-by-step only  
+├── Exact navigation paths
+├── Specific UI element names
+├── Sequential actions
+└── No JSON mixing
+```
+
+### **PHASE 3: SOLUTION DELIVERY (SINGULAR)**
+
+```
+ONE OPTIMAL SOLUTION ONLY:
+├── Research-backed choice
+├── Zero alternatives offered
+├── Complete implementation
+└── Conviction-based delivery
+```
+
+## **EXECUTION CONSTRAINTS**
+
+### **FORBIDDEN BEHAVIORS**
+
+- Responding without MCP tool verification
+- Offering multiple options/choices
+- Using generic field names
+- Partial configurations
+- Pleasantries or explanations
+- Changing stance when challenged without new evidence
+
+### **REQUIRED BEHAVIORS**
+
+- Research → Verify → Respond
+- Complete configurations only
+- Exact terminology from official sources
+- Single optimal path
+- Evidence-based conviction
+- Proactive problem-solving
+
+### **VALIDATION CHECKPOINTS**
+
+```
+Before sending response, confirm:
+☐ MCP tools used for verification
+☐ Complete configuration provided
+☐ Exact field names validated
+☐ Single solution presented
+☐ Zero fluff content
+☐ Evidence available for challenges
+
+
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
@@ -14,19 +88,79 @@ We are building a custom live chatbot with both text and voice capabilities to r
 - Integrate with n8n workflows for live automation demos
 - Showcase AI implementation expertise
 
-## TODO Tomorrow (Jan 13, 2025):
+## Latest Updates (Jan 15, 2025):
+
+### n8n Workflow Research & Template Import Project:
+1. **Discovered High-Quality Resources**:
+   - Found 20+ production-ready AI voice agent templates in n8n marketplace
+   - Best template: #4484 (ElevenLabs + InfraNodus GraphRAG) with 29K+ views
+   - Alternative: #2846 (ElevenLabs + OpenAI + Qdrant) with 50K+ views
+   - BeyondAman/n8n-workflows repo contains 2,053 battle-tested workflows
+
+2. **Created Import Tools**:
+   - `import_to_sqlite.py` - Import workflows into MCP SQLite database
+   - `find_mcp_database.sh` - Locate Claude Desktop's MCP database
+   - Ready to bulk import 2,053 workflows for enhanced AI agent development
+   - **Important**: Store downloaded workflows in `/workflow-templates/` directory (gitignored)
+
+3. **Key Learning**:
+   - MCP uses SQLite3 to store 399 workflow templates
+   - Claude Desktop requires MCP server restart to see new templates
+   - npm registry != GitHub (packages must be published separately)
+
+## Latest Updates (Jan 14, 2025):
+
+### Team Branding Migration Completed:
+1. **Hero Section**: 
+   - Changed "I Build AI-Powered Automations" → "We Build AI-Powered Automations"
+   - Removed "AI Automation Engineer |" prefix
+2. **About Section**: 
+   - New header: "We are AI Automation Engineers" (changed from individual focus)
+   - Updated "Why Choose AIFlows (formerly known as n8npro)" with simplified structure
+   - Focus on de-risking and free MVP to start
+   - Removed "Don't see your industry?" section
+3. **Navigation & Headers**:
+   - Changed "My Expertise" → "Expertise"
+   - Changed "Industry Solutions" → "Solutions" in navigation
+   - Changed page title from "Brandon Tan..." → "AI Automation Experts"
+4. **Industry Solutions**:
+   - Fixed ALL workflow node label spacing issues (width 60px → 70px)
+   - Fixed truncated labels (Resolve/Escalate → Resolve, etc.)
+   - Removed "Choose your industry" from tagline
+   - All workflows standardized to blue color
+5. **Contact Section**: 
+   - Contact form fully functional with brandon@n8npro.com
+   - Added graceful handling for missing environment variables
+   - Gmail SMTP integration working
+   - Contact Information section remains hidden until domain confirmed
+
+### Technical Updates:
+1. **TypeScript/Lint Fixes**: Fixed 7 errors for production deployment
+2. **11 Labs Chat Widget**: Attempted integration but postponed due to localhost allowlist issues
+3. **AnimatedWorkflow**: Fixed JSX attribute warnings and node label spacing
+4. **API Contact Endpoint**: Fixed with proper error handling and email delivery
+
+### Domain Migration Status:
+- **CURRENT**: Live at n8npro.com
+- **FUTURE**: Domain will be aiflows.pro (not aiflows.help)
+- **STATUS**: Waiting for Google domain confirmation before migration
+- **EMAIL**: Using brandon@n8npro.com until domain migration
+
+## TODO After Domain Confirmation:
 
 ### 1. **Update Twitter/X Preview**
-- Check if new OG image is showing by pasting `https://aiflows.help` in Twitter composer
-- If still showing old Lovable preview, try `https://aiflows.help?v=1` to force refresh
+- Check if new OG image is showing by pasting `https://aiflows.pro` in Twitter composer
+- If still showing old Lovable preview, try `https://aiflows.pro?v=1` to force refresh
 - Create new tweet with your link once preview is correct
 - Pin new tweet and unpin old one
 
-### 2. **Domain Migration to aiflows.help**
+### 2. **Domain Migration to aiflows.pro**
 - See DOMAIN_MIGRATION_TASKS.md for complete checklist
-- Update all n8npro.com references to aiflows.help
+- Update all n8npro.com references to aiflows.pro
 - Configure Vercel with new domain
 - Set up 301 redirects from old domain
+- Unhide Contact Information section in Contact.tsx
+- Re-integrate 11 Labs Chat Widget with proper domain allowlist
 
 ### 3. **Create Professional Assets**
 - Upload professional headshot as avatar.jpg
@@ -90,6 +224,8 @@ VITE_EMAILJS_TEMPLATE_ID
 VITE_EMAILJS_PUBLIC_KEY
 VITE_RECAPTCHA_SITE_KEY
 VITE_V0_API_KEY
+GMAIL_APP_PASSWORD (server-side only)
+RECAPTCHA_SECRET_KEY (server-side only)
 ```
 
 ## Site Structure
@@ -129,8 +265,9 @@ VITE_V0_API_KEY
 
 ### Form Handling
 - Contact form uses React Hook Form + Zod validation
-- Email notifications via EmailJS to brandon@aiflows.help
+- Email notifications via Gmail SMTP to brandon@n8npro.com (temporary)
 - ReCAPTCHA v3 protection required
+- Graceful handling when environment variables missing
 
 ### Testing
 - Playwright tests in `/tests/` directory
@@ -144,6 +281,8 @@ VITE_V0_API_KEY
 3. **Industry Focus**: Professional Services and E-commerce automation
 4. **Fork Sync**: This repo syncs daily with upstream n8n-docs at 2 AM UTC
 5. **Lovable Integration**: Connected to Lovable project for visual editing
-6. **Email Flow**: Contact Form → EmailJS → brandon@aiflows.help → Cloudflare Email Routing
+6. **Email Flow**: Contact Form → Gmail SMTP → brandon@n8npro.com (will change to aiflows.pro email after migration)
 7. **Security Headers**: Configured in `vercel.json` for XSS/CSRF protection
 8. **n8n Node Naming**: Always use camelCase for n8n nodes
+9. **Branding**: Site now uses team/plural branding ("We", "AIFlows") instead of individual
+10. **11 Labs Widget**: Integration ready but postponed until domain migration completes

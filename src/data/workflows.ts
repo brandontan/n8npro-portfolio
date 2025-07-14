@@ -75,7 +75,7 @@ export const workflows: Workflow[] = [
     complexity: 'Complex',
     
     challenge: 'Manual order processing was taking 2-3 hours daily, with frequent errors in inventory updates and delayed customer communications.',
-    solution: 'Built an intelligent automation that processes orders in real-time, automatically updates inventory across all channels, and sends personalized notifications based on order status.',
+    solution: 'Built an AI-powered automation that processes orders in real-time, automatically updates inventory across all channels, and sends personalized notifications based on order status.',
     results: [
       'Reduced order processing time from 3 hours to 5 minutes',
       'Eliminated inventory sync errors completely',

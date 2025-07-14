@@ -3,7 +3,6 @@ import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
 import IndustryAutomationHub from "@/components/IndustryAutomationHub";
 import { Contact } from "@/components/Contact";
-import { Chatbot } from "@/components/Chatbot";
 import { ReCaptchaProvider } from "@/components/ReCaptchaProvider";
 import MinimalNavigation from "@/components/MinimalNav";
 
@@ -28,7 +27,6 @@ const Index = () => {
           <Contact />
         </ReCaptchaProvider>
       </section>
-      <Chatbot />
     </div>
   );
 };

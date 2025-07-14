@@ -12,7 +12,7 @@ export const Hero = () => {
   };
 
   const scrollToProjects = () => {
-    const projectsSection = document.getElementById('projects');
+    const projectsSection = document.getElementById('industry');
     if (projectsSection) {
       projectsSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -36,31 +36,25 @@ export const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Content */}
           <div className="flex-1 text-center lg:text-left space-y-12">
-            <div className="flex flex-col items-center lg:items-start gap-6 w-full -mt-16">
-              <div className="flex flex-col items-center gap-2">
-                <img
-                  src="/icon.svg"
-                  alt="n8nPro Talent Marketplace Logo"
-                  className="w-20 h-20 drop-shadow-lg glass-card rounded-full bg-white/10 p-2"
-                  style={{ backdropFilter: 'blur(8px)' }}
-                />
-                <Badge variant="secondary" className="glass-card text-base px-4 py-2 animate-pulse-glow mt-4">
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  Available for Freelance
-                </Badge>
-              </div>
+            <div className="flex flex-col items-center lg:items-start gap-6 w-full -mt-24">
+              <img
+                src="/icon.svg"
+                alt="AIFlows Logo"
+                className="w-20 h-20 drop-shadow-lg glass-card rounded-full bg-white/10 p-2"
+                style={{ backdropFilter: 'blur(8px)' }}
+              />
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-              <span className="text-foreground block mb-2">I Build</span>
+              <span className="text-foreground block mb-2">We Build</span>
               <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse block mb-2">
-                Intelligent
+                AI-Powered
               </span>
-              <span className="text-foreground block">Automation</span>
+              <span className="text-foreground block">Automations</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
-              AI Automation Engineer | Turning Business Chaos Into Streamlined Workflows
+              Stop Doing Repetitive Work. Start Growing Your Business!
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8">
@@ -69,7 +63,7 @@ export const Hero = () => {
                 Let's Talk
               </Button>
               <Button variant="outline" size="lg" className="glass-card text-lg px-8 py-6 hover:glass-button" onClick={scrollToProjects}>
-                View Automations
+                View Solutions
               </Button>
             </div>
 

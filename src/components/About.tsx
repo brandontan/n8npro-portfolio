@@ -3,12 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import { Award, Users, Clock, TrendingUp } from "lucide-react";
 
 export const About = () => {
-  const stats = [
-    { icon: Clock, value: "30+", label: "Hours Saved Weekly" },
-    { icon: TrendingUp, value: "100%", label: "Automation Success" },
-    { icon: Award, value: "AI", label: "Automation Specialist" },
-    { icon: Users, value: "Real", label: "World Experience" },
-  ];
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -20,47 +14,27 @@ export const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div>
-              <Badge variant="outline" className="glass-card mb-4 px-4 py-2">My Story</Badge>
+              <Badge variant="outline" className="glass-card mb-4 px-4 py-2">About</Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                From Manual Grind to Smart Automation
+                We are AI Automation Engineers
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  My journey into AI automation wasn't planned. I was hired to handle lead management for a client—manually researching prospects, copying data between Clay and Apollo, crafting personalized emails, then moving everything through multiple platforms.
+                <p className="text-primary font-medium text-lg mb-4">
+                  Why Choose AIFlows (formerly known as n8npro):
                 </p>
                 <p>
-                  After two weeks of 12-hour days doing the same repetitive tasks, I had enough. I discovered n8n and decided to automate everything instead of continuing the manual grind.
-                </p>
-                <p className="text-primary font-medium">
-                  <strong>The result?</strong> What used to take 30+ hours per week now runs automatically. The client's lead generation went from a bottleneck to their biggest growth driver.
+                  <strong>Specialized Focus:</strong> Exclusively n8n (open-source intelligent automation platform) and AI integration, not generic automation consulting.
                 </p>
                 <p>
-                  I realized I'd accidentally found my specialty: <strong>building workflows that eliminate the tedious work that's killing your productivity.</strong>
+                  <strong>De-risking:</strong> Free MVP typically completed within one week to justify actual build.
                 </p>
                 <p>
-                  <strong>My advantage:</strong> I've been in your shoes. I know what it's like to be buried in manual processes, so I build automation that actually solves real problems—not just impressive demos.
+                  <strong>Technical Depth:</strong> Integration with OpenAI and Anthropic APIs and much more.
                 </p>
                 <p>
-                  I focus on lead qualification systems, CRM integrations, and multi-step automations that let you focus on growing your business instead of managing endless spreadsheets and copy-paste tasks.
-                </p>
-                <p className="text-primary font-medium">
-                  Because time saved is more time you can spend with the people who matter most. ❤️
+                  <strong>Proven ROI:</strong> Work directly with business owners to identify high-impact automation opportunities via MVP. Build, test, and deploy solutions that actually deliver results.
                 </p>
               </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, index) => (
-                <Card key={index} className="glass-card hover:glass-button transition-all duration-500 group">
-                  <CardContent className="p-6 text-center">
-                    <stat.icon className="h-8 w-8 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform" />
-                    <div className="text-2xl font-bold mb-1 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
-                  </CardContent>
-                </Card>
-              ))}
             </div>
           </div>
 

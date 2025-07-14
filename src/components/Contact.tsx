@@ -85,7 +85,7 @@ export const Contact = () => {
       icon: DollarSign,
       title: "Project Rate",
       price: "Custom",
-      description: "Fixed-price for complete automation solutions"
+      description: "Fixed-price for complete AI-powered automation solutions"
     }
   ];
 
@@ -98,7 +98,7 @@ export const Contact = () => {
             Ready to Automate Your Business?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss how AI automation can transform your workflows and 
+            Let's discuss how intelligent automation can transform your workflows and 
             save you hours of manual work every week.
           </p>
         </div>
@@ -211,8 +211,8 @@ export const Contact = () => {
 
           {/* Contact Info & Pricing */}
           <div className="space-y-6">
-            {/* Contact Information */}
-            <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+            {/* Contact Information - Hidden until domain confirmed */}
+            {/* <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle>Contact Information</CardTitle>
               </CardHeader>
@@ -235,7 +235,7 @@ export const Contact = () => {
                   </div>
                 ))}
               </CardContent>
-            </Card>
+            </Card> */}
 
             {/* Pricing */}
             <Card className="border-border/50 bg-card/50 backdrop-blur-sm">

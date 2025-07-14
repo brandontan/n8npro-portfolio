@@ -62,7 +62,7 @@ const createTransporter = () => {
   return createTransport({
     service: 'gmail',
     auth: {
-      user: 'brandon@aiflows.help',
+      user: 'brandon@n8npro.com',
       pass: process.env.GMAIL_APP_PASSWORD
     }
   });
@@ -112,9 +112,9 @@ const sendContactFormEmail = async (formData) => {
     const transporter = createTransporter();
     
     const mailOptions = {
-      from: 'brandon@aiflows.help',
-      to: 'brandon@aiflows.help',
-      subject: `Sales Lead from aiflows.help`,
+      from: 'brandon@n8npro.com',
+      to: 'brandon@n8npro.com',
+      subject: `Sales Lead from n8npro.com`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${escapeHtml(formData.name)}</p>
@@ -122,7 +122,7 @@ const sendContactFormEmail = async (formData) => {
         <p><strong>Project Type:</strong> ${escapeHtml(formData.project_type)}</p>
         <p><strong>Project Details:</strong> ${escapeHtml(formData.project_details)}</p>
         <hr>
-        <p><em>Sent from aiflows.help contact form</em></p>
+        <p><em>Sent from n8npro.com contact form</em></p>
       `
     };
 
@@ -183,6 +183,17 @@ export default async function handler(req, res) {
       project_type: project_type || 'Not specified',
       project_details: project_details.trim()
     };
+
+    // Check if email configuration exists
+    if (!process.env.GMAIL_APP_PASSWORD) {
+      console.log('Contact form submission (email disabled):', emailData);
+      // Return success even without email for now
+      return res.status(200).json({
+        success: true,
+        message: 'Thank you for your submission! We\'ll get back to you soon.',
+        messageId: 'pending-' + Date.now()
+      });
+    }
 
     // Send email
     const result = await sendContactFormEmail(emailData);

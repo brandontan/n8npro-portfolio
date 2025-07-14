@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 .env
 .vercel
+
+# Workflow templates (don't commit large JSON collections)
+/workflow-templates/
+/beyondaman_workflows/
+*.workflow.json

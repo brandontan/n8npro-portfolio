@@ -103,8 +103,8 @@ const AddWorkflowForm: React.FC = () => {
       subtitle: formData.subtitle,
       description: formData.description,
       longDescription: formData.longDescription,
-      category: formData.category as any,
-      status: formData.status as any,
+      category: formData.category as "ecommerce" | "professional-services" | "saas" | "healthcare" | "real-estate" | "manufacturing",
+      status: formData.status as "live" | "in-progress" | "planned",
       featured: formData.featured,
       thumbnail: formData.thumbnail,
       images: formData.images.filter(img => img.trim()),
@@ -117,7 +117,7 @@ const AddWorkflowForm: React.FC = () => {
       },
       technologies: formData.technologies.filter(tech => tech.trim()),
       integrations: formData.integrations.filter(int => int.trim()),
-      complexity: formData.complexity as any,
+      complexity: formData.complexity as "simple" | "intermediate" | "advanced",
       challenge: formData.challenge,
       solution: formData.solution,
       results: formData.results.filter(result => result.trim()),
@@ -147,7 +147,7 @@ const AddWorkflowForm: React.FC = () => {
             Basic Information
           </CardTitle>
           <CardDescription>
-            Core details about your automation workflow
+            Core details about your AI-powered automation workflow
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">

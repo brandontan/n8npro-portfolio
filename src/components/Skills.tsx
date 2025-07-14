@@ -45,14 +45,10 @@ export const Skills = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="glass-card mb-4 px-4 py-2">My Expertise</Badge>
+          <Badge variant="outline" className="glass-card mb-4 px-4 py-2">Expertise</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            AI Automation Engineering Skills
+            Automation Skills
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Specialized skills in building intelligent automation systems that combine AI decision-making 
-            with robust workflow orchestration to eliminate manual processes and drive business growth.
-          </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

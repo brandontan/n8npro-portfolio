@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -8,23 +8,26 @@ console.log('Initializing Supabase client...')
 console.log('Supabase URL:', supabaseUrl)
 console.log('Supabase Anon Key exists:', !!supabaseAnonKey)
 
+// Mock client creator
+const createMockClient = () => ({
+  from: () => ({
+    select: () => ({
+      limit: () => Promise.resolve({ data: [], error: null })
+    }),
+    insert: () => ({
+      select: () => Promise.resolve({ data: [{ id: 'mock-id' }], error: null })
+    })
+  })
+})
+
 // Create a mock client if environment variables are missing (for testing)
-let supabase: any
+let supabase: SupabaseClient | ReturnType<typeof createMockClient>
 
 if (!supabaseUrl || !supabaseAnonKey) {
   console.warn('Missing Supabase environment variables - using mock client for testing')
   
   // Create a mock client that properly simulates the real Supabase API
-  supabase = {
-    from: () => ({
-      select: () => ({
-        limit: () => Promise.resolve({ data: [], error: null })
-      }),
-      insert: () => ({
-        select: () => Promise.resolve({ data: [{ id: 'mock-id' }], error: null })
-      })
-    })
-  }
+  supabase = createMockClient()
 } else {
   supabase = createClient(supabaseUrl, supabaseAnonKey, {
     auth: {
