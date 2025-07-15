@@ -29,3 +29,9 @@ dist-ssr
 /workflow-templates/
 /beyondaman_workflows/
 *.workflow.json
+
+# Database files (may contain secrets)
+/data/nodes.db
+*.db
+*.sqlite
+*.sqlite3

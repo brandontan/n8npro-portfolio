@@ -1,0 +1,20 @@
+
+============================================================
+SAFE BEYONDAMAN WORKFLOW IMPORT
+============================================================
+✓ Created backup: /Users/brtan/.npm/_npx/b6a381d62ce0fe56/node_modules/n8n-mcp/data/backups/nodes_backup_20250715_154852.db
+  Size: 24.43 MB
+✓ Database integrity OK. Current templates: 504
+✓ Connected to database
+
+📁 Found 2053 workflow files
+
+🧪 Testing import with 5 workflows...
+  ✗ Failed: #️⃣Nostr #damus AI Powered Reporting + Gmail + Telegram
+  ✗ Failed: Complete Guide to Setting Up and Generating TOTP Codes in n8n 🔐
+  ✗ Failed: Bitwarden Automate
+  ✗ Failed: typeform feedback workflow
+  ✗ Failed: New tweets
+
+✗ Test batch failed. Aborting full import.
+💡 Restore from backup if needed: /Users/brtan/.npm/_npx/b6a381d62ce0fe56/node_modules/n8n-mcp/data/backups/nodes_backup_20250715_154852.db

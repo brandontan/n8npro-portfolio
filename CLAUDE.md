@@ -108,6 +108,40 @@ We are building a custom live chatbot with both text and voice capabilities to r
    - Claude Desktop requires MCP server restart to see new templates
    - npm registry != GitHub (packages must be published separately)
 
+4. **MCP Database Management** (IMPORTANT):
+   - Successfully imported 1,655 BeyondAman workflows → Total: 2,154 templates
+   - Persistent database location: `./data/nodes.db` (40.9 MB)
+   - Claude Desktop configured to use persistent database via wrapper script
+   - **WARNING**: NPX updates will LOSE custom templates unless using persistent storage
+   - Safe update procedure: Run `./scripts/simple_safe_update.sh` before any MCP updates
+   - See `scripts/N8N_MCP_UPDATE.md` for detailed update instructions
+
+5. **MCP Connection Fix** (Jan 15, 2025):
+   - Fixed JSON parsing error in Claude Desktop by:
+     - Updating wrapper script to remove all stdout output (console.log)
+     - Added `MCP_MODE=stdio` to suppress n8n-mcp console output
+     - Modified Claude Desktop config to use wrapper script + stdio mode
+   - Key Learning: MCP servers must ONLY output JSON-RPC to stdout, any other output corrupts the protocol
+   - Successfully tested safe update process - confirmed database backup/restore workflow works perfectly
+
+6. **Enhanced Search Implementation** (Jan 15, 2025):
+   - **Problem**: n8n-mcp's `search_templates` fails with "result exceeds maximum length" when searching 2,154 templates
+   - **Root Cause**: MCP protocol has message size limits; large result sets exceed these when JSON.stringify'd
+   - **Solution**: Created enhanced wrapper (`run-mcp-enhanced.js`) that:
+     - Intercepts `search_templates` calls before they reach n8n-mcp
+     - Returns full templates for small results (≤25 templates)
+     - Returns summaries for large results (>25 templates) to stay within protocol limits
+     - Shows total count available so Claude knows there are more results
+   - **Benefits**: 
+     - Claude can now search and learn from all 2,154 templates (not just first 20-50)
+     - No more "result exceeds maximum length" errors
+     - Upgrade-safe: doesn't modify n8n-mcp source, just acts as middleware
+   - **Key Files**:
+     - `scripts/run-mcp-enhanced.js` - Enhanced wrapper with smart search
+     - `scripts/search_templates_directly.sh` - Direct database search tool for testing
+     - `ENHANCED_SEARCH_UPGRADE_GUIDE.md` - Full documentation
+   - **To Enable**: Update Claude Desktop config to use `run-mcp-enhanced.js` instead of `run-mcp-with-data.js`
+
 ## Latest Updates (Jan 14, 2025):
 
 ### Team Branding Migration Completed:
@@ -286,3 +320,49 @@ RECAPTCHA_SECRET_KEY (server-side only)
 8. **n8n Node Naming**: Always use camelCase for n8n nodes
 9. **Branding**: Site now uses team/plural branding ("We", "AIFlows") instead of individual
 10. **11 Labs Widget**: Integration ready but postponed until domain migration completes
+
+## Technical Notes for Self-Knowledge
+
+### MCP Server Protocol Requirements
+- MCP servers communicate via JSON-RPC over stdio (stdin/stdout)
+- ANY non-JSON output to stdout corrupts the communication and causes "Expected ',' or ']'" errors
+- Console.log, console.error in JavaScript must be suppressed or redirected to stderr
+- Set `MCP_MODE=stdio` environment variable to tell n8n-mcp to suppress console output
+
+### NPX Package Update Behavior
+- NPX always downloads fresh packages and creates new cache directories
+- Each NPX run gets a unique directory like `/Users/brtan/.npm/_npx/[hash]/`
+- Any data stored in NPX cache (like SQLite databases) is LOST on updates
+- Solution: Use persistent storage outside NPX cache (`./data/nodes.db`)
+
+### Safe Update Process Explained
+1. **Backup Phase**: Full database copy + SQL export of custom templates
+2. **Update Phase**: NPX creates fresh install with default templates only
+3. **Restore Phase**: Import SQL file to merge custom templates back
+4. **Persistent Storage**: Copy merged database to project directory
+
+### Why Wrapper Script Works
+- Forces n8n-mcp to run from project directory (where `data/nodes.db` exists)
+- n8n-mcp checks `./data/nodes.db` before creating new database
+- Wrapper inherits stdio to maintain JSON-RPC protocol
+- Sets required environment variables (MCP_MODE=stdio)
+
+### Database Structure
+- Default n8n-mcp: ~499 templates (25MB)
+- With BeyondAman: 2,154 templates (41MB)
+- Templates table: workflow_id, name, description, workflow (JSON), author_name, etc.
+- FTS5 full-text search enabled for fast template discovery
+
+### MCP Protocol Limitations
+- Message size limits prevent returning large result sets
+- JSON.stringify of 50+ full templates can exceed protocol buffer
+- Solution: Summarize data for large results, exclude workflow JSON
+- Enhanced wrapper intercepts and handles this transparently
+
+### Enhanced Search Architecture
+- Wrapper acts as middleware between Claude and n8n-mcp
+- Monitors stdio stream for `search_templates` calls
+- Queries database directly for large result sets
+- Returns summaries (id, name, truncated description, metadata)
+- Preserves full templates for small result sets (≤25)
+- Falls through to original n8n-mcp for all other calls
