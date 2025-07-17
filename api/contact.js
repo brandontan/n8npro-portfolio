@@ -1,4 +1,5 @@
 import { createTransport } from 'nodemailer';
+import { createClient } from '@supabase/supabase-js';
 
 // Simple in-memory rate limiting
 const rateLimitMap = new Map();
@@ -54,6 +55,12 @@ setInterval(() => {
     }
   }
 }, RATE_LIMIT_WINDOW);
+
+// Initialize Supabase client
+const supabase = createClient(
+  process.env.VITE_SUPABASE_URL || '',
+  process.env.VITE_SUPABASE_ANON_KEY || ''
+);
 
 // Create transporter for Gmail SMTP
 const createTransporter = () => {
@@ -183,6 +190,30 @@ export default async function handler(req, res) {
       project_type: project_type || 'Not specified',
       project_details: project_details.trim()
     };
+
+    // Store in Supabase
+    try {
+      const { data, error: supabaseError } = await supabase
+        .from('contact_submissions')
+        .insert([{
+          name: emailData.name,
+          email: emailData.email,
+          project_type: emailData.project_type,
+          project_details: emailData.project_details,
+          message: message || emailData.project_details,
+          recaptcha_token: recaptchaToken
+        }])
+        .select()
+        .single();
+
+      if (supabaseError) {
+        console.error('Supabase insert error:', supabaseError);
+        // Continue with email even if Supabase fails
+      }
+    } catch (dbError) {
+      console.error('Database error:', dbError);
+      // Continue with email even if database fails
+    }
 
     // Check if email configuration exists
     if (!process.env.GMAIL_APP_PASSWORD) {
