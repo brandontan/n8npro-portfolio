@@ -89,7 +89,14 @@ Building a custom live chatbot with both text and voice capabilities to replace 
 - Integrate with n8n workflows for live automation demos
 - Showcase AI implementation expertise
 
-### 2. Beetechy Solar Cold Outreach Workflow (Active)
+### 2. Contact Form Issue (URGENT - NOT FIXED)
+**Status**: Contact form appears to send successfully but NO EMAILS are being received
+- API returns success but emails are not arriving at brandon@n8npro.com
+- Supabase storage may or may not be working
+- Gmail SMTP configuration needs investigation
+- Previous "fixes" have not resolved the issue
+
+### 3. Beetechy Solar Cold Outreach Workflow (Active)
 Building automated B2B lead generation for solar/renewables companies:
 - **Workflow ID**: `XT45UuvPQ2EmaU1N` on app.aiflows.pro
 - **Architecture**: Webhook → TheirStack (hiring signals) → Claude (research) → Hunter.io (contacts) → Instantly.ai (campaigns)
@@ -192,9 +199,9 @@ Building automated B2B lead generation for solar/renewables companies:
    - Removed "Choose your industry" from tagline
    - All workflows standardized to blue color
 5. **Contact Section**: 
-   - Contact form fully functional with brandon@aiflows.pro
-   - Added graceful handling for missing environment variables
-   - Gmail SMTP integration working
+   - **ISSUE**: Contact form NOT working - emails not being received
+   - API returns success but no emails arrive
+   - Gmail SMTP may be misconfigured
    - Contact Information section remains hidden until domain confirmed
 
 ### Technical Updates:
