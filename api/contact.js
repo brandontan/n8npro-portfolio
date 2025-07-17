@@ -128,8 +128,8 @@ const sendContactFormEmail = async (formData) => {
     }
     
     const mailOptions = {
-      from: 'brandon@aiflows.pro',
-      to: 'brandon@aiflows.pro',
+      from: 'brandon@n8npro.com',
+      to: 'brandon@n8npro.com',
       subject: `Sales Lead from aiflows.pro`,
       html: `
         <h2>New Contact Form Submission</h2>

@@ -12,5 +12,4 @@ Allow: /
 
 User-agent: *
 Allow: /
-# Add to robots.txt
-Sitemap: https://aiflows.help/sitemap.xml
+Sitemap: https://aiflows.pro/sitemap.xml
