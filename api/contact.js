@@ -69,7 +69,7 @@ const createTransporter = () => {
   return createTransport({
     service: 'gmail',
     auth: {
-      user: 'brandon@aiflows.pro',
+      user: 'brandon@n8npro.com',
       pass: process.env.GMAIL_APP_PASSWORD
     }
   });
