@@ -53,3 +53,7 @@ api/test-email-config.js
 ADD_TO_VERCEL_ENV.md
 *-api-key*
 *-bearer-token*
+
+# Sensitive files folder - NEVER COMMIT
+key_folder/
+/key_folder/
