@@ -1,14 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
-
-interface ContactFormData {
-  name: string
-  email: string
-  company?: string
-  project_type?: string
-  project_details: string
-  message?: string
-}
+import type { ContactFormData } from '../lib/supabase'
+import { supabase } from '../lib/supabase'
 
 export const useContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -55,22 +48,44 @@ export const useContactForm = () => {
         }
       }
 
-      // Always use the API endpoint (works in both dev and production)
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          recaptchaToken
-        }),
-      })
+      // Check if we're in development or production
+      const isDevelopment = import.meta.env.DEV || window.location.hostname === 'localhost'
+      
+      if (isDevelopment) {
+        // Direct Supabase insert for local development
+        const { data, error: supabaseError } = await supabase
+          .from('contact_submissions')
+          .insert([{
+            name: formData.name,
+            email: formData.email,
+            company: formData.company || null,
+            project_details: formData.project_details,
+            recaptcha_token: recaptchaToken
+          }])
+          .select()
+          .single()
 
-      const result = await response.json()
+        if (supabaseError) {
+          throw new Error(supabaseError.message || 'Failed to submit form')
+        }
+      } else {
+        // Use Vercel serverless function endpoint for production
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            recaptchaToken
+          }),
+        })
 
-      if (!response.ok) {
-        throw new Error(result.error || 'Failed to submit form')
+        const result = await response.json()
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Failed to submit form')
+        }
       }
 
       setSuccess(true)
