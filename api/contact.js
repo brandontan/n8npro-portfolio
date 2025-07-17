@@ -171,12 +171,9 @@ export default async function handler(req, res) {
     // Verify reCAPTCHA if token provided
     const recaptchaValid = await verifyRecaptcha(recaptchaToken);
     if (!recaptchaValid) {
-      // Log warning but don't block submission for now
-      console.warn('reCAPTCHA verification failed - allowing submission');
-      // Uncomment the following to enforce reCAPTCHA:
-      // return res.status(400).json({
-      //   error: 'Bot protection verification failed. Please try again.'
-      // });
+      return res.status(400).json({
+        error: 'Bot protection verification failed. Please try again.'
+      });
     }
 
     // Prepare email data
