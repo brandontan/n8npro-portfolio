@@ -13,18 +13,25 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Simple query to keep database active
-    const { data, error } = await supabase
-      .from('contact_submissions')
-      .select('count')
-      .limit(1);
+    // Just test the connection with a simple RPC call
+    // This doesn't require any table permissions
+    const { data, error } = await supabase.rpc('now');
 
     if (error) {
-      console.error('Supabase keep-alive error:', error);
-      return res.status(500).json({ 
-        error: 'Failed to ping Supabase',
-        details: error.message 
+      // If RPC doesn't work, just make a basic auth check
+      const response = await fetch(`${process.env.VITE_SUPABASE_URL}/rest/v1/`, {
+        headers: {
+          'apikey': process.env.VITE_SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${process.env.VITE_SUPABASE_ANON_KEY}`
+        }
       });
+
+      if (!response.ok) {
+        return res.status(500).json({ 
+          error: 'Failed to ping Supabase',
+          status: response.status
+        });
+      }
     }
 
     return res.status(200).json({ 
