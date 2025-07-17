@@ -116,7 +116,16 @@ const verifyRecaptcha = async (token) => {
 
 const sendContactFormEmail = async (formData) => {
   try {
+    console.log('[EMAIL] Creating transporter...');
     const transporter = createTransporter();
+    
+    // Verify transporter configuration
+    try {
+      await transporter.verify();
+      console.log('[EMAIL] Transporter verified successfully');
+    } catch (verifyError) {
+      console.error('[EMAIL] Transporter verification failed:', verifyError.message);
+    }
     
     const mailOptions = {
       from: 'brandon@aiflows.pro',
@@ -133,11 +142,21 @@ const sendContactFormEmail = async (formData) => {
       `
     };
 
+    console.log('[EMAIL] Sending email to:', mailOptions.to);
+    console.log('[EMAIL] From:', mailOptions.from);
+    
     const result = await transporter.sendMail(mailOptions);
+    console.log('[EMAIL] Email sent successfully:', result);
     return { success: true, messageId: result.messageId };
   } catch (error) {
-    // Email sending failed
-    throw new Error('Failed to send email');
+    console.error('[EMAIL] Error sending email:', error);
+    console.error('[EMAIL] Error details:', {
+      message: error.message,
+      code: error.code,
+      command: error.command,
+      response: error.response
+    });
+    throw new Error(`Failed to send email: ${error.message}`);
   }
 };
 
@@ -192,26 +211,42 @@ export default async function handler(req, res) {
     };
 
     // Store in Supabase
+    console.log('[SUPABASE] Attempting to store submission...');
+    console.log('[SUPABASE] URL:', process.env.VITE_SUPABASE_URL);
+    console.log('[SUPABASE] Has Anon Key:', !!process.env.VITE_SUPABASE_ANON_KEY);
+    
     try {
+      const submissionData = {
+        name: emailData.name,
+        email: emailData.email,
+        project_type: emailData.project_type,
+        project_details: emailData.project_details,
+        message: message || emailData.project_details,
+        recaptcha_token: recaptchaToken
+      };
+      
+      console.log('[SUPABASE] Inserting data:', submissionData);
+      
       const { data, error: supabaseError } = await supabase
         .from('contact_submissions')
-        .insert([{
-          name: emailData.name,
-          email: emailData.email,
-          project_type: emailData.project_type,
-          project_details: emailData.project_details,
-          message: message || emailData.project_details,
-          recaptcha_token: recaptchaToken
-        }])
+        .insert([submissionData])
         .select()
         .single();
 
       if (supabaseError) {
-        console.error('Supabase insert error:', supabaseError);
+        console.error('[SUPABASE] Insert error:', supabaseError);
+        console.error('[SUPABASE] Error details:', {
+          message: supabaseError.message,
+          details: supabaseError.details,
+          hint: supabaseError.hint,
+          code: supabaseError.code
+        });
         // Continue with email even if Supabase fails
+      } else {
+        console.log('[SUPABASE] Successfully stored:', data);
       }
     } catch (dbError) {
-      console.error('Database error:', dbError);
+      console.error('[SUPABASE] Database error:', dbError);
       // Continue with email even if database fails
     }
 
