@@ -36,3 +36,20 @@ dist-ssr
 *.sqlite
 *.sqlite3
 .env*.local
+
+# Scripts with API keys and sensitive data
+scripts/*test*.js
+scripts/*n8n*.js
+scripts/*workflow*.js
+scripts/*theirstack*.js
+scripts/*hunter*.js
+scripts/*beetechy*.js
+scripts/*deploy*.js
+scripts/n8n-tools.mjs
+
+# Test files with credentials
+test-email-locally.js
+api/test-email-config.js
+ADD_TO_VERCEL_ENV.md
+*-api-key*
+*-bearer-token*
