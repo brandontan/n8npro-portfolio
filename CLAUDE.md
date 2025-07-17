@@ -91,7 +91,7 @@ Building a custom live chatbot with both text and voice capabilities to replace 
 
 ### 2. Beetechy Solar Cold Outreach Workflow (Active)
 Building automated B2B lead generation for solar/renewables companies:
-- **Workflow ID**: `XT45UuvPQ2EmaU1N` on app.n8npro.com
+- **Workflow ID**: `XT45UuvPQ2EmaU1N` on app.aiflows.pro
 - **Architecture**: Webhook → TheirStack (hiring signals) → Claude (research) → Hunter.io (contacts) → Instantly.ai (campaigns)
 - **Status**: Workflow structure complete but nodes need configuration
 - **Issues**: 
@@ -161,7 +161,7 @@ Building automated B2B lead generation for solar/renewables companies:
    - **Solution**: Added API credentials to Claude Desktop config:
      ```json
      "env": {
-       "N8N_API_URL": "https://app.n8npro.com/api/v1",
+       "N8N_API_URL": "https://app.aiflows.pro/api/v1",
        "N8N_API_KEY": "your-jwt-token-here"
      }
      ```
@@ -192,7 +192,7 @@ Building automated B2B lead generation for solar/renewables companies:
    - Removed "Choose your industry" from tagline
    - All workflows standardized to blue color
 5. **Contact Section**: 
-   - Contact form fully functional with brandon@n8npro.com
+   - Contact form fully functional with brandon@aiflows.pro
    - Added graceful handling for missing environment variables
    - Gmail SMTP integration working
    - Contact Information section remains hidden until domain confirmed
@@ -204,10 +204,10 @@ Building automated B2B lead generation for solar/renewables companies:
 4. **API Contact Endpoint**: Fixed with proper error handling and email delivery
 
 ### Domain Migration Status:
-- **CURRENT**: Live at n8npro.com
+- **CURRENT**: Live at aiflows.pro
 - **FUTURE**: Domain will be aiflows.pro (not aiflows.help)
 - **STATUS**: Waiting for Google domain confirmation before migration
-- **EMAIL**: Using brandon@n8npro.com until domain migration
+- **EMAIL**: Using brandon@aiflows.pro until domain migration
 
 ## TODO After Domain Confirmation:
 
@@ -219,7 +219,7 @@ Building automated B2B lead generation for solar/renewables companies:
 
 ### 2. **Domain Migration to aiflows.pro**
 - See DOMAIN_MIGRATION_TASKS.md for complete checklist
-- Update all n8npro.com references to aiflows.pro
+- Update all aiflows.pro references to aiflows.pro
 - Configure Vercel with new domain
 - Set up 301 redirects from old domain
 - Unhide Contact Information section in Contact.tsx
@@ -328,7 +328,7 @@ RECAPTCHA_SECRET_KEY (server-side only)
 
 ### Form Handling
 - Contact form uses React Hook Form + Zod validation
-- Email notifications via Gmail SMTP to brandon@n8npro.com (temporary)
+- Email notifications via Gmail SMTP to brandon@aiflows.pro (temporary)
 - ReCAPTCHA v3 protection required
 - Graceful handling when environment variables missing
 
@@ -344,7 +344,7 @@ RECAPTCHA_SECRET_KEY (server-side only)
 3. **Industry Focus**: Professional Services and E-commerce automation
 4. **Fork Sync**: This repo syncs daily with upstream n8n-docs at 2 AM UTC
 5. **Lovable Integration**: Connected to Lovable project for visual editing
-6. **Email Flow**: Contact Form → Gmail SMTP → brandon@n8npro.com (will change to aiflows.pro email after migration)
+6. **Email Flow**: Contact Form → Gmail SMTP → brandon@aiflows.pro (will change to aiflows.pro email after migration)
 7. **Security Headers**: Configured in `vercel.json` for XSS/CSRF protection
 8. **n8n Node Naming**: Always use camelCase for n8n nodes
 9. **Branding**: Site now uses team/plural branding ("We", "AIFlows") instead of individual

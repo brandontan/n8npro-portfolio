@@ -62,7 +62,7 @@ const createTransporter = () => {
   return createTransport({
     service: 'gmail',
     auth: {
-      user: 'brandon@n8npro.com',
+      user: 'brandon@aiflows.pro',
       pass: process.env.GMAIL_APP_PASSWORD
     }
   });
@@ -112,9 +112,9 @@ const sendContactFormEmail = async (formData) => {
     const transporter = createTransporter();
     
     const mailOptions = {
-      from: 'brandon@n8npro.com',
-      to: 'brandon@n8npro.com',
-      subject: `Sales Lead from n8npro.com`,
+      from: 'brandon@aiflows.pro',
+      to: 'brandon@aiflows.pro',
+      subject: `Sales Lead from aiflows.pro`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${escapeHtml(formData.name)}</p>
@@ -122,7 +122,7 @@ const sendContactFormEmail = async (formData) => {
         <p><strong>Project Type:</strong> ${escapeHtml(formData.project_type)}</p>
         <p><strong>Project Details:</strong> ${escapeHtml(formData.project_details)}</p>
         <hr>
-        <p><em>Sent from n8npro.com contact form</em></p>
+        <p><em>Sent from aiflows.pro contact form</em></p>
       `
     };
 
