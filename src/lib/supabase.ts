@@ -3,10 +3,12 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-// Log environment variables (without exposing the full key)
-console.log('Initializing Supabase client...')
-console.log('Supabase URL:', supabaseUrl)
-console.log('Supabase Anon Key exists:', !!supabaseAnonKey)
+// Only log in development mode
+if (import.meta.env.DEV) {
+  console.log('Initializing Supabase client...')
+  console.log('Supabase URL:', supabaseUrl)
+  console.log('Supabase Anon Key exists:', !!supabaseAnonKey)
+}
 
 // Mock client creator
 const createMockClient = () => ({
@@ -45,13 +47,10 @@ if (!supabaseUrl || !supabaseAnonKey) {
     }
   })
 
-  // Test the connection
-  supabase.from('contact_submissions').select('count').limit(1)
-    .then(() => console.log('Supabase client initialized successfully'))
-    .catch(error => {
-      console.error('Failed to initialize Supabase client:', error)
-      // Don't throw error, just log it
-    })
+  // Skip connection test to avoid errors with paused instances
+  if (import.meta.env.DEV) {
+    console.log('Supabase client created (connection test skipped)')
+  }
 }
 
 export { supabase }
