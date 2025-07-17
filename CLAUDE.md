@@ -80,13 +80,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 n8npro-portfolio is a React/TypeScript portfolio website showcasing n8n automation expertise, built with Vite and deployed on Vercel. It features a talent marketplace, workflow gallery, contact form with email notifications, industry expertise sections, and admin panel.
 
-## Current Development: Live AI Assistant
+## Current Development: Multiple Projects
 
-We are building a custom live chatbot with both text and voice capabilities to replace the static chatbot. This will:
+### 1. Live AI Assistant (On Hold)
+Building a custom live chatbot with both text and voice capabilities to replace the static chatbot:
 - Support real-time text chat
 - Enable voice conversations using STT/TTS
 - Integrate with n8n workflows for live automation demos
 - Showcase AI implementation expertise
+
+### 2. Beetechy Solar Cold Outreach Workflow (Active)
+Building automated B2B lead generation for solar/renewables companies:
+- **Workflow ID**: `XT45UuvPQ2EmaU1N` on app.n8npro.com
+- **Architecture**: Webhook → TheirStack (hiring signals) → Claude (research) → Hunter.io (contacts) → Instantly.ai (campaigns)
+- **Status**: Workflow structure complete but nodes need configuration
+- **Issues**: 
+  - TheirStack node has no authentication
+  - 6 nodes need parameter configuration
+  - Need error handling and rate limiting
+- **Target**: Solar companies with 25+ employees showing aggressive hiring (10+ in 6 months)
+- **New Approach**: Created dedicated n8n-design project folder with research-first methodology
+- **Philosophy**: "This prompt + my template knowledge = bulletproof n8n workflows!"
 
 ## Latest Updates (Jan 15, 2025):
 
@@ -141,6 +155,21 @@ We are building a custom live chatbot with both text and voice capabilities to r
      - `scripts/search_templates_directly.sh` - Direct database search tool for testing
      - `ENHANCED_SEARCH_UPGRADE_GUIDE.md` - Full documentation
    - **To Enable**: Update Claude Desktop config to use `run-mcp-enhanced.js` instead of `run-mcp-with-data.js`
+
+7. **n8n Management Tools Access** (Jan 15, 2025):
+   - **Issue**: n8n management tools (create/update/execute workflows) require API configuration
+   - **Solution**: Added API credentials to Claude Desktop config:
+     ```json
+     "env": {
+       "N8N_API_URL": "https://app.n8npro.com/api/v1",
+       "N8N_API_KEY": "your-jwt-token-here"
+     }
+     ```
+   - **Current Status**: API credentials configured but management tools not showing in Claude
+   - **Workaround**: Created standalone scripts for direct API access:
+     - `scripts/n8n-tools.mjs` - Full n8n management capabilities
+     - `scripts/n8n-cli.js` - Lightweight CLI for quick operations
+   - **Note**: Claude Desktop may be slow; use external scripts for better performance
 
 ## Latest Updates (Jan 14, 2025):
 
