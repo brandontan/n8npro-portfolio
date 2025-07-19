@@ -60,7 +60,7 @@ export const Chatbot = () => {
     }
     
     if (message.includes('price') || message.includes('cost') || message.includes('charge')) {
-              return "My pricing is flexible based on project complexity:\n\n• Free 30-min consultation\n• $30/hour for development\n• Custom pricing for complete solutions\n\nI'd be happy to provide a custom quote after understanding your specific needs. Would you like to schedule a consultation?";
+              return "My pricing is flexible based on project complexity:\n\n• Free 30-min consultation\n• $100 USD/hour for development\n• Custom pricing for complete solutions\n\nI'd be happy to provide a custom quote after understanding your specific needs. Would you like to schedule a consultation?";
     }
     
     if (message.includes('portfolio') || message.includes('example') || message.includes('work')) {
