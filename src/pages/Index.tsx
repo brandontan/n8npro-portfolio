@@ -5,8 +5,19 @@ import IndustryAutomationHub from "@/components/IndustryAutomationHub";
 import { Contact } from "@/components/Contact";
 import { ReCaptchaProvider } from "@/components/ReCaptchaProvider";
 import MinimalNavigation from "@/components/MinimalNav";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(() => {
+    // Reset scroll position on component mount
+    window.scrollTo(0, 0);
+    
+    // Clear any hash from URL without triggering navigation
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <MinimalNavigation />
