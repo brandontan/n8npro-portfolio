@@ -1,0 +1,76 @@
+/* TipTap Editor Custom Styles */
+
+/* ProseMirror base styles */
+.ProseMirror {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  outline: none;
+}
+
+/* Center-aligned paragraphs should center their child elements */
+.ProseMirror p[style*="text-align: center"] > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* YouTube videos in centered contexts */
+.ProseMirror [style*="text-align: center"] iframe,
+.ProseMirror [style*="text-align: center"] .youtube-video,
+.ProseMirror [style*="text-align: center"] > div > iframe {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure YouTube wrapper divs respect alignment */
+.ProseMirror div[data-youtube-video] {
+  display: flex;
+  justify-content: inherit;
+}
+
+/* When text-align center is applied to parent */
+.ProseMirror [style*="text-align: center"] div[data-youtube-video] {
+  justify-content: center;
+}
+
+.ProseMirror [style*="text-align: right"] div[data-youtube-video] {
+  justify-content: flex-end;
+}
+
+/* Images in centered contexts */
+.ProseMirror [style*="text-align: center"] img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Remove gray overlay from YouTube videos */
+.ProseMirror .youtube-wrapper {
+  position: relative;
+}
+
+.ProseMirror .youtube-wrapper iframe {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Remove any pseudo-element overlays */
+.ProseMirror .youtube-wrapper::before,
+.ProseMirror .youtube-wrapper::after,
+.ProseMirror iframe::before,
+.ProseMirror iframe::after {
+  display: none !important;
+}
+
+/* Ensure YouTube iframes don't have filters or overlays */
+.ProseMirror iframe {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Remove any dark mode overlay effects */
+.dark .ProseMirror iframe {
+  filter: none !important;
+  opacity: 1 !important;
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Building AI-Powered Automation with n8n",
+  "slug": "ai-powered-automation",
+  "date": "2025-01-20",
+  "excerpt": "Learn how to integrate AI models into your n8n workflows",
+  "tags": ["n8n", "AI", "automation"],
+  "category": "tutorial",
+  "featured_image": "/images/n8n-ai.jpg",
+  "content": "# Building AI-Powered Automation\n\nThis is your first post stored directly in your repository...\n\n## Why Local Content?\n\n- No external dependencies\n- Version controlled with Git\n- Deploy anywhere\n- Full control"
+}

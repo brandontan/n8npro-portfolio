@@ -402,3 +402,65 @@ RECAPTCHA_SECRET_KEY (server-side only)
 - Returns summaries (id, name, truncated description, metadata)
 - Preserves full templates for small result sets (≤25)
 - Falls through to original n8n-mcp for all other calls
+
+## Session Notes - January 20, 2025
+
+### Project: Local Editor Implementation (Ghost → TipTap)
+
+**What We Accomplished Today:**
+1. **Migrated from Ghost-like editor to TipTap** 
+   - User complained about reverse typing issues and inconsistent `/` commands
+   - Implemented modern TipTap editor with full rich text capabilities
+   - Added floating toolbar with all formatting options
+   - YouTube embedding, image uploads, task lists all working
+
+2. **Added Preview Mode**
+   - Toggle between Edit/Preview with button at bottom center
+   - Shows exactly how post will look when published
+   - Fixed UX issues with button placement (moved from top-right to bottom-center)
+   - Adjusted spacing to reduce gaps
+
+3. **Discovered Critical Storage Issue**
+   - Images stored as base64 in database (BAD!)
+   - Will quickly exceed 500MB free tier limit
+   - Each image is 33% larger due to base64 encoding
+   - Created detailed analysis in `SUPABASE_STORAGE_ANALYSIS.md`
+
+**Critical Issues to Fix Tomorrow:**
+1. **Run Activities Table Migration** (URGENT)
+   - Migration file created: `supabase/migrations/20250120_create_activities_table.sql`
+   - Posts failing to save because table doesn't exist
+   - Instructions in `run-migrations.md`
+
+2. **Fix Image Storage** (CRITICAL)
+   - Current: Base64 images stored in database
+   - Needed: Upload to Supabase Storage or external CDN
+   - Risk: Could hit database limits with just 20-30 posts
+   - Options: Supabase Storage (1GB free), Cloudinary (25GB free), or URL-only
+
+**Files Created/Modified:**
+- `/src/components/TipTapEditor.tsx` - Full TipTap implementation
+- `/src/components/GhostLikeEditor.tsx` - Deprecated, had reverse typing issues
+- `/src/pages/LocalGhostEditor.tsx` - Updated to use TipTap
+- `/supabase/migrations/20250120_create_activities_table.sql` - Activities table schema
+- `/run-migrations.md` - Migration instructions
+- `/SUPABASE_STORAGE_ANALYSIS.md` - Storage analysis and recommendations
+
+**User Preferences Discovered:**
+- Wants preview mode easily accessible (bottom center)
+- No markdown - pure visual editing only
+- Prefers prebuilt components over custom implementations
+- Very concerned about storage costs and limits
+- Wants things to "just work" without complex setup
+
+**Next Session Priority:**
+1. Run the activities table migration first
+2. Implement proper image storage solution (probably Supabase Storage)
+3. Test full posting workflow
+4. Consider migrating existing Ghost content
+
+**Technical Context:**
+- Editor: TipTap v3 (replaced custom Ghost-like editor)
+- Dark mode: Always enabled in editor
+- Storage: Supabase (need to use Storage buckets, not database)
+- Current risk: High - image storage will exceed limits quickly

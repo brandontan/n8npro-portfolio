@@ -1,0 +1,17 @@
+# Ghost content directory
+content/data/*.db
+content/data/*.db-*
+content/logs/
+content/images/
+content/media/
+content/files/
+content/adapters/storage/
+content/public/
+
+# Keep these
+!content/themes/
+!content/settings/
+
+# Environment
+.env
+*.log

@@ -1,0 +1,58 @@
+/* Ghost Content Style Overrides */
+
+/* Ghost Toggle/Accordion Cards */
+.kg-toggle-card {
+  @apply border border-gray-700 rounded-lg mb-4 overflow-hidden;
+}
+
+.kg-toggle-heading {
+  @apply cursor-pointer p-4 flex items-center justify-between hover:bg-gray-800/50 transition-colors;
+}
+
+.kg-toggle-heading-text {
+  @apply text-gray-200 font-medium;
+}
+
+.kg-toggle-content {
+  @apply px-4 pb-4;
+}
+
+.kg-toggle-card .kg-toggle-content-inner {
+  @apply text-gray-400;
+}
+
+/* Override Ghost's default button/link styles in content */
+.prose a {
+  @apply text-blue-400 hover:text-blue-300 no-underline hover:underline;
+}
+
+/* Override any Ghost buttons */
+.prose .kg-btn,
+.prose .gh-btn,
+.prose button {
+  @apply bg-transparent border border-gray-600 text-gray-300 hover:border-gray-400 hover:text-white;
+  background: none !important;
+}
+
+/* Override Ghost card styles */
+.prose .kg-card {
+  @apply bg-gray-900/50 border border-gray-800;
+}
+
+/* Ghost bookmark cards */
+.prose .kg-bookmark-card {
+  @apply bg-gray-900/50 border border-gray-800;
+}
+
+/* Ghost gallery */
+.prose .kg-gallery-card {
+  @apply bg-transparent;
+}
+
+/* Remove any white backgrounds from Ghost content */
+.prose [style*="background: white"],
+.prose [style*="background-color: white"],
+.prose [style*="background:#fff"],
+.prose [style*="background-color:#fff"] {
+  background: transparent !important;
+}
