@@ -54,7 +54,14 @@ export async function getPosts(limit: number = 10): Promise<GhostPost[]> {
         order: 'published_at DESC'
       });
     console.log('Fetched posts:', posts);
-    return posts as unknown as GhostPost[];
+    
+    // Filter out the phantom post
+    const filteredPosts = posts.filter(post => 
+      post.title !== 'Coming soonmnbm' && 
+      !post.title.includes('Coming soonmnbm')
+    );
+    
+    return filteredPosts as unknown as GhostPost[];
   } catch (error) {
     console.error('Error fetching posts:', error);
     console.error('Falling back to demo posts');

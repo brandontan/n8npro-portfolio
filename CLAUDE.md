@@ -356,6 +356,7 @@ RECAPTCHA_SECRET_KEY (server-side only)
 8. **n8n Node Naming**: Always use camelCase for n8n nodes
 9. **Branding**: Site now uses team/plural branding ("We", "AIFlows") instead of individual
 10. **11 Labs Widget**: Integration ready but postponed until domain migration completes
+11. **DEPLOYMENT POLICY**: NEVER deploy to production (`vercel --prod`) without explicit human approval. Always ask for permission before making any changes live on the public website.
 
 ## Technical Notes for Self-Knowledge
 
@@ -402,6 +403,23 @@ RECAPTCHA_SECRET_KEY (server-side only)
 - Returns summaries (id, name, truncated description, metadata)
 - Preserves full templates for small result sets (≤25)
 - Falls through to original n8n-mcp for all other calls
+
+## Session Notes - January 25, 2025
+
+### Activities Section Removal
+**What We Did:**
+- Removed unauthorized Activities section from live site
+- Removed ModernActivities component from Index page
+- Removed Activities navigation link
+- Removed public routes to /blog and /activities/:slug
+- Kept protected admin routes for internal use only
+- Added DEPLOYMENT POLICY to Important Notes section
+
+**Key Learning:**
+- User requires explicit approval before any production deployments
+- Always verify what's being deployed before running `vercel --prod`
+
+---
 
 ## Session Notes - January 20, 2025
 
@@ -464,3 +482,86 @@ RECAPTCHA_SECRET_KEY (server-side only)
 - Dark mode: Always enabled in editor
 - Storage: Supabase (need to use Storage buckets, not database)
 - Current risk: High - image storage will exceed limits quickly
+
+---
+
+## Session Notes - January 25, 2025
+
+### Project Status: AISFlows.pro Portfolio Website
+
+**What Happened Today:**
+1. **Fixed 3-Part Tagging System**
+   - Added `industry_tags` column to database (SQL migration completed)
+   - Fixed legacy `category` field constraint issue
+   - Activities now save properly with Format/Categories/Industry tags
+   - Updated Activities component to display all 3 tag types with color coding:
+     - Purple badges = Format tags
+     - Blue badges = Category tags  
+     - Green badges = Industry tags
+
+2. **Linear Integration Setup**
+   - Created Linear workspace for project tracking
+   - Project renamed from "n8npro Portfolio Website" → "AISFlows.pro"
+   - 5 core issues tracked (light project management approach)
+   - Created helper scripts in `/proj_mgt/linear-scripts/`:
+     - `aiflows-linear-assistant.js` - Morning/night routines, reports
+     - `quick-update.js` - Mark issues as started/done
+     - `log-work.js` - Quick status checks
+
+3. **Supabase Storage Implementation**
+   - Removed base64 image storage (was killing DB limits)
+   - Implemented Supabase Storage with 'activities' bucket
+   - Created migration script for existing base64 images
+   - TipTapEditor now uploads to Storage instead of base64
+
+**Current State:**
+- ✅ Blog editor fully functional with 3-tag system
+- ✅ Linear tracking active (minimal overhead)
+- ✅ Image storage solution implemented (1GB free tier)
+- ❌ Contact form still broken (emails not arriving)
+- ❌ Timestamp tracking columns need implementation
+
+**What Needs Fixing (High Level):**
+
+### 🔴 URGENT Issues:
+1. **Contact Form** (Linear: AIS-6)
+   - Emails show success but don't arrive at brandon@aiflows.pro
+   - Check Gmail SMTP config
+   - May need to switch email provider
+
+2. **Timestamp Tracking** (Linear: AIS-7)
+   - SQL already created, needs to run:
+   ```sql
+   ALTER TABLE activities 
+   ADD COLUMN last_saved_at TIMESTAMP WITH TIME ZONE,
+   ADD COLUMN save_count INTEGER DEFAULT 0,
+   ADD COLUMN published_at TIMESTAMP WITH TIME ZONE,
+   ADD COLUMN publish_count INTEGER DEFAULT 0;
+   ```
+   - Then update activities.ts to track saves/publishes
+
+### 🟡 Normal Priority:
+3. **Editor UI Updates** (Linear: AIS-8)
+   - Show "Saved X times, last saved at Y (UTC+8)"
+   - Display publish timestamp when applicable
+
+**Linear Commands for Next Session:**
+```bash
+# Check status
+node /Users/brtan/Projects/n8npro-portfolio/proj_mgt/linear-scripts/log-work.js status
+
+# Morning routine
+node /Users/brtan/Projects/n8npro-portfolio/proj_mgt/linear-scripts/aiflows-linear-assistant.js morning
+
+# Quick updates
+node /Users/brtan/Projects/n8npro-portfolio/proj_mgt/linear-scripts/quick-update.js start AIS-6
+node /Users/brtan/Projects/n8npro-portfolio/proj_mgt/linear-scripts/quick-update.js done AIS-6 "Fixed"
+```
+
+**Instructions for Next Claude:**
+1. Start with Linear morning status to see current priorities
+2. Focus on contact form fix first (critical for business)
+3. Storage bucket needs to be created in Supabase dashboard (SQL in `/supabase/migrations/20250125_create_storage_bucket.sql`)
+4. After bucket creation, run migration: `node migrate-base64-images.mjs`
+5. Keep using Linear for lightweight tracking - don't overcomplicate
+6. REMEMBER: No production deployments without explicit approval!

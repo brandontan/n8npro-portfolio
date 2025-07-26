@@ -3,7 +3,7 @@ import { ReactNodeViewRenderer, NodeViewWrapper } from '@tiptap/react';
 import { NodeViewProps } from '@tiptap/react';
 
 // Custom YouTube component that respects alignment
-const YoutubeComponent = ({ node }: NodeViewProps) => {
+const YoutubeComponent = ({ node, selected }: NodeViewProps) => {
   const { src, width = 640, height = 480, align = 'left' } = node.attrs;
   
   const alignmentClasses = {
@@ -20,14 +20,24 @@ const YoutubeComponent = ({ node }: NodeViewProps) => {
   
   return (
     <NodeViewWrapper className="youtube-wrapper" style={wrapperStyles[align as keyof typeof wrapperStyles]}>
-      <iframe
-        src={src}
-        width={width}
-        height={height}
-        className={`rounded-lg overflow-hidden my-4 ${alignmentClasses[align as keyof typeof alignmentClasses]}`}
-        frameBorder="0"
-        allowFullScreen
-      />
+      <div className="relative inline-block">
+        <iframe
+          src={src}
+          width={width}
+          height={height}
+          className={`rounded-lg overflow-hidden my-4 ${alignmentClasses[align as keyof typeof alignmentClasses]}`}
+          frameBorder="0"
+          allowFullScreen
+        />
+        {/* Overlay to prevent iframe interaction when editing */}
+        <div 
+          className="absolute inset-0 bg-transparent cursor-pointer"
+          style={{ display: selected ? 'none' : 'block' }}
+        />
+        {selected && (
+          <div className="absolute inset-0 border-3 border-purple-500 pointer-events-none rounded-lg" />
+        )}
+      </div>
     </NodeViewWrapper>
   );
 };

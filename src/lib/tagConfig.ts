@@ -44,7 +44,7 @@ export const formatTags = {
     textClass: 'text-pink-500',
     borderClass: 'border-pink-500/20',
     icon: Award,
-    description: 'Industry best practices'
+    description: 'Best practices and proven approaches'
   },
   'review': {
     label: 'Review',
@@ -75,7 +75,7 @@ export const formatTags = {
   }
 };
 
-// Popular n8n automation categories based on n8n blog and community
+// Technical and functional categories
 export const categoryTags = [
   // Core n8n Features
   'n8n Workflows',
@@ -110,6 +110,11 @@ export const categoryTags = [
   'Finance Automation',
   'Customer Support',
   'Data Processing',
+  'Appointment Booking',
+  'Patient Management',
+  'Inventory Management',
+  'Lead Generation',
+  'Client Onboarding',
   
   // Technical Topics
   'REST API',
@@ -120,14 +125,6 @@ export const categoryTags = [
   'Scheduling',
   'Monitoring',
   
-  // Industry Specific
-  'E-commerce',
-  'SaaS',
-  'Healthcare',
-  'Education',
-  'Real Estate',
-  'Manufacturing',
-  
   // Open Source & Tools
   'Open-Source Tools',
   'Self-Hosting',
@@ -136,4 +133,26 @@ export const categoryTags = [
   'Performance',
   'Debugging',
   'Testing'
+];
+
+// Industry-specific tags
+export const industryTags = [
+  'E-commerce',
+  'Healthcare',
+  'Medical Practices',
+  'Legal Services',
+  'Professional Services',
+  'Financial Services',
+  'Real Estate',
+  'Manufacturing',
+  'Education',
+  'SaaS',
+  'Consulting',
+  'Digital Agencies',
+  'Retail',
+  'Hospitality',
+  'Non-Profit',
+  'Government',
+  'Insurance',
+  'Logistics'
 ];

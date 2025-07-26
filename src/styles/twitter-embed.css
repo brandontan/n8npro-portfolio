@@ -1,0 +1,52 @@
+/* Twitter embed styles for react-tweet */
+.twitter-node-view {
+  margin: 1rem 0;
+}
+
+.twitter-embed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+/* Center alignment for Twitter embeds in paragraphs */
+.ProseMirror p[style*="text-align: center"] .twitter-node-view {
+  text-align: center;
+}
+
+.ProseMirror p[style*="text-align: right"] .twitter-node-view {
+  text-align: right;
+}
+
+.ProseMirror p[style*="text-align: left"] .twitter-node-view {
+  text-align: left;
+}
+
+/* Loading state for tweets */
+.twitter-embed [data-tweet-id] {
+  position: relative;
+}
+
+/* Override react-tweet default styles for dark mode */
+.twitter-embed [data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Ensure tweet embeds are not editable */
+.twitter-node-view {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Selected state */
+.ProseMirror .twitter-node-view.ProseMirror-selectednode {
+  outline: 3px solid #8b5cf6;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Hide placeholder in activities/saved view */
+.prose .twitter-embed-placeholder.hidden {
+  display: none !important;
+}

@@ -1,0 +1,143 @@
+/* Image alignment styles for TipTap editor */
+.ProseMirror img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+/* Selected media elements */
+.ProseMirror img.ProseMirror-selectednode,
+.ProseMirror .youtube-wrapper.ProseMirror-selectednode {
+  outline: 3px solid #8b5cf6;
+  outline-offset: 2px;
+}
+
+/* Alignment for images wrapped in paragraphs */
+.ProseMirror p[style*="text-align: left"] img {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.ProseMirror p[style*="text-align: center"] img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ProseMirror p[style*="text-align: right"] img {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Direct image alignment when not in paragraph */
+.ProseMirror img.align-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.ProseMirror img.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ProseMirror img.align-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* YouTube video alignment */
+.ProseMirror .youtube-wrapper[style*="text-align: center"],
+.ProseMirror div[style*="text-align: center"] .youtube-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.ProseMirror .youtube-wrapper[style*="text-align: right"],
+.ProseMirror div[style*="text-align: right"] .youtube-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ProseMirror .youtube-wrapper[style*="text-align: left"],
+.ProseMirror div[style*="text-align: left"] .youtube-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Twitter embed styles */
+.ProseMirror .twitter-embed-container {
+  margin: 1.5rem 0;
+  display: inline-block;
+}
+
+/* Inline Twitter embeds */
+.ProseMirror .twitter-embed-inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Block Twitter embeds */
+.ProseMirror .twitter-embed-block {
+  display: block;
+  margin: 1rem auto;
+}
+
+/* Twitter embed wrapper */
+.ProseMirror .twitter-embed-wrapper {
+  display: inline-block;
+  margin: 0.5rem 0;
+}
+
+/* Center alignment for paragraphs containing twitter embeds */
+.ProseMirror p[style*="text-align: center"] .twitter-embed-block,
+.ProseMirror p[style*="text-align: center"] .twitter-embed-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Alignment for Twitter embeds */
+.ProseMirror p[style*="text-align: left"] .twitter-embed-container,
+.ProseMirror .text-left .twitter-embed-container {
+  display: inline-block;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.ProseMirror p[style*="text-align: center"] .twitter-embed-container,
+.ProseMirror .text-center .twitter-embed-container {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ProseMirror p[style*="text-align: right"] .twitter-embed-container,
+.ProseMirror .text-right .twitter-embed-container {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Center alignment for paragraphs with Twitter embeds */
+.ProseMirror p[style*="text-align: center"] {
+  text-align: center;
+}
+
+.ProseMirror p[style*="text-align: right"] {
+  text-align: right;
+}
+
+.ProseMirror p[style*="text-align: justify"] {
+  text-align: justify;
+}
+
+.ProseMirror .twitter-embed-container iframe {
+  max-width: 550px !important;
+  width: 100% !important;
+}
+
+/* Ensure Twitter embeds are not editable */
+.ProseMirror .twitter-embed-container[contenteditable="false"] {
+  user-select: none;
+  -webkit-user-select: none;
+}

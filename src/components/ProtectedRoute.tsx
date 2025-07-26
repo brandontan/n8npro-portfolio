@@ -197,21 +197,6 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
             </Button>
           </form>
           
-          <div className="mt-6 flex items-start gap-2 p-3 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-            <Shield className="h-4 w-4 text-purple-500 mt-0.5 flex-shrink-0" />
-            <div className="text-xs text-purple-400">
-              <p className="font-medium">Passwordless Authentication</p>
-              <p>Secure login via email link - no passwords required</p>
-            </div>
-          </div>
-          
-          <div className="mt-4 flex items-start gap-2 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
-            <AlertTriangle className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
-            <div className="text-xs text-red-400">
-              <p className="font-medium">Authorized Access Only</p>
-              <p>Only the admin email can receive magic links</p>
-            </div>
-          </div>
         </CardContent>
       </Card>
     </div>

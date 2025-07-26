@@ -57,3 +57,33 @@ ADD_TO_VERCEL_ENV.md
 # Sensitive files folder - NEVER COMMIT
 key_folder/
 /key_folder/
+
+# Linear scripts with exposed API keys
+proj_mgt/linear-scripts/
+/proj_mgt/
+
+# Test files that might contain secrets
+test-*.mjs
+test-*.js
+*test*.mjs
+debug-*.mjs
+setup-*.mjs
+seed-*.mjs
+migrate-*.mjs
+check-*.mjs
+run-*.mjs
+verify-*.mjs
+playwright-*.mjs
+
+# SQL files that might contain sensitive data
+*.sql
+
+# Screenshots and images that might contain sensitive info
+*.png
+*.jpg
+*.jpeg
+
+# Documentation that might contain sensitive info
+BULK_DELETE_DEBUG_STATUS.md
+TESTING_TASKS.md
+manual-test-guide.md

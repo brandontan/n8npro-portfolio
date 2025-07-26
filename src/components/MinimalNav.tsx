@@ -8,12 +8,20 @@ interface NavItem {
   href: string
 }
 
-const navItems: NavItem[] = [
+const baseNavItems: NavItem[] = [
   { id: 'hero', label: 'Home', href: '#hero' },
   { id: 'about', label: 'About', href: '#about' },
   { id: 'skills', label: 'Skills', href: '#skills' },
-  { id: 'activities', label: 'Activities', href: '#activities' },
   { id: 'industry', label: 'Solutions', href: '#industry' },
+]
+
+// Add activities only in development
+const devNavItems: NavItem[] = import.meta.env.DEV 
+  ? [...baseNavItems, { id: 'activities', label: 'Activities', href: '#activities' }]
+  : baseNavItems;
+
+const navItems: NavItem[] = [
+  ...devNavItems,
   { id: 'contact', label: 'Contact', href: '#contact' },
 ]
 

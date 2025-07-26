@@ -1,11 +1,11 @@
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
-import ModernActivities from "@/components/ModernActivities";
 import IndustryAutomationHub from "@/components/IndustryAutomationHub";
 import { Contact } from "@/components/Contact";
 import { ReCaptchaProvider } from "@/components/ReCaptchaProvider";
 import MinimalNavigation from "@/components/MinimalNav";
+import Activities from "@/components/Activities";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -13,19 +13,12 @@ const Index = () => {
   const location = useLocation();
   
   useEffect(() => {
-    // Check if we have a hash in the URL
-    if (window.location.hash === '#activities') {
-      // Wait for the page to render then scroll to activities
-      setTimeout(() => {
-        const activitiesSection = document.getElementById('activities');
-        if (activitiesSection) {
-          activitiesSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      // Normal behavior - scroll to top
-      window.scrollTo(0, 0);
-    }
+    // Normal behavior - scroll to top
+    window.scrollTo(0, 0);
+    
+    // Debug: Check if we're in dev mode
+    console.log('Is development mode:', import.meta.env.DEV);
+    console.log('Environment:', import.meta.env.MODE);
   }, [location]);
 
   return (
@@ -40,12 +33,15 @@ const Index = () => {
       <section id="skills">
         <Skills />
       </section>
-      <section id="activities">
-        <ModernActivities />
-      </section>
       <section id="industry">
         <IndustryAutomationHub />
       </section>
+      {/* Show activities section only in development */}
+      {import.meta.env.DEV && (
+        <section id="activities">
+          <Activities />
+        </section>
+      )}
       <section id="contact">
         <ReCaptchaProvider>
           <Contact />
