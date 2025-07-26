@@ -404,6 +404,36 @@ RECAPTCHA_SECRET_KEY (server-side only)
 - Preserves full templates for small result sets (≤25)
 - Falls through to original n8n-mcp for all other calls
 
+## Session Notes - January 26, 2025
+
+### Twitter/X Embed Double Display Fix
+**What We Did:**
+- Fixed critical issue where Twitter/X embeds were showing twice in posts
+- Root cause: Both editor NodeView and RenderContent were creating tweet widgets
+- Implemented data-processed markers to prevent duplicate rendering
+- Improved Twitter widget script loading to handle race conditions
+- Fixed alignment issues (tweets now properly centered)
+
+**Technical Solution:**
+1. **TwitterEmbedScript.tsx**: Added `data-tweet-processed` attribute to track rendered tweets
+2. **RenderContent.tsx**: Added `data-processed` check before rendering placeholders
+3. **Script Loading**: Both components now check for existing script to avoid duplicates
+4. **TwitterExtension.tsx**: Simplified renderHTML to only output placeholder divs
+
+**Files Modified:**
+- `/src/components/editor/TwitterEmbedScript.tsx` - Prevent double rendering
+- `/src/components/editor/TwitterExtension.tsx` - Simplified HTML output
+- `/src/components/RenderContent.tsx` - Added processing markers
+- `/src/components/TipTapEditor.tsx` - Removed debug logs
+
+**Current State:**
+- ✅ Twitter embeds display only once
+- ✅ Properly centered alignment
+- ✅ Works in both edit and preview modes
+- ✅ No console errors or warnings
+
+---
+
 ## Session Notes - January 25, 2025
 
 ### Activities Section Removal
