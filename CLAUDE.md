@@ -427,10 +427,31 @@ RECAPTCHA_SECRET_KEY (server-side only)
 - `/src/components/TipTapEditor.tsx` - Removed debug logs
 
 **Current State:**
-- ✅ Twitter embeds display only once
-- ✅ Properly centered alignment
-- ✅ Works in both edit and preview modes
-- ✅ No console errors or warnings
+- ❌ Twitter embeds STILL showing twice (user confirmed not fixed)
+- ❌ Alignment issues - tweets appearing left-aligned
+- ⚠️ Solution attempted but needs different approach
+
+**What Next Claude Needs to Do:**
+1. **Debug the actual issue** - The processing markers didn't solve it
+2. **Root cause**: When pasting a Twitter URL in the editor popup, it creates TWO tweets
+3. **Likely issue**: Both the editor (via TwitterNodeView) and preview (via RenderContent) are rendering
+4. **Better solution needed**: 
+   - Option 1: Make TwitterNodeView NOT render in preview mode
+   - Option 2: Make RenderContent skip placeholders that are already rendered by editor
+   - Option 3: Completely separate editor rendering from saved/preview rendering
+
+**Test Steps:**
+1. Start dev server: `npm run dev`
+2. Go to `/editor`
+3. Click Twitter button in toolbar
+4. Paste: `https://x.com/p_d_d_t/status/1948696920046702792`
+5. Switch to Preview mode
+6. Should see ONE tweet, but currently shows TWO
+
+**Files to Focus On:**
+- `/src/components/editor/TwitterExtension.tsx` - How editor renders tweets
+- `/src/components/RenderContent.tsx` - How saved content renders tweets
+- `/src/components/TipTapEditor.tsx` - Preview mode logic
 
 ---
 
