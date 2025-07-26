@@ -61,13 +61,10 @@ interface TipTapEditorProps {
 
 // Preview component that uses RenderContent for consistency
 const PreviewContent = ({ editor }: { editor: any }) => {
-  const html = editor.getHTML();
-  console.log('Editor HTML for preview:', html);
-  
   return (
     <div className="min-h-[400px] py-4 bg-white dark:bg-gray-950 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800">
       <RenderContent 
-        content={html} 
+        content={editor.getHTML()} 
         className="prose prose-lg dark:prose-invert max-w-none px-8"
       />
     </div>
