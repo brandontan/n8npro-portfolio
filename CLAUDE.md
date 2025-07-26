@@ -616,3 +616,19 @@ node /Users/brtan/Projects/n8npro-portfolio/proj_mgt/linear-scripts/quick-update
 4. After bucket creation, run migration: `node migrate-base64-images.mjs`
 5. Keep using Linear for lightweight tracking - don't overcomplicate
 6. REMEMBER: No production deployments without explicit approval!
+
+---
+
+## Session Notes - January 26, 2025 (Additional)
+
+### Save Button UX Enhancement Request
+**User Request**: 
+- When draft is saved, button should change to "SAVED" 
+- When user starts editing again, button should revert back to "Save Draft"
+- This provides clear feedback about save status
+
+**Implementation Notes**:
+- Need to track editor changes after save
+- Use TipTap's `onUpdate` callback to detect edits
+- Reset button text when any edit is made
+- Current button always shows "Save Draft" regardless of state
