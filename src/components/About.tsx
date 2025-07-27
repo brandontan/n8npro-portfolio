@@ -16,7 +16,7 @@ export const About = () => {
             <div>
               <Badge variant="outline" className="glass-card mb-4 px-4 py-2">About</Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                We are AI Automation Engineers
+                Save Cost. Save Time. Grow Revenue.
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p className="text-primary font-medium text-lg mb-4">
