@@ -36,7 +36,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
       if (error) {
         console.error('Auth check error:', error);
         setIsAuthenticated(false);
-      } else if (session?.user?.email === ADMIN_EMAIL) {
+      } else if (ADMIN_EMAIL && session?.user?.email === ADMIN_EMAIL) {
         setIsAuthenticated(true);
       } else if (session) {
         // Logged in but not admin - sign them out
@@ -58,12 +58,19 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     try {
       // Normalize emails for comparison (trim and lowercase)
       const normalizedEmail = email.trim().toLowerCase();
-      const normalizedAdminEmail = ADMIN_EMAIL.trim().toLowerCase();
+      const normalizedAdminEmail = ADMIN_EMAIL?.trim().toLowerCase() || '';
       
       // Debug info (remove in production)
       // console.log('Entered email:', normalizedEmail);
       // console.log('Expected email:', normalizedAdminEmail);
       
+      // If no admin email is set, deny all access
+      if (!ADMIN_EMAIL) {
+        toast.error('Admin email not configured - access denied');
+        setSendingLink(false);
+        return;
+      }
+
       // Only allow the admin email
       if (normalizedEmail !== normalizedAdminEmail) {
         toast.error('Access denied - unauthorized email');

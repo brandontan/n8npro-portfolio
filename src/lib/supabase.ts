@@ -17,7 +17,13 @@ const createMockClient = () => ({
     insert: () => ({
       select: () => Promise.resolve({ data: [{ id: 'mock-id' }], error: null })
     })
-  })
+  }),
+  auth: {
+    getSession: () => Promise.resolve({ data: { session: null }, error: null }),
+    signInWithOtp: () => Promise.resolve({ data: null, error: { message: 'Mock client - no auth available' } }),
+    signOut: () => Promise.resolve({ error: null }),
+    onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } } })
+  }
 })
 
 // Create a mock client if environment variables are missing (for testing)
