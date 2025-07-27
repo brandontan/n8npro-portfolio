@@ -13,6 +13,7 @@ import TestPuck from "./pages/TestPuck";
 import GrapesActivitiesAdmin from "./pages/GrapesActivitiesAdmin";
 import LocalGhostEditor from "./pages/LocalGhostEditor";
 import PostManager from "./pages/PostManager";
+import ActivityDetail from "./pages/ActivityDetail";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -49,6 +50,7 @@ const App = () => (
               <PostManager />
             </ProtectedRoute>
           } />
+          <Route path="/activities/:slug" element={<ActivityDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
