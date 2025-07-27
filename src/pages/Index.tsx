@@ -36,12 +36,9 @@ const Index = () => {
       <section id="industry">
         <IndustryAutomationHub />
       </section>
-      {/* Show activities section only in development */}
-      {import.meta.env.DEV && (
-        <section id="activities">
-          <Activities />
-        </section>
-      )}
+      <section id="activities">
+        <Activities />
+      </section>
       <section id="contact">
         <ReCaptchaProvider>
           <Contact />
