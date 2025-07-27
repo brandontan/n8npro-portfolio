@@ -1,7 +1,7 @@
 import { Node, mergeAttributes } from '@tiptap/core';
 import { ReactNodeViewRenderer } from '@tiptap/react';
 import { NodeViewWrapper } from '@tiptap/react';
-import { TwitterEmbedScript } from './TwitterEmbedScript';
+import { Tweet } from 'react-tweet';
 
 // Twitter Node View Component
 const TwitterNodeView = ({ node }: { node: any }) => {
@@ -22,9 +22,12 @@ const TwitterNodeView = ({ node }: { node: any }) => {
   
   const tweetIdStr = String(tweetId); // Ensure it's a string
   
+  // Use react-tweet component for full Twitter styling
   return (
-    <NodeViewWrapper className="twitter-node-view">
-      <TwitterEmbedScript tweetId={tweetIdStr} />
+    <NodeViewWrapper className="twitter-node-view" contentEditable={false}>
+      <div className="my-4 flex justify-center">
+        <Tweet id={tweetIdStr} />
+      </div>
     </NodeViewWrapper>
   );
 };
@@ -41,6 +44,13 @@ export const TwitterExtension = Node.create({
     return {
       tweetId: {
         default: null,
+        // Ensure the tweetId is always stored as a string
+        parseHTML: element => String(element.getAttribute('data-tweet-id') || ''),
+        renderHTML: attributes => {
+          return {
+            'data-tweet-id': String(attributes.tweetId),
+          };
+        },
       },
     };
   },
@@ -58,12 +68,15 @@ export const TwitterExtension = Node.create({
 
   renderHTML({ HTMLAttributes, node }) {
     // Render a placeholder that will be found and replaced by RenderContent
+    // DO NOT render the actual tweet here to avoid duplicates
     return [
       'div',
       mergeAttributes(HTMLAttributes, {
         'data-twitter-embed': '',
-        'data-tweet-id': node.attrs.tweetId,
+        'data-tweet-id': String(node.attrs.tweetId), // Ensure it's a string
         class: 'twitter-embed-placeholder',
+        // Add marker to prevent double processing
+        'data-render-only': 'true'
       }),
     ];
   },

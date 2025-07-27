@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitter Debug</title>
+  <script>
+    // Override console.log to display on page
+    const logs = [];
+    const originalLog = console.log;
+    console.log = function(...args) {
+      originalLog.apply(console, args);
+      const msg = args.join(' ');
+      if (msg.includes('[Twitter')) {
+        logs.push(msg);
+        updateLogs();
+      }
+    };
+    
+    function updateLogs() {
+      const logsDiv = document.getElementById('logs');
+      if (logsDiv) {
+        logsDiv.innerHTML = '<h3>Console Logs:</h3><pre>' + logs.join('\n') + '</pre>';
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Twitter Embed Debug Test</h2>
+  <ol>
+    <li>Open browser developer console (F12)</li>
+    <li>Go to <a href="http://localhost:3000/editor" target="_blank">http://localhost:3000/editor</a></li>
+    <li>Click the Twitter/X button in the editor toolbar</li>
+    <li>Paste this URL: <code>https://x.com/p_d_d_t/status/1948696920046702792</code></li>
+    <li>Check console for debug messages</li>
+    <li>Count how many Twitter embeds appear</li>
+  </ol>
+  
+  <div id="logs" style="background: #f0f0f0; padding: 10px; margin-top: 20px;">
+    <h3>Console Logs:</h3>
+    <pre>Waiting for logs...</pre>
+  </div>
+</body>
+</html>

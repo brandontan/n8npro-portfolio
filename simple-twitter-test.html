@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Embed Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        iframe { border: 2px solid red !important; }
+        .twitter-editor-placeholder { border: 2px solid blue !important; }
+        .twitter-embed-container { border: 2px solid green !important; }
+    </style>
+</head>
+<body>
+    <h1>Manual Twitter Embed Test</h1>
+    
+    <h2>Steps to Test:</h2>
+    <ol>
+        <li>Open Developer Console (F12)</li>
+        <li>Go to <a href="http://localhost:3000/editor" target="_blank">Editor Page</a></li>
+        <li>Click the Twitter/X button</li>
+        <li>Paste: <code>https://x.com/p_d_d_t/status/1948696920046702792</code></li>
+        <li>Look for these colored borders:
+            <ul>
+                <li>🟦 Blue border = Editor placeholder (should see 1)</li>
+                <li>🟩 Green border = Twitter container (should see 0 in editor)</li>
+                <li>🟥 Red border = Twitter iframe (should see 0 in editor)</li>
+            </ul>
+        </li>
+        <li>Click "Preview Post"</li>
+        <li>In preview, you should see:
+            <ul>
+                <li>🟥 Red border = Twitter iframe (should see 1)</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h2>Quick Console Test:</h2>
+    <p>Paste this in the console to count elements:</p>
+    <pre>
+console.log({
+  placeholders: document.querySelectorAll('.twitter-editor-placeholder').length,
+  containers: document.querySelectorAll('.twitter-embed-container').length,
+  iframes: document.querySelectorAll('iframe[id^="twitter-widget"]').length,
+  nodeViews: document.querySelectorAll('.twitter-node-view').length
+});
+    </pre>
+</body>
+</html>

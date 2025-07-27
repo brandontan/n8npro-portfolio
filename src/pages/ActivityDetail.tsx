@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, Tag, Share2, Loader2 } from 'lucide-react';
 import { getActivities, type Activity } from '@/lib/activities';
 import { toast } from 'sonner';
+import { RenderContent } from '@/components/RenderContent';
 
 export default function ActivityDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -151,9 +152,9 @@ export default function ActivityDetail() {
           </header>
 
           {/* Content */}
-          <div 
+          <RenderContent 
+            content={activity.content}
             className="prose prose-lg prose-gray dark:prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ __html: activity.content }}
           />
         </motion.article>
 

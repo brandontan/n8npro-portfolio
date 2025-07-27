@@ -339,7 +339,16 @@ export default function TipTapEditor({ onSave }: TipTapEditorProps) {
       // Extract tweet ID from URL
       const match = url.match(/(?:twitter\.com|x\.com)\/\w+\/status\/(\d+)/);
       if (match) {
-        const tweetId = match[1];
+        // Explicitly keep as string to avoid precision issues with large numbers
+        const tweetId = String(match[1]);
+        console.log('Extracted tweet ID as string:', tweetId);
+        
+        // Check if this tweet is already in the editor
+        const content = editor.getHTML();
+        if (content.includes(`data-tweet-id="${tweetId}"`)) {
+          toast.error('This tweet is already embedded');
+          return;
+        }
         
         // Use the custom Twitter extension command
         editor.chain()
@@ -497,7 +506,7 @@ export default function TipTapEditor({ onSave }: TipTapEditorProps) {
   }
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <div className={`w-full max-w-5xl mx-auto ${isPreview ? 'preview-mode' : 'edit-mode'}`}>
       {/* Title Input */}
       <input
         type="text"
@@ -997,7 +1006,7 @@ export default function TipTapEditor({ onSave }: TipTapEditorProps) {
       </div>
 
           {/* Editor Container */}
-          <div className="relative bg-white dark:bg-gray-950 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800">
+          <div className={`relative bg-white dark:bg-gray-950 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800 ${isPreview ? 'hidden' : ''}`}>
             {/* Editor Content */}
             <EditorContent editor={editor} />
           </div>
