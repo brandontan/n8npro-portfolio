@@ -1,8 +1,24 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /editor/
+Disallow: /posts/
+Disallow: /test-puck/
+Crawl-delay: 0
+
+# Priority SPA sections for SEO
+Allow: /#about
+Allow: /#solutions
+Allow: /#industry
+Allow: /#contact
+
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Twitterbot
 Allow: /
@@ -10,6 +26,4 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
 Sitemap: https://aiflows.pro/sitemap.xml

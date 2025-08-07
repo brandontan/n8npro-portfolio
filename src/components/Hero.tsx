@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowDown, Mail, Github, Linkedin, Sparkles, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 import BouncingStamp from "./BouncingStamp";
 
 export const Hero = () => {
@@ -45,17 +46,14 @@ export const Hero = () => {
               />
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-              <span className="text-foreground block mb-2">We Build</span>
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse block mb-2">
-                AI-Powered
-              </span>
-              <span className="text-foreground block">Automations</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-foreground">
+              We Build AI-Powered Automations
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed">
               Stop Doing Repetitive Work. Start Growing Your Business!
             </p>
+            
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8">
               <Button size="lg" className="glass-button text-lg px-8 py-6 group text-white" onClick={scrollToContact}>
@@ -125,6 +123,8 @@ export const Hero = () => {
                   loop
                   muted
                   playsInline
+                  loading="lazy"
+                  preload="metadata"
                   className="w-full h-96 object-cover rounded-2xl"
                   style={{ aspectRatio: '16/9' }}
                 >

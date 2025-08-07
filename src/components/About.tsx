@@ -5,7 +5,7 @@ import { Award, Users, Clock, TrendingUp } from "lucide-react";
 export const About = () => {
 
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden" itemScope itemType="https://schema.org/Organization">
       {/* Background elements */}
       <div className="absolute inset-0 fluid-gradient opacity-50"></div>
       <div className="absolute top-20 right-20 w-64 h-64 liquid-blob liquid-morph" style={{ animationDelay: '1s' }}></div>
@@ -15,15 +15,16 @@ export const About = () => {
           <div className="space-y-8">
             <div>
               <Badge variant="outline" className="glass-card mb-4 px-4 py-2">About</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6" itemProp="slogan">
                 Save Cost. Save Time. Grow Revenue.
               </h2>
+              <meta itemProp="name" content="AIFlows" />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p className="text-primary font-medium text-lg mb-4">
                   Why Choose AIFlows (formerly known as n8npro):
                 </p>
                 <p>
-                  <strong>Specialized Focus:</strong> Exclusively n8n (open-source intelligent automation platform) and AI integration, not generic automation consulting.
+                  <strong>Specialized Focus:</strong> AI-powered business automation that eliminates repetitive tasks and connects your existing software tools seamlessly.
                 </p>
                 <p>
                   <strong>De-risking:</strong> Free MVP typically completed within one week to justify actual build.
@@ -48,6 +49,9 @@ export const About = () => {
               <img
                 src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&h=600"
                 alt="Developer at work"
+                loading="lazy"
+                width="800"
+                height="600"
                 className="w-full h-96 object-cover rounded-2xl"
               />
               <div className="absolute inset-3 bg-gradient-to-t from-background/60 via-transparent to-transparent rounded-2xl"></div>
