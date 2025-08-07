@@ -58,9 +58,9 @@ export const useContactForm = () => {
           .insert([{
             name: formData.name,
             email: formData.email,
-            company: formData.company || null,
+            project_type: formData.project_type || null,
             project_details: formData.project_details,
-            recaptcha_token: recaptchaToken
+            message: formData.message || formData.project_details
           }])
           .select()
           .single()

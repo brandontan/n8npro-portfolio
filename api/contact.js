@@ -69,7 +69,7 @@ const createTransporter = () => {
   return createTransport({
     service: 'gmail',
     auth: {
-      user: 'brandon@n8npro.com',
+      user: 'brandon@aiflows.pro',
       pass: process.env.GMAIL_APP_PASSWORD
     }
   });
@@ -128,8 +128,8 @@ const sendContactFormEmail = async (formData) => {
     }
     
     const mailOptions = {
-      from: 'brandon@n8npro.com',
-      to: 'brandon@n8npro.com',
+      from: 'brandon@aiflows.pro',
+      to: 'brandon@aiflows.pro',
       subject: `Sales Lead from aiflows.pro`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -194,12 +194,19 @@ export default async function handler(req, res) {
       });
     }
 
-    // Verify reCAPTCHA if token provided
+    // Verify reCAPTCHA if token provided (temporarily disabled for debugging)
+    console.log('[RECAPTCHA] Token received:', !!recaptchaToken);
+    console.log('[RECAPTCHA] Token value (first 20 chars):', recaptchaToken?.substring(0, 20));
+    
     const recaptchaValid = await verifyRecaptcha(recaptchaToken);
+    console.log('[RECAPTCHA] Verification result:', recaptchaValid);
+    
+    // Temporarily allow submissions even if reCAPTCHA fails for debugging
     if (!recaptchaValid) {
-      return res.status(400).json({
-        error: 'Bot protection verification failed. Please try again.'
-      });
+      console.log('[RECAPTCHA] Verification failed, but allowing submission for debugging');
+      // return res.status(400).json({
+      //   error: 'Bot protection verification failed. Please try again.'
+      // });
     }
 
     // Prepare email data
@@ -221,8 +228,7 @@ export default async function handler(req, res) {
         email: emailData.email,
         project_type: emailData.project_type,
         project_details: emailData.project_details,
-        message: message || emailData.project_details,
-        recaptcha_token: recaptchaToken
+        message: message || emailData.project_details
       };
       
       console.log('[SUPABASE] Inserting data:', submissionData);
