@@ -736,6 +736,57 @@ node /Users/brtan/Projects/n8npro-portfolio/proj_mgt/linear-scripts/quick-update
 
 ---
 
+## Session Notes - September 2, 2025
+
+### Loom Video Embed Blocking Issue - RESOLVED
+**Time**: September 2, 2025
+**Issue**: Loom video at https://aiflows.pro/med-spa-voice showing "This content is blocked"
+
+### Root Cause Analysis
+The Loom iframe was being blocked due to multiple CSP (Content Security Policy) issues:
+
+1. **X-Frame-Options: DENY** - Was preventing ALL iframes from loading
+2. **frame-ancestors 'none'** in CSP - Unnecessary restriction
+3. **Missing Loom domains** in frame-src directive
+4. **Subdirectory _headers file being overridden** by main vercel.json
+
+### Solution Applied
+Fixed by updating security headers in vercel.json:
+
+1. **Changed X-Frame-Options**: From `DENY` → `SAMEORIGIN`
+   - Allows iframes within same origin while preventing clickjacking
+
+2. **Removed frame-ancestors restriction**: Deleted `frame-ancestors 'none'` from CSP
+   - This was unnecessary and potentially conflicting
+
+3. **Updated frame-src directive**: Ensured includes `https://www.loom.com https://*.loom.com`
+   - Explicitly allows Loom domains for iframe embedding
+
+4. **Added script-src for Loom**: Included `https://cdn.loom.com` 
+   - Required for Loom player scripts
+
+### Technical Details
+- **Main config file**: `/vercel.json` controls all security headers
+- **Subdirectory headers**: `/public/med-spa-voice/_headers` gets overridden by vercel.json
+- **Vercel deployment**: Headers apply after ~1-2 minutes post-push
+- **Testing command**: `curl -I https://aiflows.pro/med-spa-voice/ | grep -i "x-frame\|content-security"`
+
+### Key Learning
+When dealing with iframe blocking issues:
+1. Check BOTH X-Frame-Options AND Content-Security-Policy headers
+2. Vercel's root config overrides subdirectory _headers files
+3. frame-ancestors controls who can embed YOUR page (not what you can embed)
+4. frame-src controls what YOUR page can embed (this is what matters for Loom)
+
+### Files Modified
+- `/Users/brtan/Projects/n8npro-portfolio/vercel.json` - Main security headers
+- `/Users/brtan/Projects/n8npro-portfolio/public/med-spa-voice/_headers` - Subdirectory headers (for consistency)
+
+### Result
+✅ Loom video now successfully embeds and plays at https://aiflows.pro/med-spa-voice/
+
+---
+
 ## Previous Session Notes - January 27, 2025
 
 ### Session Summary: SEO Optimization
