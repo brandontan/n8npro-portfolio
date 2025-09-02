@@ -307,22 +307,6 @@ const automationSolutions: Record<string, Automation[]> = {
   healthcare: [
     {
       id: 1,
-      title: "AI Conversational Voice Assistant",
-      description: "Transform your medical spa with an AI receptionist that never sleeps. Handles appointment bookings, answers treatment questions, manages cancellations, and sends SMS confirmations 24/7. Natural voice conversations in multiple languages with HIPAA-compliant data handling. Integrates seamlessly with your existing booking system.",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=400&h=300&q=80",
-      tags: ["ElevenLabs AI", "Voice API", "Calendar Sync", "SMS"],
-      metric: "Handle 80% of calls automatically",
-      workflow: [
-        { icon: "Bell", label: "Call Received" },
-        { icon: "Brain", label: "AI Conversation" },
-        { icon: "Calendar", label: "Check Availability" },
-        { icon: "Users", label: "Book Appointment" },
-        { icon: "Send", label: "SMS Confirmation" },
-        { icon: "CheckCircle", label: "Sync Calendar" }
-      ]
-    },
-    {
-      id: 2,
       title: "Patient Scheduling Automation",
       description: "Cut no-shows by 35% with intelligent appointment management. Automatically sends multi-touch reminders via SMS and email, detects high-risk appointments, offers easy rescheduling options, and fills cancelled slots from your waitlist. Integrates with Epic/Cerner for seamless scheduling.",
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&h=300&q=80",
@@ -337,7 +321,7 @@ const automationSolutions: Record<string, Automation[]> = {
       ]
     },
     {
-      id: 3,
+      id: 2,
       title: "Patient Communication",
       description: "Keep patients engaged throughout their care journey. Sends pre-appointment prep instructions, medication reminders, post-visit care plans, and satisfaction surveys. Proactively identifies at-risk patients for intervention before issues escalate.",
       image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=400&h=300&q=80",
@@ -352,7 +336,7 @@ const automationSolutions: Record<string, Automation[]> = {
       ]
     },
     {
-      id: 4,
+      id: 3,
       title: "Revenue Cycle Automation",
       description: "Accelerate collections and reduce denials with intelligent billing automation. Verifies insurance eligibility before visits, submits clean claims within 24 hours, tracks claim status, automatically appeals denials with supporting documentation, and sends patient payment reminders via text and email.",
       image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=400&h=300&q=80",
@@ -367,10 +351,10 @@ const automationSolutions: Record<string, Automation[]> = {
       ]
     },
     {
-      id: 5,
+      id: 4,
       title: "Clinical Documentation",
       description: "Let doctors focus on patients, not paperwork. AI listens to patient encounters, generates structured SOAP notes, suggests appropriate billing codes, and integrates directly with your EHR. Reviews past visits for context and flags important changes.",
-      image: "https://images.unsplash.com/photo-1581595220975-119360b1c63f?auto=format&fit=crop&w=400&h=300&q=80",
+      image: "https://images.unsplash.com/photo-1652787545245-5e39748cdf97?auto=format&fit=crop&w=400&h=300&q=80",
       tags: ["AI Scribe", "Epic/Cerner", "Voice", "ICD-10"],
       metric: "Save 2 hours/day charting",
       workflow: [
@@ -387,7 +371,7 @@ const automationSolutions: Record<string, Automation[]> = {
       id: 1,
       title: "AI Voice Receptionist for Med Spas",
       description: "Never miss another booking with Bella, your 24/7 AI receptionist. Handles natural voice conversations, books appointments, answers treatment questions, manages cancellations, and sends SMS confirmations. Perfect for Botox, HydraFacial, laser treatments, and more. HIPAA-compliant and integrates with your existing calendar.",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=400&h=300&q=80",
+      image: "https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=400&h=300&q=80",
       tags: ["ElevenLabs AI", "Voice API", "Calendar Sync", "SMS"],
       metric: "Book appointments 24/7",
       workflow: [
@@ -399,52 +383,6 @@ const automationSolutions: Record<string, Automation[]> = {
         { icon: "CheckCircle", label: "Sync Calendar" }
       ],
       liveDemo: "/med-spa-voice"
-    },
-    {
-      id: 2,
-      title: "Dental Practice Voice Assistant",
-      description: "Transform your dental practice with AI-powered patient communication. Handles appointment scheduling, insurance verification questions, treatment inquiries, and emergency triage. Reduces front desk workload by 70% while providing patients with instant, accurate responses in multiple languages.",
-      image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=400&h=300&q=80",
-      tags: ["Voice AI", "Insurance API", "SMS", "Multi-language"],
-      metric: "70% less front desk calls",
-      workflow: [
-        { icon: "Bell", label: "Patient Calls" },
-        { icon: "Brain", label: "AI Triage" },
-        { icon: "Lock", label: "Verify Insurance" },
-        { icon: "Calendar", label: "Schedule" },
-        { icon: "Send", label: "Confirm" },
-        { icon: "Database", label: "Update Records" }
-      ]
-    },
-    {
-      id: 3,
-      title: "Treatment Follow-Up Automation",
-      description: "Boost client retention and satisfaction with automated post-treatment care. Sends personalized aftercare instructions, schedules follow-up appointments, collects feedback, and triggers re-booking campaigns based on treatment cycles. Increases repeat bookings by 40%.",
-      image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=400&h=300&q=80",
-      tags: ["SMS", "Email", "CRM", "AI Personalization"],
-      metric: "40% more repeat bookings",
-      workflow: [
-        { icon: "CheckCircle", label: "Treatment Done" },
-        { icon: "Send", label: "Aftercare SMS" },
-        { icon: "Clock", label: "Follow-up Timer" },
-        { icon: "Mail", label: "Feedback Request" },
-        { icon: "Calendar", label: "Rebook Reminder" }
-      ]
-    },
-    {
-      id: 4,
-      title: "Inventory & Supply Chain Management",
-      description: "Never run out of Botox or essential supplies again. Automatically tracks product usage, predicts demand based on bookings, alerts when supplies run low, and can auto-order from approved vendors. Maintains optimal stock levels while reducing waste and expired products.",
-      image: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=400&h=300&q=80",
-      tags: ["Inventory API", "Predictive Analytics", "Auto-ordering"],
-      metric: "Zero stockouts, 30% less waste",
-      workflow: [
-        { icon: "Package", label: "Track Usage" },
-        { icon: "Brain", label: "Predict Demand" },
-        { icon: "Bell", label: "Low Stock Alert" },
-        { icon: "Calculator", label: "Calculate Order" },
-        { icon: "Send", label: "Auto-Purchase" }
-      ]
     }
   ],
   manufacturing: [
