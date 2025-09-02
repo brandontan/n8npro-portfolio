@@ -1,0 +1,22 @@
+# Security headers for Vercel deployment
+/*
+  # Content Security Policy - Strict but allows ElevenLabs integration
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.elevenlabs.io https://app.n8npro.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'
+  
+  # Prevent clickjacking
+  X-Frame-Options: DENY
+  
+  # Prevent MIME type sniffing
+  X-Content-Type-Options: nosniff
+  
+  # Enable XSS protection
+  X-XSS-Protection: 1; mode=block
+  
+  # Force HTTPS
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  
+  # Prevent referrer information leakage
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Feature policy restrictions
+  Permissions-Policy: geolocation=(), microphone=(self), camera=(), payment=(), usb=()
