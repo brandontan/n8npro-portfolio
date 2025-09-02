@@ -1,0 +1,378 @@
+{
+  "name": "Production AI Chatbot (GPT-OSS-20B)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chatbot",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*",
+          "noResponseBody": false
+        }
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 300],
+      "webhookId": "production-chatbot"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "input-validation",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "isNotEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "input-validator",
+      "name": "Input Validator",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [400, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "clean-message",
+              "name": "message",
+              "value": "={{ $json.message.trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "session-id",
+              "name": "sessionId",
+              "value": "={{ $json.sessionId || 'session-' + $now }}",
+              "type": "string"
+            },
+            {
+              "id": "user-agent",
+              "name": "userAgent",
+              "value": "={{ $('Webhook Trigger').item.json.headers['user-agent'] || 'unknown' }}",
+              "type": "string"
+            },
+            {
+              "id": "timestamp",
+              "name": "timestamp",
+              "value": "={{ $now }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "data-processor",
+      "name": "Process Input Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [600, 200]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.sessionId }}",
+        "chatInput": "={{ $json.message }}",
+        "options": {
+          "systemMessage": "You are Brandon's AI assistant for his n8n automation portfolio at aiflows.pro. You're powered by OpenAI's GPT-OSS-20B open source model.\n\nPERSONALITY & ROLE:\n- Expert n8n workflow developer and business automation consultant\n- Professional yet approachable, enthusiastic about automation possibilities\n- Solution-focused: help visitors understand how automation solves their specific problems\n- Showcase Brandon's expertise through relevant examples\n\nYOUR EXPERTISE:\n- n8n workflow architecture and development\n- Business process automation (e-commerce, professional services, marketing)\n- AI integrations (OpenAI, Claude, custom models)\n- API integrations and data workflows\n- Cost-saving automation strategies\n\nPORTFOLIO KNOWLEDGE:\n- Brandon specializes in AI-powered n8n workflows\n- Focus areas: e-commerce automation, professional services workflows, marketing automation\n- Builds custom solutions for small-medium businesses\n- ROI-driven approach: measurable time/cost savings\n\nCONVERSATION GOALS:\n1. Understand visitor's specific business challenges\n2. Suggest relevant automation solutions\n3. Qualify potential leads through helpful questions\n4. Guide to appropriate services or schedule consultation\n\nRESPONSE STYLE:\n- Keep responses concise (2-3 paragraphs max)\n- Ask follow-up questions to understand needs\n- Reference specific n8n capabilities when relevant\n- Always helpful, never pushy\n- Use emojis sparingly for clarity\n\nQUALIFYING QUESTIONS:\n- What business processes take most of their time?\n- What tools/software do they currently use?\n- What's their biggest operational pain point?\n- Team size and technical comfort level?\n\nFor complex projects or pricing, suggest scheduling a consultation to discuss their specific needs."
+        }
+      },
+      "id": "ai-agent",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1,
+      "position": [800, 200]
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-20b",
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 800,
+          "topP": 0.9
+        }
+      },
+      "id": "gpt-oss-model",
+      "name": "GPT-OSS-20B Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [800, 350]
+    },
+    {
+      "parameters": {
+        "windowSize": 8
+      },
+      "id": "conversation-memory",
+      "name": "Conversation Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [800, 50]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "response-data",
+              "name": "response",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            },
+            {
+              "id": "model-info",
+              "name": "model",
+              "value": "openai/gpt-oss-20b",
+              "type": "string"
+            },
+            {
+              "id": "response-time",
+              "name": "responseTime",
+              "value": "={{ ($now - $('Process Input Data').item.json.timestamp) }}ms",
+              "type": "string"
+            },
+            {
+              "id": "session-info",
+              "name": "sessionId", 
+              "value": "={{ $('Process Input Data').item.json.sessionId }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "response-formatter",
+      "name": "Format Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1000, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": {
+          "success": true,
+          "response": "={{ $json.response }}",
+          "model": "={{ $json.model }}",
+          "sessionId": "={{ $json.sessionId }}",
+          "responseTime": "={{ $json.responseTime }}",
+          "timestamp": "={{ new Date().toISOString() }}"
+        },
+        "options": {
+          "responseHeaders": {
+            "headers": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Access-Control-Allow-Methods", 
+                "value": "POST, GET, OPTIONS"
+              },
+              {
+                "name": "Access-Control-Allow-Headers",
+                "value": "Content-Type, Authorization"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "Cache-Control",
+                "value": "no-cache"
+              }
+            ]
+          }
+        }
+      },
+      "id": "success-response",
+      "name": "Success Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1200, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": {
+          "success": false,
+          "error": "Invalid input",
+          "message": "Please provide a message to start the conversation.",
+          "timestamp": "={{ new Date().toISOString() }}"
+        },
+        "options": {
+          "responseHeaders": {
+            "headers": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        }
+      },
+      "id": "validation-error",
+      "name": "Validation Error Response", 
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [600, 400]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": {
+          "success": false,
+          "error": "Processing failed",
+          "message": "I'm having trouble processing your request right now. Please try again.",
+          "details": "={{ $json.error?.message || 'Unknown error occurred' }}",
+          "timestamp": "={{ new Date().toISOString() }}"
+        },
+        "options": {
+          "responseHeaders": {
+            "headers": [
+              {
+                "name": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        }
+      },
+      "id": "processing-error",
+      "name": "Processing Error Response",
+      "type": "n8n-nodes-base.respondToWebhook", 
+      "typeVersion": 1,
+      "position": [1000, 400]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Input Validator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input Validator": {
+      "main": [
+        [
+          {
+            "node": "Process Input Data",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Validation Error Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Input Data": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Format Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ],
+      "ai_languageModel": [
+        [
+          {
+            "node": "GPT-OSS-20B Model",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ],
+      "ai_memory": [
+        [
+          {
+            "node": "Conversation Memory",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Response": {
+      "main": [
+        [
+          {
+            "node": "Success Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "id": "production",
+      "name": "production"
+    },
+    {
+      "id": "chatbot",
+      "name": "chatbot" 
+    },
+    {
+      "id": "gpt-oss",
+      "name": "gpt-oss"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-01-26T06:00:00.000Z",
+  "versionId": "1"
+}
