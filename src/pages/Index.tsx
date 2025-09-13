@@ -6,7 +6,7 @@ import { ReCaptchaProvider } from "@/components/ReCaptchaProvider";
 import MinimalNavigation from "@/components/MinimalNav";
 import { useEffect, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
-import GlassmorphicChatbot from "@/components/GlassmorphicChatbot";
+// Chat assistant removed per request
 
 // Lazy load heavy components
 const IndustryAutomationHub = lazy(() => import("@/components/IndustryAutomationHub"));
@@ -51,7 +51,7 @@ const Index = () => {
           <Contact />
         </ReCaptchaProvider>
       </section>
-      <GlassmorphicChatbot />
+      {/* Chat assistant removed */}
     </div>
   );
 };
